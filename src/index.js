@@ -4,6 +4,8 @@ import SwipeItem from "./components/CSwipeItem";
 import Header from "./components/CHeader";
 import Dialog from "./components/CDialog";
 import Cell from "./components/CCell";
+import "./components/index.less";
+
 const version = "1.0";
 
 function install(Vue) {

@@ -1,5 +1,14 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("vue"));
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["lc-best-ui"] = factory(require("vue"));
+	else
+		root["lc-best-ui"] = factory(root["Vue"]);
+})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__8bbf__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -527,6 +536,13 @@ if (v8) {
 
 module.exports = version && +version;
 
+
+/***/ }),
+
+/***/ "30b7":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -1594,7 +1610,7 @@ module.exports = store.inspectSource;
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
-module.exports = require("vue");
+module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 
 /***/ }),
 
@@ -3960,7 +3976,11 @@ var CCell_component = normalizeComponent(
 )
 
 /* harmony default export */ var CCell = (CCell_component.exports);
+// EXTERNAL MODULE: ./src/components/index.less
+var src_components = __webpack_require__("30b7");
+
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
@@ -4127,4 +4147,5 @@ module.exports = NATIVE_SYMBOL
 /***/ })
 
 /******/ });
-//# sourceMappingURL=cue.common.js.map
+});
+//# sourceMappingURL=lc-best-ui.umd.js.map
