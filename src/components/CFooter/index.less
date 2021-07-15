@@ -1,0 +1,69 @@
+@import "../styles/theme.less";
+
+.cs-footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 2px 12px @footer-box-shadow;
+  background-color: @footer-background-color;
+
+  .cs-footer-div {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: @footer-background-color;
+
+    .cs-footer-menu {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      visibility: hidden;
+      opacity: 0;
+      transition: transform 0.3s, -webkit-transform 0.3s;
+      transition-duration: 0.2s;
+      z-index: -1;
+
+      .cs-footer-menu-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 7vh;
+        background-color: @footer-menu-background-color;
+        border-bottom: 1px solid @footer-border-color;
+        box-sizing: border-box;
+      }
+    }
+
+    .cs-footer-menu-active {
+      visibility: visible;
+      opacity: 1;
+      transition-timing-function: ease-in;
+      transform: translate3d(0, -7vh, 0);
+    }
+  }
+
+  .cs-footer-div:not(:first-child):not(:last-child):before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    display: inline-block;
+    width: 1px;
+    height: 60%;
+    background-color: @footer-before-after-color;
+  }
+
+  .cs-footer-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 93vh;
+    position: fixed;
+    z-index: -2;
+  }
+}

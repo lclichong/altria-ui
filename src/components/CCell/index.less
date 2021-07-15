@@ -1,0 +1,41 @@
+@import "../styles/theme.less";
+
+.cs-cell {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 10px 16px;
+  line-height: 9vw;
+
+  .cs-cell-title {
+    text-align: left;
+    flex: 1;
+    width: 50%;
+    color: @cell-title-color;
+  }
+
+  .cs-cell-value {
+    text-align: right;
+    flex: 1;
+    word-wrap: break-word;
+    width: 50%;
+    color: @cell-value-color;
+  }
+}
+
+.cs-cell::after {
+  content: " ";
+  position: absolute;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ebedf0;
+  left: 16px;
+  right: 0px;
+  bottom: 0px;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.cs-cell div {
+  line-height: 9vw;
+}

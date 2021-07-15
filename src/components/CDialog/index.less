@@ -1,0 +1,109 @@
+@import "../styles/theme.less";
+
+.cs-dialog {
+  z-index: 2001;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80vw;
+  height: 40vw;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  .cs-dialog-title {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 500;
+  }
+  .cs-dialog-content {
+    height: 50%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #646566;
+    font-size: 15px;
+    padding: 0px 20px;
+    line-height: 25px;
+  }
+  .cs-dialog-confirm {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    .cs-dialog-confirm-button {
+      width: 80%;
+      height: 80%;
+      background-color: #fff;
+      border: none;
+      outline: none;
+      color: #ee0a24;
+    }
+  }
+  .cs-dialog-confirm::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: " ";
+    pointer-events: none;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    border-top: 1px solid #ebedf0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+
+.cs-dialog-show {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cs-dialog-hide {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.cs-dialog-overlay {
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.cs-dialog-overlay-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cs-dialog-overlay-hide {
+  visibility: hidden;
+  opacity: 0;
+}
