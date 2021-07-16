@@ -7,20 +7,19 @@
 <script>
 export default {
     name: 'SwipeItem',
-    created () {
-
-    },
-    mounted () {
-
+    created() {},
+    mounted() {
+        this.$parent.childMounted++
+        if (this.$parent.$slots.default.length === this.$parent.childMounted) {
+            this.$parent.initSwipe()
+        }
     },
     props: {
-        speed: {
-
-        }
+        speed: {},
     },
     data: function () {
         return {}
-    }
+    },
 }
 </script>
 

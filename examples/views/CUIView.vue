@@ -22,10 +22,9 @@
 <script>
 export default {
     components: {},
-    created() {},
-    data() {
-        return {
-            images: [
+    created() {
+        setTimeout(() => {
+            this.images = [
                 {
                     url: require('../assets/slidec.jpg'),
                     key: 'img1',
@@ -38,8 +37,13 @@ export default {
                     url: require('../assets/slidee.jpg'),
                     key: 'img3',
                 },
-            ],
-            speed: 5000,
+            ]
+        }, 3000)
+    },
+    data() {
+        return {
+            images: [],
+            speed: 3000,
             message: '你好',
             title: '单元格',
             value: '内容',
