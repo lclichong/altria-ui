@@ -1,57 +1,58 @@
-@import "../styles/theme.less";
+@import '../styles/theme.less';
 
 .cs-header {
-  height: 40px;
-  background-color: @header-background-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  position: relative;
+    height: 40px;
+    background-color: @header-background-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
 }
 
 .cs-back-div {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-  margin: auto;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cs-left-arrow {
-  height: 11px;
-  display: inline-block;
-  margin-left: 5vw;
+    height: 11px;
+    display: inline-block;
+    margin-left: 5vw;
 }
 
 .cs-left-span {
-  margin-left: 14px;
+    margin-left: 14px;
 }
 
 .cs-left-arrow::before {
-  content: "";
-  position: absolute;
-  border-top: 1px solid #fff;
-  width: 10px;
-  height: 10px;
-  -webkit-transform: rotate(60deg);
-  transform: rotate(-44deg);
-  border-left: 1px solid #fff;
+    content: '';
+    position: absolute;
+    border-top: 1px solid #fff;
+    width: 10px;
+    height: 10px;
+    -webkit-transform: rotate(60deg);
+    transform: rotate(-44deg);
+    border-left: 1px solid #fff;
 }
 
 .cs-back-div:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .cs-header-title {
-  max-width: 50%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: @header-title-font-size;
-  font-weight: @header-title-font-weight;
+    max-width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: @header-title-font-size;
+    font-weight: @header-title-font-weight;
+    font-size: 1.2rem;
 }

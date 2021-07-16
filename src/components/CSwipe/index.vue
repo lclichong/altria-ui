@@ -12,42 +12,44 @@
 <script>
 export default {
     name: 'Swipe',
-    created () {
+    created() {
         this.transitionSpeed = this.tSpeed
     },
-    mounted () {
-        this.initSwipe()
+    mounted() {
+        if (this.$slots.default) {
+            this.initSwipe()
+        }
     },
-    destroyed () {
+    destroyed() {
         // 销毁定时任务
         window.clearInterval(this.interval)
     },
     props: {
         speed: {
             type: Number,
-            default: 5000
+            default: 5000,
         },
         tSpeed: {
             type: Number,
-            default: 500
-        }
+            default: 500,
+        },
     },
     data: function () {
         return {
             slideLength: 0,
             transitionSpeed: 0,
-            interval: ''
+            interval: '',
         }
     },
     methods: {
-        removeClass (array) {
-            array.forEach(e => {
+        removeClass(array) {
+            array.forEach((e) => {
                 if (e != undefined && e.classList != undefined) {
                     e.classList.remove('i-active')
                 }
             })
         },
-        initSwipe () {
+        initSwipe() {
             let slide_div = this.$children
             this.slideLength = slide_div.length
             let width = window.innerWidth
@@ -78,7 +80,9 @@ export default {
                         self.removeClass(self.$refs.cs)
                         self.$refs.cs[count].classList.add('i-active')
                         self.$refs.main.style.transitionDuration = `${self.transitionSpeed}ms`
-                        self.$refs.main.style.transform = `translateX(-${(count) * width}px)`
+                        self.$refs.main.style.transform = `translateX(-${
+                            count * width
+                        }px)`
                     }, 0)
                 } else {
                     // console.log('下一张')
@@ -94,16 +98,20 @@ export default {
 
                     slide_div[0].$el.style.width = `${width}px`
                     if (count > 1) {
-                        slide_div[0].$el.style.transform = `translateX(${count * width}px)`
+                        slide_div[0].$el.style.transform = `translateX(${
+                            count * width
+                        }px)`
                     } else {
                         slide_div[0].$el.style.transform = ''
                     }
                     self.$refs.main.style.transitionDuration = `${self.transitionSpeed}ms`
-                    self.$refs.main.style.transform = `translateX(-${count * width}px)`
+                    self.$refs.main.style.transform = `translateX(-${
+                        count * width
+                    }px)`
                 }
             }, this.speed)
-        }
-    }
+        },
+    },
 }
 </script>
 

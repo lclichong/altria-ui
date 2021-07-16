@@ -14,7 +14,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 4vw;
 }
 
 html,
