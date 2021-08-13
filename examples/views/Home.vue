@@ -7,7 +7,7 @@
             </SwipeItem>
         </Swipe>
         <div class="center">
-            <Input v-model="val" placeholder="搜索"></Input>
+            <Input :value.sync="val" placeholder="搜索"></Input>
         </div>
         <Button @click="val = 456" size="small">修改input的值</Button>
         <Footer :FooterList="FooterList" @menuClick="menuClick"></Footer>

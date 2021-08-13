@@ -3,8 +3,8 @@
         <input
             ref="cInput"
             class="cs-input"
-            @input="$emit('input', $event.target.value)"
-            :value="value"
+            @input="$emit('update:value', $event.target.value)"
+            v-model="val"
             :placeholder="placeholder"
         />
         <svg @click="clear" class="cs-input-remove" aria-hidden="true">
@@ -26,12 +26,20 @@ export default {
             default: '',
         },
     },
+    watch: {
+        value(newVal) {
+            this.val = newVal
+        },
+    },
     data: function () {
-        return {}
+        return {
+            val: this.value,
+        }
     },
     methods: {
         clear() {
-            this.value = ''
+            this.val = ''
+            this.$emit('update:value', '')
             this.$refs.cInput.focus()
         },
     },
