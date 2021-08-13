@@ -11,52 +11,48 @@
 <script>
 export default {
     name: 'Header',
-    mounted () {
-
-    },
+    mounted() {},
     props: {
         title: {
             type: String,
-            default: ''
+            default: '',
         },
         height: {
             type: String,
-            default: ''
+            default: '',
         },
         backText: {
             type: String,
-            default: '返回'
+            default: '返回',
         },
         showBack: {
             type: Boolean,
-            default: false
+            default: false,
         },
         showBackText: {
             type: Boolean,
-            default: false
+            default: false,
         },
         preventGoBack: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
     data: function () {
-        return {
-
-        }
+        return {}
     },
     methods: {
-        onClickBack () {
+        onClickBack() {
             if (this.preventGoBack) {
                 this.$emit('on-click-back')
             } else {
                 this.$router ? this.$router.back() : window.history.back()
             }
-        }
-    }
+        },
+    },
 }
 </script>
 
 <style lang="less">
-// @import 'index.less';
+@import 'index.less';
 </style>
