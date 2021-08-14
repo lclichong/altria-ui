@@ -1,116 +1,135 @@
 /*
- * @Author: LcLichong 
- * @Date: 2021-07-06 16:02:57 
+ * @Author: LcLichong
+ * @Date: 2021-07-06 16:02:57
  * @Last Modified by: LcLichong
- * @Last Modified time: 2021-07-07 13:54:50
+ * @Last Modified time: 2021-08-14 22:49:57
  */
 
-import Vue from 'vue'
-import { getFnName } from '../utiles'
+import Vue from 'vue';
 
 function Dialog() {}
 
-let cache = Object.create(null)
+let cache = Object.create(null);
 
 Dialog.prototype.alert = function(options) {
-    let dialog = 'dialog'
-    let overlay = 'overlay'
+    let dialog = 'dialog';
+    let overlay = 'overlay';
     if (!cache[dialog]) {
         cache[dialog] = new Vue({
             created() {
-                this.title = options.title
-                this.message = options.message
-                this.time = options.time
+                this.title = options.title;
+                this.message = options.message;
+                this.time = options.time;
             },
             data() {
                 return {
                     title: options.title,
                     message: options.message,
                     time: options.time,
-                    opacity: false
-                }
+                    opacity: false,
+                };
             },
             render(h) {
-                return h('div', {
-                    class: ['cs-dialog', `${this.opacity ? 'cs-dialog-show' : 'cs-dialog-hide'}`]
-                }, [
-                    h('div', {
-                        'class': 'cs-dialog-title'
-                    }, [
-                        this.title
-                    ]),
-                    h('div', {
-                        'domProps': {
-                            'innerHTML': this.message
-                        },
-                        'class': 'cs-dialog-content'
-                    }, [
-
-                    ]),
-                    h('div', {
-                        'class': 'cs-dialog-confirm'
-                    }, [
-                        h('button', {
-                            'class': 'cs-dialog-confirm-button',
-                            'on': {
-                                'click': this.btnClick
-                            }
-                        }, [
-                            '确定'
-                        ])
-                    ])
-                ])
+                return h(
+                    'div',
+                    {
+                        class: ['cs-dialog', `${this.opacity ? 'cs-dialog-show' : 'cs-dialog-hide'}`],
+                    },
+                    [
+                        h(
+                            'div',
+                            {
+                                class: 'cs-dialog-title',
+                            },
+                            [this.title]
+                        ),
+                        h(
+                            'div',
+                            {
+                                domProps: {
+                                    innerHTML: this.message,
+                                },
+                                class: 'cs-dialog-content',
+                            },
+                            []
+                        ),
+                        h(
+                            'div',
+                            {
+                                class: 'cs-dialog-confirm',
+                            },
+                            [
+                                h(
+                                    'button',
+                                    {
+                                        class: 'cs-dialog-confirm-button',
+                                        on: {
+                                            click: this.btnClick,
+                                        },
+                                    },
+                                    ['确定']
+                                ),
+                            ]
+                        ),
+                    ]
+                );
             },
             methods: {
                 btnClick() {
-                    this.hideDialog()
+                    this.hideDialog();
                 },
                 showDialog() {
                     if (this.time) {
-                        this.opacity = true
+                        this.opacity = true;
                         setTimeout(() => {
-                            this.opacity = false
-                        }, this.time)
+                            this.opacity = false;
+                        }, this.time);
                     } else {
-                        this.opacity = true
+                        this.opacity = true;
                     }
                 },
                 hideDialog() {
-                    this.opacity = false
-                }
-            }
-        })
+                    this.opacity = false;
+                },
+            },
+        });
 
         cache[overlay] = new Vue({
             render(h) {
-                return h('div', {
-                    'class': ['cs-dialog-overlay', `${cache[dialog].opacity ? 'cs-dialog-overlay-show' : 'cs-dialog-overlay-hide'}`]
-                }, [])
-            }
-        })
+                return h(
+                    'div',
+                    {
+                        class: [
+                            'cs-dialog-overlay',
+                            `${cache[dialog].opacity ? 'cs-dialog-overlay-show' : 'cs-dialog-overlay-hide'}`,
+                        ],
+                    },
+                    []
+                );
+            },
+        });
         if (document.body) {
-            let overlayDom = cache[overlay].$mount().$el
-            document.body.appendChild(overlayDom)
-            let dialogDom = cache[dialog].$mount().$el
-            document.body.appendChild(dialogDom)
+            let overlayDom = cache[overlay].$mount().$el;
+            document.body.appendChild(overlayDom);
+            let dialogDom = cache[dialog].$mount().$el;
+            document.body.appendChild(dialogDom);
 
             setTimeout(() => {
-                cache[dialog].showDialog()
-            })
+                cache[dialog].showDialog();
+            });
         }
     } else {
-        cache[dialog].title = options.title
-        cache[dialog].message = options.message
-        cache[dialog].time = options.time
-        cache[dialog].showDialog()
+        cache[dialog].title = options.title;
+        cache[dialog].message = options.message;
+        cache[dialog].time = options.time;
+        cache[dialog].showDialog();
     }
-}
+};
 
 Dialog.prototype.install = function(Vue) {
-    Vue.prototype['$' + getFnName(Dialog)] = dialog
-}
+    Vue.prototype['$Dialog'] = dialog;
+};
 
+let dialog = new Dialog();
 
-let dialog = new Dialog()
-
-export default dialog
+export default dialog;

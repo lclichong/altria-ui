@@ -12,11 +12,10 @@ import './icon/iconfont';
 const version = '1.0';
 
 function install(Vue) {
-    let components = [Footer, Swipe, SwipeItem, Header, Dialog, Cell, Input, Button];
+    Vue.use(Dialog);
+    let components = [Footer, Swipe, SwipeItem, Header, Cell, Input, Button];
     components.forEach(function(item) {
-        if (item.install) {
-            Vue.use(item);
-        } else if (item.name) {
+        if (item.name) {
             Vue.component(item.name, item);
         }
     });
