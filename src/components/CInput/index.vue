@@ -6,6 +6,7 @@
             @input="$emit('update:value', $event.target.value)"
             v-model="val"
             :placeholder="placeholder"
+            @keyup.enter="query"
         />
         <svg @click="clear" class="cs-input-remove" aria-hidden="true">
             <use xlink:href="#icon-shanchu"></use>
@@ -41,6 +42,9 @@ export default {
             this.val = ''
             this.$emit('update:value', '')
             this.$refs.cInput.focus()
+        },
+        query() {
+            this.$emit('enter', this.val)
         },
     },
 }

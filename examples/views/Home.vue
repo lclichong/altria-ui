@@ -7,7 +7,7 @@
             </SwipeItem>
         </Swipe>
         <div class="center">
-            <Input :value.sync="val" placeholder="搜索"></Input>
+            <Input @enter="enter" :value.sync="val" placeholder="搜索"></Input>
         </div>
         <Button @click="val = 456" size="small">修改input的值</Button>
         <Footer :FooterList="FooterList" @menuClick="menuClick"></Footer>
@@ -79,7 +79,7 @@ export default {
                     key: 'img3',
                 },
             ],
-            speed: 5000,
+            speed: 2000,
             idx: 0,
             val: '',
         }
@@ -106,6 +106,12 @@ export default {
             this.$Dialog.alert({
                 title: '提示',
                 message: `轮播图点击,我的key是：${img.key}`,
+            })
+        },
+        enter(val) {
+            this.$Dialog.alert({
+                title: '提示',
+                message: val,
             })
         },
     },

@@ -4,6 +4,15 @@
     </div>
 </template>
 
+<script>
+export default {
+    created() {},
+    data() {
+        return {}
+    },
+}
+</script>
+
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,5 +30,10 @@ html,
 body {
     height: 100vh;
     margin: 0px;
+}
+
+* {
+    touch-action: none;
+    touch-action: pan-y;
 }
 </style>
