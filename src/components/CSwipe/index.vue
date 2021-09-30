@@ -45,6 +45,7 @@ export default {
             count: 0,
             sx: 0,
             moveNum: 0,
+            isMove: false,
         }
     },
     methods: {
@@ -108,7 +109,6 @@ export default {
         },
         move() {
             // 手势轮播
-            console.log('move')
             let slide_div = this.$children
             this.slideLength = slide_div.length
             let width = window.innerWidth
@@ -124,33 +124,41 @@ export default {
                 // sx 用于判断拖拽方向
                 this.$refs.main.style.transitionDuration = '0ms'
                 this.sx = e.touches[0].clientX
+                this.isMove = false
+                console.log('sx', this.sx)
             })
             this.$refs.main.addEventListener('touchmove', (e) => {
+                console.log('clientx', e.touches[0].clientX)
+                this.isMove = true
                 if (e.touches[0].clientX > this.sx) {
                     console.log('one')
                     if (this.moveNum >= 0) {
-                        // this.$refs.main.style.transform = `translateX(0px)`
+                        this.$refs.main.style.transform = `translateX(0px)`
                     } else {
-                        // this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
+                        this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
                         this.moveNum = this.moveNum + 3
                     }
                 } else if (e.touches[0].clientX < this.sx) {
                     console.log('two')
                     this.moveNum = this.moveNum - 3
+                    this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
                     // if (this.moveNum + width * 2 > 0) {
-                    //     // this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
+                    //     this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
                     //     this.moveNum = this.moveNum - 3
                     // } else if (this.moveNum + width * 2 <= 0) {
                     //     this.moveNum = -(width * 2)
-                    //     // this.$refs.main.style.transform = `translateX(${-(width * 2)}px)`
+                    //     this.$refs.main.style.transform = `translateX(${-(width * 2)}px)`
                     // }
                 }
             })
             this.$refs.main.addEventListener('touchend', () => {
+                if (!this.isMove) {
+                    return
+                }
                 this.count++
-                let idx = Math.abs(this.moveNum) / width
-                console.log(Number.parseInt(idx))
-                if (Number.parseInt(idx) == this.slideLength) {
+                let idx = Number.parseInt(Math.abs(this.moveNum) / width)
+                console.log('idx', idx)
+                if (idx == this.slideLength) {
                     this.$refs.main.style.transitionDuration = '0ms'
                     this.$refs.main.style.transform = 'translateX(0px)'
                     slide_div[0].$el.style.width = `${width}px`
@@ -158,21 +166,29 @@ export default {
                     setTimeout(() => {
                         this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
                         this.$refs.main.style.transform = `translateX(-${width}px)`
-                        this.moveNum = width
+                        this.removeClass(this.$refs.cs)
+                        this.$refs.cs[1].classList.add('i-active')
+                        this.moveNum = -width
                         console.log(this.moveNum)
                     }, 50)
                 } else {
-                    if (Number.parseInt(idx) == 0 && this.count > 1) {
+                    if (idx == 0 && this.count > 1) {
                         idx = 1
                     }
-                    if (Number.parseInt(idx) + 1 > 1) {
-                        slide_div[0].$el.style.transform = `translateX(${(Number.parseInt(idx) + 1) * width}px)`
+                    if (idx + 1 > 1) {
+                        slide_div[0].$el.style.transform = `translateX(${(idx + 1) * width}px)`
                     } else {
                         slide_div[0].$el.style.transform = ''
                     }
+                    this.removeClass(this.$refs.cs)
+                    if (idx == this.slideLength - 1) {
+                        this.$refs.cs[0].classList.add('i-active')
+                    } else {
+                        this.$refs.cs[idx + 1].classList.add('i-active')
+                    }
                     this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
-                    this.$refs.main.style.transform = `translateX(-${(Number.parseInt(idx) + 1) * width}px)`
-                    this.moveNum = -((Number.parseInt(idx) + 1) * width)
+                    this.$refs.main.style.transform = `translateX(-${(idx + 1) * width}px)`
+                    this.moveNum = -((idx + 1) * width)
                 }
             })
         },
