@@ -62,7 +62,6 @@ export default {
             let slide_div = this.$children
             this.slideLength = slide_div.length
             let width = window.innerWidth
-            let self = this
             this.$refs.main.style.transitionDuration = '0ms'
             this.$refs.main.style.transform = 'translateX(0px)'
             this.$refs.main.style.width = `${width * 2}px`
@@ -72,39 +71,41 @@ export default {
             this.$nextTick(() => {
                 this.$refs.cs[0].classList.add('i-active')
             })
-            let speed = self.count === slide_div.length ? this.speed - this.duration : this.speed
-            this.interval = setInterval(function () {
-                if (self.count == slide_div.length) {
-                    // console.log('重置')
-                    self.count = 0
-                    self.$refs.main.style.transitionDuration = '0ms'
-                    self.$refs.main.style.transform = 'translateX(0px)'
+            let speed = this.count === slide_div.length ? this.speed - this.duration : this.speed
+            this.interval = setInterval(() => {
+                if (this.count == slide_div.length) {
+                    // 重置
+                    this.count = 0
+                    this.$refs.main.style.transitionDuration = '0ms'
+                    this.$refs.main.style.transform = 'translateX(0px)'
                     slide_div[0].$el.style.width = `${width}px`
                     slide_div[0].$el.style.transform = ''
                     setTimeout(() => {
-                        self.count++
-                        self.removeClass(self.$refs.cs)
-                        self.$refs.cs[self.count].classList.add('i-active')
-                        self.$refs.main.style.transitionDuration = `${self.transitionSpeed}ms`
-                        self.$refs.main.style.transform = `translateX(-${self.count * width}px)`
+                        this.count++
+                        this.removeClass(this.$refs.cs)
+                        this.$refs.cs[this.count].classList.add('i-active')
+                        this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
+                        this.$refs.main.style.transform = `translateX(-${this.count * width}px)`
+                        this.moveNum = -(this.count * width)
                     }, 50)
                 } else {
-                    // console.log('下一张')
-                    ++self.count
+                    // 下一张
+                    ++this.count
                     let csIdx = 0
-                    if (self.count <= self.$refs.cs.length - 1) {
-                        csIdx = self.count
+                    if (this.count <= this.$refs.cs.length - 1) {
+                        csIdx = this.count
                     }
-                    self.removeClass(self.$refs.cs)
-                    self.$refs.cs[csIdx].classList.add('i-active')
+                    this.removeClass(this.$refs.cs)
+                    this.$refs.cs[csIdx].classList.add('i-active')
                     slide_div[0].$el.style.width = `${width}px`
-                    if (self.count > 1) {
-                        slide_div[0].$el.style.transform = `translateX(${self.count * width}px)`
+                    if (this.count > 1) {
+                        slide_div[0].$el.style.transform = `translateX(${this.count * width}px)`
                     } else {
                         slide_div[0].$el.style.transform = ''
                     }
-                    self.$refs.main.style.transitionDuration = `${self.transitionSpeed}ms`
-                    self.$refs.main.style.transform = `translateX(-${self.count * width}px)`
+                    this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
+                    this.$refs.main.style.transform = `translateX(-${this.count * width}px)`
+                    this.moveNum = -(this.count * width)
                 }
             }, speed)
         },
@@ -126,18 +127,16 @@ export default {
                 this.$refs.main.style.transitionDuration = '0ms'
                 this.sx = e.touches[0].clientX
                 this.isMove = false
-                console.log('sx', this.sx)
             })
             this.$refs.main.addEventListener('touchmove', (e) => {
-                console.log('clientx', e.touches[0].clientX)
                 this.isMove = true
                 if (e.touches[0].clientX > this.sx) {
-                    console.log('left')
+                    // 向左
                     this.direction = 'left'
                     this.moveNum = this.moveNum + 3
                     this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
                 } else if (e.touches[0].clientX < this.sx) {
-                    console.log('right')
+                    // 向右
                     this.direction = 'right'
                     this.moveNum = this.moveNum - 3
                     this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
@@ -147,7 +146,6 @@ export default {
                 if (!this.isMove) {
                     return
                 }
-                let idx = Number.parseInt(Math.abs(this.moveNum) / width)
                 if (this.direction === 'left') {
                     this.count--
                     if (this.count < 0) {
@@ -181,43 +179,39 @@ export default {
                         this.$refs.main.style.transform = `translateX(-${this.count * width}px)`
                         this.moveNum = -(this.count * width)
                     }
-                    console.log('left-count', this.count)
                 } else {
-                    this.count++
-                    if (idx == this.slideLength) {
+                    if (this.count == this.slideLength) {
+                        this.count = 0
                         this.$refs.main.style.transitionDuration = '0ms'
                         this.$refs.main.style.transform = 'translateX(0px)'
                         slide_div[0].$el.style.width = `${width}px`
                         slide_div[0].$el.style.transform = ''
                         setTimeout(() => {
-                            this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
-                            this.$refs.main.style.transform = `translateX(-${width}px)`
+                            this.count++
                             this.removeClass(this.$refs.cs)
-                            this.$refs.cs[1].classList.add('i-active')
-                            this.moveNum = -width
-                            console.log(this.moveNum)
+                            this.$refs.cs[this.count].classList.add('i-active')
+                            this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
+                            this.$refs.main.style.transform = `translateX(-${this.count * width}px)`
+                            this.moveNum = -(this.count * width)
                         }, 50)
                     } else {
-                        if (idx == 0 && this.count > 1) {
-                            idx = 1
+                        this.count++
+                        let csIdx = 0
+                        if (this.count <= this.$refs.cs.length - 1) {
+                            csIdx = this.count
                         }
-                        if (idx + 1 > 1) {
-                            slide_div[0].$el.style.transform = `translateX(${(idx + 1) * width}px)`
+                        this.removeClass(this.$refs.cs)
+                        this.$refs.cs[csIdx].classList.add('i-active')
+                        slide_div[0].$el.style.width = `${width}px`
+                        if (this.count > 1) {
+                            slide_div[0].$el.style.transform = `translateX(${this.count * width}px)`
                         } else {
                             slide_div[0].$el.style.transform = ''
                         }
-                        this.removeClass(this.$refs.cs)
-                        if (idx == this.slideLength - 1) {
-                            this.count = 0
-                            this.$refs.cs[0].classList.add('i-active')
-                        } else {
-                            this.$refs.cs[idx + 1].classList.add('i-active')
-                        }
                         this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
-                        this.$refs.main.style.transform = `translateX(-${(idx + 1) * width}px)`
-                        this.moveNum = -((idx + 1) * width)
+                        this.$refs.main.style.transform = `translateX(-${this.count * width}px)`
+                        this.moveNum = -(this.count * width)
                     }
-                    console.log('right-count', this.count)
                 }
             })
         },
