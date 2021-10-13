@@ -3559,12 +3559,12 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0bf3dbe3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CSwipe/index.vue?vue&type=template&id=48618527&
-var CSwipevue_type_template_id_48618527_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cs-swipe"},[_c('div',{ref:"main",staticClass:"cs-main-slide"},[_vm._t("default")],2),_c('div',{staticClass:"cs-slide-round"},_vm._l((_vm.slideLength),function(s,key){return _c('i',{key:key,ref:"cs",refInFor:true})}),0)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0bf3dbe3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CSwipe/index.vue?vue&type=template&id=360b22c9&
+var CSwipevue_type_template_id_360b22c9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cs-swipe"},[_c('div',{ref:"main",staticClass:"cs-main-slide"},[_vm._t("default")],2),_c('div',{staticClass:"cs-slide-round"},_vm._l((_vm.slideLength),function(s,key){return _c('i',{key:key,ref:"cs",refInFor:true})}),0)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CSwipe/index.vue?vue&type=template&id=48618527&
+// CONCATENATED MODULE: ./src/components/CSwipe/index.vue?vue&type=template&id=360b22c9&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -3586,21 +3586,27 @@ var es_number_constructor = __webpack_require__("a9e3");
 /* harmony default export */ var CSwipevue_type_script_lang_js_ = ({
   name: 'Swipe',
   created: function created() {
-    this.transitionSpeed = this.tSpeed;
+    this.transitionSpeed = this.duration;
   },
-  mounted: function mounted() {},
   destroyed: function destroyed() {
     // 销毁定时任务
     window.clearInterval(this.interval);
   },
   props: {
     speed: {
+      // 自动轮播间隔
       type: Number,
       default: 5000
     },
-    tSpeed: {
+    duration: {
+      // 动画时长
       type: Number,
       default: 500
+    },
+    loop: {
+      // 是否开启循环播放
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -3609,7 +3615,11 @@ var es_number_constructor = __webpack_require__("a9e3");
       transitionSpeed: 0,
       interval: '',
       childMounted: 0,
-      count: 0
+      count: 0,
+      sx: 0,
+      moveNum: 0,
+      isMove: false,
+      direction: ''
     };
   },
   methods: {
@@ -3620,13 +3630,13 @@ var es_number_constructor = __webpack_require__("a9e3");
         }
       });
     },
-    initSwipe: function initSwipe() {
+    autoplay: function autoplay() {
       var _this = this;
 
+      // 自动轮播
       var slide_div = this.$children;
       this.slideLength = slide_div.length;
       var width = window.innerWidth;
-      var self = this;
       this.$refs.main.style.transitionDuration = '0ms';
       this.$refs.main.style.transform = 'translateX(0px)';
       this.$refs.main.style.width = "".concat(width * 2, "px");
@@ -3638,45 +3648,196 @@ var es_number_constructor = __webpack_require__("a9e3");
       this.$nextTick(function () {
         _this.$refs.cs[0].classList.add('i-active');
       });
-      var speed = self.count === slide_div.length ? this.speed - this.tSpeed : this.speed;
+      var speed = this.count === slide_div.length ? this.speed - this.duration : this.speed;
       this.interval = setInterval(function () {
-        if (self.count == slide_div.length) {
-          // console.log('重置')
-          self.count = 0;
-          self.$refs.main.style.transitionDuration = '0ms';
-          self.$refs.main.style.transform = 'translateX(0px)';
+        if (_this.count == slide_div.length) {
+          // 重置
+          _this.count = 0;
+          _this.$refs.main.style.transitionDuration = '0ms';
+          _this.$refs.main.style.transform = 'translateX(0px)';
           slide_div[0].$el.style.width = "".concat(width, "px");
           slide_div[0].$el.style.transform = '';
           setTimeout(function () {
-            self.count++;
-            self.removeClass(self.$refs.cs);
-            self.$refs.cs[self.count].classList.add('i-active');
-            self.$refs.main.style.transitionDuration = "".concat(self.transitionSpeed, "ms");
-            self.$refs.main.style.transform = "translateX(-".concat(self.count * width, "px)");
+            _this.count++;
+
+            _this.removeClass(_this.$refs.cs);
+
+            _this.$refs.cs[_this.count].classList.add('i-active');
+
+            _this.$refs.main.style.transitionDuration = "".concat(_this.transitionSpeed, "ms");
+            _this.$refs.main.style.transform = "translateX(-".concat(_this.count * width, "px)");
+            _this.moveNum = -(_this.count * width);
           }, 50);
         } else {
-          // console.log('下一张')
-          ++self.count;
+          // 下一张
+          ++_this.count;
           var csIdx = 0;
 
-          if (self.count <= self.$refs.cs.length - 1) {
-            csIdx = self.count;
+          if (_this.count <= _this.$refs.cs.length - 1) {
+            csIdx = _this.count;
           }
 
-          self.removeClass(self.$refs.cs);
-          self.$refs.cs[csIdx].classList.add('i-active');
+          _this.removeClass(_this.$refs.cs);
+
+          _this.$refs.cs[csIdx].classList.add('i-active');
+
           slide_div[0].$el.style.width = "".concat(width, "px");
 
-          if (self.count > 1) {
-            slide_div[0].$el.style.transform = "translateX(".concat(self.count * width, "px)");
+          if (_this.count > 1) {
+            slide_div[0].$el.style.transform = "translateX(".concat(_this.count * width, "px)");
           } else {
             slide_div[0].$el.style.transform = '';
           }
 
-          self.$refs.main.style.transitionDuration = "".concat(self.transitionSpeed, "ms");
-          self.$refs.main.style.transform = "translateX(-".concat(self.count * width, "px)");
+          _this.$refs.main.style.transitionDuration = "".concat(_this.transitionSpeed, "ms");
+          _this.$refs.main.style.transform = "translateX(-".concat(_this.count * width, "px)");
+          _this.moveNum = -(_this.count * width);
         }
       }, speed);
+    },
+    move: function move() {
+      var _this2 = this;
+
+      // 手势轮播
+      var slide_div = this.$children;
+      this.slideLength = slide_div.length;
+      var width = window.innerWidth;
+      this.$refs.main.style.transform = 'translateX(0px)';
+      this.$refs.main.style.width = "".concat(width * 2, "px");
+
+      for (var i = 0; i < slide_div.length; i++) {
+        slide_div[i].$el.style.width = "".concat(width, "px");
+      }
+
+      this.$nextTick(function () {
+        _this2.$refs.cs[0].classList.add('i-active');
+      });
+      this.$refs.main.addEventListener('touchstart', function (e) {
+        // sx 用于判断拖拽方向
+        _this2.$refs.main.style.transitionDuration = '0ms';
+        _this2.sx = e.touches[0].clientX;
+        _this2.isMove = false;
+      });
+      this.$refs.main.addEventListener('touchmove', function (e) {
+        _this2.isMove = true;
+
+        if (e.touches[0].clientX > _this2.sx) {
+          // 向左
+          if (_this2.count == 0) {
+            slide_div[_this2.slideLength - 1].$el.style.transform = "translateX(-".concat(_this2.slideLength * width, "px)");
+          }
+
+          _this2.direction = 'left';
+          _this2.moveNum = _this2.moveNum + 3;
+          _this2.$refs.main.style.transform = "translateX(".concat(_this2.moveNum, "px)");
+        } else if (e.touches[0].clientX < _this2.sx) {
+          // 向右
+          if (_this2.count == _this2.slideLength - 1) {
+            slide_div[0].$el.style.transform = "translateX(".concat(_this2.slideLength * width, "px)");
+          }
+
+          if (_this2.count == _this2.slideLength) {
+            slide_div[1].$el.style.transform = "translateX(".concat(_this2.slideLength * width, "px)");
+          }
+
+          _this2.direction = 'right';
+          _this2.moveNum = _this2.moveNum - 3;
+          _this2.$refs.main.style.transform = "translateX(".concat(_this2.moveNum, "px)");
+        }
+      });
+      this.$refs.main.addEventListener('touchend', function () {
+        if (!_this2.isMove) {
+          return;
+        }
+
+        if (_this2.direction === 'left') {
+          _this2.count--;
+
+          if (_this2.count < 0 || _this2.count == _this2.slideLength - 1) {
+            slide_div[_this2.slideLength - 1].$el.style.removeProperty('transform');
+            _this2.$refs.main.style.transitionDuration = '0ms';
+            _this2.$refs.main.style.transform = "translateX(-".concat(_this2.slideLength * width, "px)");
+            slide_div[0].$el.style.width = "".concat(width, "px");
+            slide_div[0].$el.style.transform = "translateX(".concat(_this2.slideLength * width, "px)");
+            setTimeout(function () {
+              _this2.count = _this2.slideLength - 1;
+
+              _this2.removeClass(_this2.$refs.cs);
+
+              _this2.$refs.cs[_this2.slideLength - 1].classList.add('i-active');
+
+              _this2.$refs.main.style.transitionDuration = "".concat(_this2.transitionSpeed, "ms");
+              _this2.$refs.main.style.transform = "translateX(-".concat((_this2.slideLength - 1) * width, "px)");
+              _this2.moveNum = -((_this2.slideLength - 1) * width);
+            }, 50);
+          } else {
+            var csIdx = 0;
+
+            if (_this2.count <= _this2.$refs.cs.length - 1) {
+              csIdx = _this2.count;
+            }
+
+            _this2.removeClass(_this2.$refs.cs);
+
+            _this2.$refs.cs[csIdx].classList.add('i-active');
+
+            slide_div[0].$el.style.width = "".concat(width, "px");
+
+            if (_this2.count > 1) {
+              slide_div[0].$el.style.transform = "translateX(".concat(_this2.count * width, "px)");
+            } else {
+              slide_div[0].$el.style.transform = '';
+            }
+
+            _this2.$refs.main.style.transitionDuration = "".concat(_this2.transitionSpeed, "ms");
+            _this2.$refs.main.style.transform = "translateX(-".concat(_this2.count * width, "px)");
+            _this2.moveNum = -(_this2.count * width);
+          }
+        } else {
+          if (_this2.count == _this2.slideLength) {
+            slide_div[1].$el.style.removeProperty('transform');
+            _this2.count = 0;
+            _this2.$refs.main.style.transitionDuration = '0ms';
+            _this2.$refs.main.style.transform = 'translateX(0px)';
+            slide_div[0].$el.style.width = "".concat(width, "px");
+            slide_div[0].$el.style.transform = '';
+            setTimeout(function () {
+              _this2.count++;
+
+              _this2.removeClass(_this2.$refs.cs);
+
+              _this2.$refs.cs[_this2.count].classList.add('i-active');
+
+              _this2.$refs.main.style.transitionDuration = "".concat(_this2.transitionSpeed, "ms");
+              _this2.$refs.main.style.transform = "translateX(-".concat(_this2.count * width, "px)");
+              _this2.moveNum = -(_this2.count * width);
+            }, 50);
+          } else {
+            _this2.count++;
+            var _csIdx = 0;
+
+            if (_this2.count <= _this2.$refs.cs.length - 1) {
+              _csIdx = _this2.count;
+            }
+
+            _this2.removeClass(_this2.$refs.cs);
+
+            _this2.$refs.cs[_csIdx].classList.add('i-active');
+
+            slide_div[0].$el.style.width = "".concat(width, "px");
+
+            if (_this2.count > 1) {
+              slide_div[0].$el.style.transform = "translateX(".concat(_this2.count * width, "px)");
+            } else {
+              slide_div[0].$el.style.transform = '';
+            }
+
+            _this2.$refs.main.style.transitionDuration = "".concat(_this2.transitionSpeed, "ms");
+            _this2.$refs.main.style.transform = "translateX(-".concat(_this2.count * width, "px)");
+            _this2.moveNum = -(_this2.count * width);
+          }
+        }
+      });
     }
   }
 });
@@ -3796,7 +3957,7 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_CSwipevue_type_script_lang_js_,
-  CSwipevue_type_template_id_48618527_render,
+  CSwipevue_type_template_id_360b22c9_render,
   staticRenderFns,
   false,
   null,
@@ -3806,12 +3967,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var CSwipe = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0bf3dbe3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CSwipeItem/index.vue?vue&type=template&id=bdafef9a&
-var CSwipeItemvue_type_template_id_bdafef9a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cs-slide-div"},[_vm._t("default")],2)}
-var CSwipeItemvue_type_template_id_bdafef9a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0bf3dbe3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CSwipeItem/index.vue?vue&type=template&id=6096d911&
+var CSwipeItemvue_type_template_id_6096d911_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cs-slide-div"},[_vm._t("default")],2)}
+var CSwipeItemvue_type_template_id_6096d911_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CSwipeItem/index.vue?vue&type=template&id=bdafef9a&
+// CONCATENATED MODULE: ./src/components/CSwipeItem/index.vue?vue&type=template&id=6096d911&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CSwipeItem/index.vue?vue&type=script&lang=js&
 //
@@ -3822,19 +3983,16 @@ var CSwipeItemvue_type_template_id_bdafef9a_staticRenderFns = []
 //
 /* harmony default export */ var CSwipeItemvue_type_script_lang_js_ = ({
   name: 'SwipeItem',
-  created: function created() {},
   mounted: function mounted() {
     this.$parent.childMounted++;
 
     if (this.$parent.$slots.default.length === this.$parent.childMounted) {
-      this.$parent.initSwipe();
+      if (this.$parent.loop) {
+        this.$parent.autoplay();
+      }
+
+      this.$parent.move();
     }
-  },
-  props: {
-    speed: {}
-  },
-  data: function data() {
-    return {};
   }
 });
 // CONCATENATED MODULE: ./src/components/CSwipeItem/index.vue?vue&type=script&lang=js&
@@ -3853,8 +4011,8 @@ var CSwipeItemvue_type_style_index_0_lang_less_ = __webpack_require__("688a");
 
 var CSwipeItem_component = normalizeComponent(
   components_CSwipeItemvue_type_script_lang_js_,
-  CSwipeItemvue_type_template_id_bdafef9a_render,
-  CSwipeItemvue_type_template_id_bdafef9a_staticRenderFns,
+  CSwipeItemvue_type_template_id_6096d911_render,
+  CSwipeItemvue_type_template_id_6096d911_staticRenderFns,
   false,
   null,
   null,

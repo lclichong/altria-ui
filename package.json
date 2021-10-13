@@ -1,6 +1,6 @@
 {
     "name": "lc-best-ui",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "private": false,
     "main": "dist/lc-best-ui.common.js",
     "author": "lclichong",
