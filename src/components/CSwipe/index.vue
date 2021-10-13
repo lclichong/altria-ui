@@ -132,11 +132,22 @@ export default {
                 this.isMove = true
                 if (e.touches[0].clientX > this.sx) {
                     // 向左
+                    if (this.count == 0) {
+                        slide_div[this.slideLength - 1].$el.style.transform = `translateX(-${
+                            this.slideLength * width
+                        }px)`
+                    }
                     this.direction = 'left'
                     this.moveNum = this.moveNum + 3
                     this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
                 } else if (e.touches[0].clientX < this.sx) {
                     // 向右
+                    if (this.count == this.slideLength - 1) {
+                        slide_div[0].$el.style.transform = `translateX(${this.slideLength * width}px)`
+                    }
+                    if (this.count == this.slideLength) {
+                        slide_div[1].$el.style.transform = `translateX(${this.slideLength * width}px)`
+                    }
                     this.direction = 'right'
                     this.moveNum = this.moveNum - 3
                     this.$refs.main.style.transform = `translateX(${this.moveNum}px)`
@@ -148,7 +159,8 @@ export default {
                 }
                 if (this.direction === 'left') {
                     this.count--
-                    if (this.count < 0) {
+                    if (this.count < 0 || this.count == this.slideLength - 1) {
+                        slide_div[this.slideLength - 1].$el.style.removeProperty('transform')
                         this.$refs.main.style.transitionDuration = '0ms'
                         this.$refs.main.style.transform = `translateX(-${this.slideLength * width}px)`
                         slide_div[0].$el.style.width = `${width}px`
@@ -157,7 +169,6 @@ export default {
                             this.count = this.slideLength - 1
                             this.removeClass(this.$refs.cs)
                             this.$refs.cs[this.slideLength - 1].classList.add('i-active')
-                            slide_div[0].$el.style.transform = `translateX(${(this.slideLength - 1) * width}px)`
                             this.$refs.main.style.transitionDuration = `${this.transitionSpeed}ms`
                             this.$refs.main.style.transform = `translateX(-${(this.slideLength - 1) * width}px)`
                             this.moveNum = -((this.slideLength - 1) * width)
@@ -181,6 +192,7 @@ export default {
                     }
                 } else {
                     if (this.count == this.slideLength) {
+                        slide_div[1].$el.style.removeProperty('transform')
                         this.count = 0
                         this.$refs.main.style.transitionDuration = '0ms'
                         this.$refs.main.style.transform = 'translateX(0px)'
