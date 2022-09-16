@@ -1,28 +1,33 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-const Home = () =>
-    import ("../views/Home.vue");
-const CUIView = () =>
-    import ("../views/CUIView.vue");
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+const Home = () => import('../views/Home.vue')
+const CUIView = () => import('../views/CUIView.vue')
+const DropDownMenu = () => import('../views/DropDownMenuTest.vue')
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-const routes = [{
-        path: "/",
-        name: "Home",
+const routes = [
+    {
+        path: '/',
+        name: 'Home',
         component: Home,
     },
     {
-        path: "/CUIView",
-        name: "CUIView",
+        path: '/CUIView',
+        name: 'CUIView',
         component: CUIView,
     },
-];
+    {
+        path: '/DropDownMenu',
+        name: 'DropDownMenu',
+        component: DropDownMenu,
+    },
+]
 
 const router = new VueRouter({
-    mode: "hash",
+    mode: 'hash',
     base: process.env.BASE_URL,
     routes,
-});
+})
 
-export default router;
+export default router
