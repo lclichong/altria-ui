@@ -46,17 +46,30 @@ export default {
             if (e.currentTarget.nextElementSibling.style.display === 'block') {
                 e.currentTarget.nextElementSibling.style.display = 'none'
             } else {
-                let classList = document.querySelectorAll('.c-dropdown-item__content')
-                for (const c of classList) {
+                let contentList = document.querySelectorAll('.c-dropdown-item__content')
+                for (const c of contentList) {
                     if (c.style.display === '' || c.style.display === 'block') {
                         c.style.display = 'none'
                     }
                 }
                 e.currentTarget.nextElementSibling.style.display = 'block'
             }
+            let el = this.$el.children
+            let result = false
+            for (const e of el) {
+                if (e.classList[0] === 'c-dropdown-menu__item') {
+                    result = e.classList.toggle('c-dropdown-menu__item__show')
+                }
+            }
+            if (result) {
+                let itemList = document.querySelectorAll('.c-dropdown-menu__item')
+                for (const c of itemList) {
+                    c.classList.remove('c-dropdown-menu__item__show')
+                }
+                e.currentTarget.classList.add('c-dropdown-menu__item__show')
+            }
         },
         changeOption(value, e) {
-            console.log('value', value)
             if (this.value.length == 0) {
                 this.value.push({
                     value: value,
@@ -78,7 +91,6 @@ export default {
                     e.currentTarget.classList.add('c-dropdown-item__option__active')
                 }
             }
-            console.log(this.value)
         },
     },
 }

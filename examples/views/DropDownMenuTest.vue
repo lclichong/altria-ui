@@ -1,9 +1,13 @@
 <template>
     <div class="c-container">
         <DropDownMenu>
-            <DropDownMenuItem v-model="value1" :options="options1" title="投资类"></DropDownMenuItem>
-            <DropDownMenuItem v-model="value2" :options="options2" title="存款类"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value1" :options="options1" title="测试"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value2" :options="options2" title="灯"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value3" :options="options3" title="种族"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
         </DropDownMenu>
+
+        <Button class="c-btn" @click="getOptions">获取值</Button>
     </div>
 </template>
 
@@ -13,27 +17,65 @@ export default {
         return {
             value1: [],
             value2: [],
+            value3: [],
+            value4: [],
             options1: [
                 {
-                    value: '1',
-                    text: '贵金属',
+                    value: '测试数据一',
+                    text: '测试数据一',
                 },
                 {
-                    value: '2',
-                    text: '基金',
+                    value: '测试数据二',
+                    text: '测试数据二',
+                },
+                {
+                    value: '测试数据三',
+                    text: '测试数据三',
                 },
             ],
             options2: [
                 {
-                    value: 'a',
-                    text: 'a',
+                    value: '红灯',
+                    text: '红灯',
                 },
                 {
-                    value: 'b',
-                    text: 'b',
+                    value: '绿灯',
+                    text: '绿灯',
+                },
+            ],
+            options3: [
+                {
+                    value: '神',
+                    text: '神',
+                },
+                {
+                    value: '魔',
+                    text: '魔',
+                },
+                {
+                    value: '人',
+                    text: '人',
+                },
+            ],
+            options4: [
+                {
+                    value: '男',
+                    text: '男',
+                },
+                {
+                    value: '女',
+                    text: '女',
                 },
             ],
         }
+    },
+    methods: {
+        getOptions() {
+            console.log('value1', this.value1)
+            console.log('value2', this.value2)
+            console.log('value3', this.value3)
+            console.log('value4', this.value4)
+        },
     },
 }
 </script>
@@ -41,5 +83,9 @@ export default {
 <style lang="less" scoped>
 .c-container {
     height: 100vh;
+    .c-btn {
+        margin-top: 200px;
+        width: 100px;
+    }
 }
 </style>
