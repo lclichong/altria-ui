@@ -5,11 +5,14 @@
 </template>
 
 <script>
+import { createBem } from '../utils/create-bem.js'
 export default {
     name: 'Button',
     computed: {
         defalutClassName: function () {
-            return `cs-button ${this.size} ${this.type} ${this.disabled ? this.disabled : ''}`.trim()
+            const bem = createBem('cs-button')
+            const result = bem(null, [this.type, { disabled: this.disabled, size: this.size }])
+            return result.trim()
         },
     },
     props: {
@@ -18,7 +21,7 @@ export default {
         },
         type: {
             type: String,
-            default: 'primary',
+            default: 'default',
         },
         size: {
             type: String,
@@ -30,11 +33,7 @@ export default {
     },
     methods: {
         btnClick() {
-            if (this.disabled != 'disabled') {
-                this.$emit('click')
-            } else {
-                console.log('禁用了点击事件')
-            }
+            this.$emit('click')
         },
     },
 }

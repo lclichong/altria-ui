@@ -1,71 +1,59 @@
-@import "../styles/theme.less";
+@import '../styles/theme.less';
 
-.cs-button {
-  color: #fff;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 44px;
-  font-size: 14px;
-  outline: none;
-  border-color: transparent;
-  box-shadow: none;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  background-color: @button-background-color;
+:root {
+    --button-default-color: var(--primary-default);
+    --button-success-color: var(--success-default);
+    --button-warning-color: var(--warning-default);
+    --button-error-color: var(--error-default);
 }
 
-.cs-button:hover {
-  cursor: pointer;
+.cs-button {
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    font-size: 14px;
+    outline: none;
+    border-color: transparent;
+    box-shadow: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    cursor: pointer;
+    &--default {
+        background-color: var(--button-default-color);
+    }
+    &--success {
+        background-color: var(--button-success-color);
+    }
+    &--warning {
+        background-color: var(--button-warning-color);
+    }
+    &--error {
+        background-color: var(--button-error-color);
+    }
+
+    &--small {
+        font-size: 12px;
+        padding: 0px 8px;
+        height: 33px;
+    }
+
+    &--large {
+        width: 100%;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        background: rgba(0, 0, 0, 0.29);
+    }
+
+    &--disabled:hover {
+        cursor: not-allowed;
+    }
 }
 
 .cs-button:active {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
-}
-
-.disabled {
-  opacity: 0.5;
-  background: rgba(0, 0, 0, 0.29);
-}
-
-.disabled:hover {
-  cursor: not-allowed;
-}
-
-.disabled:active {
-  background-image: none;
-}
-
-.default {
-  background-color: #fff;
-  color: @button-color;
-  border: 1px solid #ebedf0;
-  background-color: @button-default-background-color;
-}
-
-.primary {
-  background-color: @button-primary-background-color;
-}
-
-.message {
-  background-color: @button-message-background-color;
-}
-
-.danger {
-  background-color: @button-danger-background-color;
-}
-
-.warning {
-  background-color: @button-warning-background-color;
-}
-
-.small {
-  font-size: 12px;
-  padding: 0px 8px;
-  height: 33px;
-}
-
-.large {
-  width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
 }

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 const Home = () => import('../views/Home.vue')
 const CUIView = () => import('../views/CUIView.vue')
 const DropDownMenu = () => import('../views/DropDownMenuTest.vue')
+const Button = () => import('../views/Button.vue')
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
         path: '/DropDownMenu',
         name: 'DropDownMenu',
         component: DropDownMenu,
+    },
+    {
+        path: '/Button',
+        name: 'Button',
+        component: Button,
     },
 ]
 
