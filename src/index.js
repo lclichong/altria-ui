@@ -8,6 +8,8 @@ import Input from './components/CInput'
 import Button from './components/CButton'
 import DropDownMenu from './components/CDropDownMenu'
 import DropDownMenuItem from './components/CDropDownMenuItem'
+import Loading from './components/CLoading'
+import LoadingCircle from './components/CLoading/loading-circle.vue'
 import './components/index.less'
 import './icon/iconfont'
 
@@ -15,7 +17,19 @@ const version = '1.0'
 
 function install(Vue) {
     Vue.use(Dialog)
-    let components = [Footer, Swipe, SwipeItem, Header, Cell, Input, Button, DropDownMenu, DropDownMenuItem]
+    let components = [
+        Footer,
+        Swipe,
+        SwipeItem,
+        Header,
+        Cell,
+        Input,
+        Button,
+        DropDownMenu,
+        DropDownMenuItem,
+        Loading,
+        LoadingCircle,
+    ]
     components.forEach(function(item) {
         if (item.name) {
             Vue.component(item.name, item)
@@ -29,7 +43,7 @@ if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
 
-export { install, version, Footer, Swipe, SwipeItem, Header, Dialog, Cell, Input, Button }
+export { install, version, Footer, Swipe, SwipeItem, Header, Dialog, Cell, Input, Button, Loading, LoadingCircle }
 export default {
     install: install,
     version: version,

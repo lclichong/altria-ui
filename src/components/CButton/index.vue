@@ -8,13 +8,6 @@
 import { createBem } from '../utils/create-bem.js'
 export default {
     name: 'Button',
-    computed: {
-        defalutClassName: function () {
-            const bem = createBem('cs-button')
-            const result = bem(null, [this.type, { disabled: this.disabled, size: this.size }])
-            return result.trim()
-        },
-    },
     props: {
         disabled: {
             default: null,
@@ -25,7 +18,18 @@ export default {
         },
         size: {
             type: String,
-            default: 'large',
+            default: 'medium',
+        },
+        loading: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    computed: {
+        defalutClassName: function () {
+            const bem = createBem('cs-button')
+            const result = bem(null, [this.type, { disabled: this.disabled, size: this.size, loading: this.loading }])
+            return result.trim()
         },
     },
     data: function () {
@@ -33,6 +37,9 @@ export default {
     },
     methods: {
         btnClick() {
+            if (this.disabled || this.loading) {
+                return
+            }
             this.$emit('click')
         },
     },

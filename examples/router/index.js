@@ -4,6 +4,7 @@ const Home = () => import('../views/Home.vue')
 const CUIView = () => import('../views/CUIView.vue')
 const DropDownMenu = () => import('../views/DropDownMenuTest.vue')
 const Button = () => import('../views/Button.vue')
+const Loading = () => import('../views/Loading.vue')
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
         path: '/DropDownMenu',
         name: 'DropDownMenu',
         component: DropDownMenu,
+    },
+    {
+        path: '/Loading',
+        name: 'Loading',
+        component: Loading,
     },
     {
         path: '/Button',
