@@ -6,6 +6,7 @@ import Dialog from './components/CDialog'
 import Cell from './components/CCell'
 import Input from './components/CInput'
 import Button from './components/CButton'
+import ButtonLoading from './components/CButton/button-loading.vue'
 import DropDownMenu from './components/CDropDownMenu'
 import DropDownMenuItem from './components/CDropDownMenuItem'
 import Loading from './components/CLoading'
@@ -29,6 +30,7 @@ function install(Vue) {
         DropDownMenuItem,
         Loading,
         LoadingCircle,
+        ButtonLoading,
     ]
     components.forEach(function(item) {
         if (item.name) {
@@ -43,7 +45,21 @@ if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
 
-export { install, version, Footer, Swipe, SwipeItem, Header, Dialog, Cell, Input, Button, Loading, LoadingCircle }
+export {
+    install,
+    version,
+    Footer,
+    Swipe,
+    SwipeItem,
+    Header,
+    Dialog,
+    Cell,
+    Input,
+    Button,
+    Loading,
+    LoadingCircle,
+    ButtonLoading,
+}
 export default {
     install: install,
     version: version,

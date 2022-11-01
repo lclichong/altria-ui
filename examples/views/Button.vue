@@ -27,16 +27,32 @@
 
         <div class="c-b">
             <p>加载中</p>
-            <Button type="success" loading>按钮</Button>
+            <div>
+                <Button loading>Button</Button>
+            </div>
+            <div>
+                <Button type="success" loading>Button</Button>
+            </div>
+            <p>三秒后结束</p>
+            <div>
+                <Button type="success" :loading="loading" load-type="circle">按钮</Button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    created() {
+        setTimeout(() => {
+            this.loading = false
+        }, 3000)
+    },
     components: {},
     data() {
-        return {}
+        return {
+            loading: true,
+        }
     },
     methods: {
         defalutClick() {

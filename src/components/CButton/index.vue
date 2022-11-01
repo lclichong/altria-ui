@@ -1,6 +1,9 @@
 <template>
     <button @click="btnClick" :class="defalutClassName" :size="size" :disabled="disabled">
         <slot></slot>
+        <template v-if="loading">
+            <ButtonLoading :loadType="loadType"></ButtonLoading>
+        </template>
     </button>
 </template>
 
@@ -24,10 +27,14 @@ export default {
             type: Boolean,
             default: false,
         },
+        loadType: {
+            type: String,
+            default: 'default',
+        },
     },
     computed: {
         defalutClassName: function () {
-            const bem = createBem('cs-button')
+            const bem = createBem('c-button')
             const result = bem(null, [this.type, { disabled: this.disabled, size: this.size, loading: this.loading }])
             return result.trim()
         },

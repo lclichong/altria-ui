@@ -19,7 +19,7 @@
     --button-disabled-bg-color: var(--accents-1);
 }
 
-.cs-button {
+.c-button {
     color: #fff;
     display: inline-flex;
     justify-content: center;
@@ -33,22 +33,31 @@
     box-sizing: border-box;
     padding: 5px 10px;
     cursor: pointer;
+    position: relative;
 
     &--default {
         background-color: var(--button-default-color);
         color: var(--accents-3);
+        --button-load-bg: var(--button-default-color);
+        --button-load-color: var(--accents-7);
     }
     &--success {
         background-color: var(--button-success-color);
         color: var(--accents-4);
+        --button-load-bg: var(--button-success-color);
+        --button-load-color: #fff;
     }
     &--warning {
         background-color: var(--button-warning-color);
         color: var(--accents-4);
+        --button-load-bg: var(--button-warning-color);
+        --button-load-color: #fff;
     }
     &--error {
         background-color: var(--button-error-color);
         color: var(--accents-4);
+        --button-load-bg: var(--button-error-color);
+        --button-load-color: #fff;
     }
 
     &--mini {
@@ -57,21 +66,18 @@
         height: var(--button-mini-height);
         font-size: 12px;
     }
-
     &--small {
         width: initial;
         min-width: var(--button-small-width);
         height: var(--button-small-height);
         font-size: 13px;
     }
-
     &--medium {
         width: initial;
         min-width: var(--button-medium-width);
         font-size: 15px;
         height: var(--button-medium-height);
     }
-
     &--large {
         width: initial;
         min-width: var(--button-large-width);
@@ -84,8 +90,18 @@
         color: var(--button-disabled-text-color);
         background-color: var(--button-disabled-bg-color);
     }
+
+    &__loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background-color: var(--button-load-bg);
+    }
 }
 
-.cs-button:active {
+.c-button:active {
     background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
 }
