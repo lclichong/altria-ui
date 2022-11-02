@@ -17,7 +17,12 @@
 <script>
 export default {
     name: 'Home',
-    components: {},
+    created() {
+        this.$Dialog.alert({
+            title: '标题',
+            message: '内容',
+        })
+    },
     data() {
         return {
             FooterList: [
@@ -86,7 +91,6 @@ export default {
     },
     methods: {
         menuClick(m) {
-            console.log(m)
             if (!m.url) {
                 this.$Dialog.alert({
                     title: '提示',

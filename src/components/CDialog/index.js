@@ -34,13 +34,13 @@ Dialog.prototype.alert = function(options) {
                 return h(
                     'div',
                     {
-                        class: ['c-dialog', `${this.opacity ? 'c-dialog-show' : 'c-dialog-hide'}`],
+                        class: ['c-dialog', `${this.opacity ? 'c-dialog__show' : 'c-dialog__hide'}`],
                     },
                     [
                         h(
                             'div',
                             {
-                                class: 'c-dialog-title',
+                                class: 'c-dialog__title',
                             },
                             [this.title]
                         ),
@@ -50,20 +50,20 @@ Dialog.prototype.alert = function(options) {
                                 domProps: {
                                     innerHTML: this.message,
                                 },
-                                class: 'c-dialog-content',
+                                class: 'c-dialog__content',
                             },
                             []
                         ),
                         h(
                             'div',
                             {
-                                class: 'c-dialog-confirm',
+                                class: 'c-dialog__confirm',
                             },
                             [
                                 h(
                                     'button',
                                     {
-                                        class: 'c-dialog-confirm-button',
+                                        class: 'c-dialog__button',
                                         on: {
                                             click: this.btnClick,
                                         },
@@ -101,8 +101,8 @@ Dialog.prototype.alert = function(options) {
                     'div',
                     {
                         class: [
-                            'c-dialog-overlay',
-                            `${cache[dialog].opacity ? 'c-dialog-overlay-show' : 'c-dialog-overlay-hide'}`,
+                            'c-dialog__overlay',
+                            `${cache[dialog].opacity ? 'c-dialog__overlay__show' : 'c-dialog__overlay__hide'}`,
                         ],
                     },
                     []
