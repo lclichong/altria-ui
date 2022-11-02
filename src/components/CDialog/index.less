@@ -1,4 +1,4 @@
-.cs-dialog {
+.c-dialog {
     z-index: 2001;
     position: fixed;
     top: 0;
@@ -18,14 +18,14 @@
     -ms-transition: all 0.4s;
     -o-transition: all 0.4s;
     transition: all 0.4s;
-    .cs-dialog-title {
+    .c-dialog-title {
         height: 20%;
         display: flex;
         justify-content: center;
         align-items: flex-end;
         font-weight: 500;
     }
-    .cs-dialog-content {
+    .c-dialog-content {
         height: 50%;
         flex-wrap: wrap;
         display: flex;
@@ -36,14 +36,14 @@
         padding: 0px 20px;
         line-height: 25px;
     }
-    .cs-dialog-confirm {
+    .c-dialog-confirm {
         height: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
         position: relative;
-        .cs-dialog-confirm-button {
+        .c-dialog-confirm-button {
             width: 80%;
             height: 80%;
             background-color: #fff;
@@ -52,7 +52,7 @@
             color: #ee0a24;
         }
     }
-    .cs-dialog-confirm::after {
+    .c-dialog-confirm::after {
         position: absolute;
         box-sizing: border-box;
         content: ' ';
@@ -67,19 +67,19 @@
     }
 }
 
-.cs-dialog-show {
+.c-dialog-show {
     visibility: visible;
     opacity: 1;
     transform: scale(1);
 }
 
-.cs-dialog-hide {
+.c-dialog-hide {
     visibility: hidden;
     opacity: 0;
     transform: scale(0);
 }
 
-.cs-dialog-overlay {
+.c-dialog-overlay {
     z-index: 2000;
     position: fixed;
     top: 0;
@@ -96,12 +96,12 @@
     transition: all 0.4s;
 }
 
-.cs-dialog-overlay-show {
+.c-dialog-overlay-show {
     visibility: visible;
     opacity: 1;
 }
 
-.cs-dialog-overlay-hide {
+.c-dialog-overlay-hide {
     visibility: hidden;
     opacity: 0;
 }
