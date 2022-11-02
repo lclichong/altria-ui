@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 const Home = () => import('../views/Home.vue')
-const CUIView = () => import('../views/CUIView.vue')
-const DropDownMenu = () => import('../views/DropDownMenuTest.vue')
+const Cell = () => import('../views/Cell.vue')
+const DropDownMenu = () => import('../views/DropDownMenu.vue')
 const Button = () => import('../views/Button.vue')
 const Loading = () => import('../views/Loading.vue')
 
@@ -15,9 +15,9 @@ const routes = [
         component: Home,
     },
     {
-        path: '/CUIView',
-        name: 'CUIView',
-        component: CUIView,
+        path: '/Cell',
+        name: 'Cell',
+        component: Cell,
     },
     {
         path: '/DropDownMenu',

@@ -9,7 +9,7 @@
         <div class="center">
             <Input @enter="enter" :value.sync="val" placeholder="搜索"></Input>
         </div>
-        <Button @click="val = 456" size="small">修改input的值</Button>
+        <Button style="margin-top: 5vw" @click="val = 456" type="success" size="small">修改input的值</Button>
         <Footer :FooterList="FooterList" @menuClick="menuClick"></Footer>
     </div>
 </template>
@@ -26,8 +26,8 @@ export default {
                     name: '底部导航一',
                     menuList: [
                         {
-                            name: 'CUI',
-                            url: '/CUIView',
+                            name: 'Cell',
+                            url: '/Cell',
                             idx: 'menu1',
                         },
                     ],
@@ -37,12 +37,12 @@ export default {
                     name: '底部导航二',
                     menuList: [
                         {
-                            name: '菜单3',
+                            name: '跳转链接',
                             url: 'http://www.baidu.com',
                             idx: 'menu3',
                         },
                         {
-                            name: '菜单4',
+                            name: 'Dialog',
                             url: '',
                             idx: 'menu4',
                         },
@@ -86,6 +86,7 @@ export default {
     },
     methods: {
         menuClick(m) {
+            console.log(m)
             if (!m.url) {
                 this.$Dialog.alert({
                     title: '提示',

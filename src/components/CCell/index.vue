@@ -1,10 +1,5 @@
 <template>
-    <div
-        :class="[
-            noBorder ? 'cs-cell-no-border' : '',
-            imgList ? 'cs-cell-img-list' : 'cs-cell',
-        ]"
-    >
+    <div :class="[noBorder ? 'cs-cell-no-border' : '', imgList ? 'cs-cell-img-list' : 'cs-cell']">
         <div v-if="title" class="cs-cell-title">{{ title }}</div>
         <div v-if="value" class="cs-cell-value">{{ value }}</div>
         <div v-if="$slots.title" class="cs-cell-title">
@@ -40,3 +35,7 @@ export default {
     },
 }
 </script>
+
+<style lang="less">
+@import 'index.less';
+</style>

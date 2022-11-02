@@ -5,19 +5,21 @@
  * @Last Modified time: 2021-08-14 22:33:44
  */
 
+import './index.less'
+
 export default {
     name: 'Footer',
     created() {
         if (this.FooterList.length > 4) {
-            console.error('Supports up to four bottom navigations');
-            this.show = false;
+            console.error('Supports up to four bottom navigations')
+            this.show = false
         } else {
-            this.width = 100 / this.FooterList.length;
+            this.width = 100 / this.FooterList.length
         }
-        this.defaultHeight = document.documentElement.clientHeight;
+        this.defaultHeight = document.documentElement.clientHeight
         window.onresize = () => {
-            this.defaultHeight > document.documentElement.clientHeight ? (this.show = false) : (this.show = true);
-        };
+            this.defaultHeight > document.documentElement.clientHeight ? (this.show = false) : (this.show = true)
+        }
     },
     mounted() {},
     props: {
@@ -32,24 +34,24 @@ export default {
             width: 0,
             show: true,
             defaultHeight: 0,
-        };
+        }
     },
     methods: {
         showMenu: function showMenu(idx) {
-            this.idx = idx === this.idx ? 0 : idx;
+            this.idx = idx === this.idx ? 0 : idx
         },
         menuClick: function menuClick(m, e) {
-            e = window.event || e;
+            e = window.event || e
             if (e.stopPropagation) {
-                e.stopPropagation(); // IE下阻止事件冒泡
+                e.stopPropagation() // IE下阻止事件冒泡
             } else if (e.cancelBubble) {
-                e.cancelBubble = true; // 其他浏览器阻止事件冒泡
+                e.cancelBubble = true // 其他浏览器阻止事件冒泡
             }
-            this.$emit('menuClick', m);
+            this.$emit('menuClick', m)
         },
         getFooter: function getFooter() {
-            let h = this.$createElement;
-            let VNodeArray = [];
+            let h = this.$createElement
+            let VNodeArray = []
 
             let vnode = h('div', {
                 class: 'cs-footer-overlay',
@@ -58,14 +60,14 @@ export default {
                 },
                 on: {
                     click: () => {
-                        this.idx = 0;
+                        this.idx = 0
                     },
                 },
-            });
-            VNodeArray.push(vnode);
+            })
+            VNodeArray.push(vnode)
 
             let getMenu = (menuList) => {
-                let menuArray = [];
+                let menuArray = []
                 for (let m of menuList) {
                     let vnode = h(
                         'div',
@@ -77,11 +79,11 @@ export default {
                             },
                         },
                         [m.name]
-                    );
-                    menuArray.push(vnode);
+                    )
+                    menuArray.push(vnode)
                 }
-                return menuArray;
-            };
+                return menuArray
+            }
             for (let f of this.FooterList) {
                 let vnode = h(
                     'div',
@@ -105,15 +107,15 @@ export default {
                             [...getMenu(f.menuList)]
                         ),
                     ]
-                );
-                VNodeArray.push(vnode);
+                )
+                VNodeArray.push(vnode)
             }
-            return VNodeArray;
+            return VNodeArray
         },
     },
     render() {
         if (this.show) {
-            let f = this.getFooter();
+            let f = this.getFooter()
             return this.$createElement(
                 'div',
                 {
@@ -121,7 +123,7 @@ export default {
                     ref: 'csFooter',
                 },
                 [[...f]]
-            );
+            )
         }
     },
-};
+}

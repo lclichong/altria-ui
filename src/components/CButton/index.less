@@ -20,12 +20,9 @@
 }
 
 .c-button {
-    color: #fff;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 44px;
-    font-size: 14px;
     outline: none;
     border-color: transparent;
     box-shadow: none;
@@ -85,6 +82,10 @@
         height: var(--button-large-height);
     }
 
+    &--shadow {
+        box-shadow: var(--shadow-small);
+    }
+
     &--disabled {
         cursor: not-allowed;
         color: var(--button-disabled-text-color);
@@ -102,6 +103,6 @@
     }
 }
 
-.c-button:active {
+.c-button:not(.c-button--disabled, .c-button--loading):active {
     background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
 }

@@ -31,11 +31,18 @@ export default {
             type: String,
             default: 'default',
         },
+        shadow: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         defalutClassName: function () {
             const bem = createBem('c-button')
-            const result = bem(null, [this.type, { disabled: this.disabled, size: this.size, loading: this.loading }])
+            const result = bem(null, [
+                this.type,
+                { disabled: this.disabled, size: this.size, loading: this.loading, shadow: this.shadow },
+            ])
             return result.trim()
         },
     },

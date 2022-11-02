@@ -2,7 +2,7 @@
     <div class="c-container">
         <div class="c-b">
             <p>默认</p>
-            <Button>按钮</Button>
+            <Button>Button</Button>
         </div>
 
         <div class="c-b">
@@ -22,7 +22,7 @@
 
         <div class="c-b">
             <p>禁用</p>
-            <Button @click="successClick" size="small" disabled="disabled">按钮</Button>
+            <Button size="small" disabled="disabled">Button</Button>
         </div>
 
         <div class="c-b">
@@ -35,7 +35,14 @@
             </div>
             <p>三秒后结束</p>
             <div>
-                <Button type="success" :loading="loading" load-type="circle">按钮</Button>
+                <Button @click="btnTap" type="success" :loading="loading" load-type="circle">Button</Button>
+            </div>
+        </div>
+
+        <div class="c-b">
+            <p>阴影</p>
+            <div>
+                <Button type="default" shadow>Button</Button>
             </div>
         </div>
     </div>
@@ -55,11 +62,8 @@ export default {
         }
     },
     methods: {
-        defalutClick() {
-            alert('default-button')
-        },
-        successClick() {
-            alert('success-button')
+        btnTap() {
+            alert('btnTap')
         },
     },
 }

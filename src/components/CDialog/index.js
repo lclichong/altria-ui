@@ -5,21 +5,22 @@
  * @Last Modified time: 2021-08-14 22:49:57
  */
 
-import Vue from 'vue';
+import Vue from 'vue'
+import './index.less'
 
 function Dialog() {}
 
-let cache = Object.create(null);
+let cache = Object.create(null)
 
 Dialog.prototype.alert = function(options) {
-    let dialog = 'dialog';
-    let overlay = 'overlay';
+    let dialog = 'dialog'
+    let overlay = 'overlay'
     if (!cache[dialog]) {
         cache[dialog] = new Vue({
             created() {
-                this.title = options.title;
-                this.message = options.message;
-                this.time = options.time;
+                this.title = options.title
+                this.message = options.message
+                this.time = options.time
             },
             data() {
                 return {
@@ -27,7 +28,7 @@ Dialog.prototype.alert = function(options) {
                     message: options.message,
                     time: options.time,
                     opacity: false,
-                };
+                }
             },
             render(h) {
                 return h(
@@ -72,27 +73,27 @@ Dialog.prototype.alert = function(options) {
                             ]
                         ),
                     ]
-                );
+                )
             },
             methods: {
                 btnClick() {
-                    this.hideDialog();
+                    this.hideDialog()
                 },
                 showDialog() {
                     if (this.time) {
-                        this.opacity = true;
+                        this.opacity = true
                         setTimeout(() => {
-                            this.opacity = false;
-                        }, this.time);
+                            this.opacity = false
+                        }, this.time)
                     } else {
-                        this.opacity = true;
+                        this.opacity = true
                     }
                 },
                 hideDialog() {
-                    this.opacity = false;
+                    this.opacity = false
                 },
             },
-        });
+        })
 
         cache[overlay] = new Vue({
             render(h) {
@@ -105,31 +106,31 @@ Dialog.prototype.alert = function(options) {
                         ],
                     },
                     []
-                );
+                )
             },
-        });
+        })
         if (document.body) {
-            let overlayDom = cache[overlay].$mount().$el;
-            document.body.appendChild(overlayDom);
-            let dialogDom = cache[dialog].$mount().$el;
-            document.body.appendChild(dialogDom);
+            let overlayDom = cache[overlay].$mount().$el
+            document.body.appendChild(overlayDom)
+            let dialogDom = cache[dialog].$mount().$el
+            document.body.appendChild(dialogDom)
 
             setTimeout(() => {
-                cache[dialog].showDialog();
-            });
+                cache[dialog].showDialog()
+            })
         }
     } else {
-        cache[dialog].title = options.title;
-        cache[dialog].message = options.message;
-        cache[dialog].time = options.time;
-        cache[dialog].showDialog();
+        cache[dialog].title = options.title
+        cache[dialog].message = options.message
+        cache[dialog].time = options.time
+        cache[dialog].showDialog()
     }
-};
+}
 
 Dialog.prototype.install = function(Vue) {
-    Vue.prototype['$Dialog'] = dialog;
-};
+    Vue.prototype['$Dialog'] = dialog
+}
 
-let dialog = new Dialog();
+let dialog = new Dialog()
 
-export default dialog;
+export default dialog
