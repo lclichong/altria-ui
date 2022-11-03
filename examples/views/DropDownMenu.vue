@@ -6,8 +6,7 @@
             <DropDownMenuItem v-model="value3" :options="options3" title="种族"></DropDownMenuItem>
             <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
         </DropDownMenu>
-
-        <Button class="c-btn" @click="getOptions">获取值</Button>
+        <Button type="success" class="c-btn" @click="getOptions">获取值</Button>
     </div>
 </template>
 
@@ -18,7 +17,7 @@ export default {
             value1: [],
             value2: [],
             value3: [],
-            value4: [],
+            value4: '',
             options1: [
                 {
                     value: '测试数据一',

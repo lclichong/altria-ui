@@ -9,12 +9,12 @@
         </div>
         <div class="c-dropdown-item__content">
             <div
-                @click="changeOption(o.value, $event)"
-                v-for="(o, key) in options"
+                @click="changeOption(option, $event)"
+                v-for="(option, key) in options"
                 class="c-dropdown-item__option"
                 :key="key"
             >
-                {{ o.text }}
+                {{ option.text }}
             </div>
         </div>
     </div>
@@ -25,8 +25,8 @@ export default {
     name: 'DropDownMenuItem',
     props: {
         value: {
-            type: Array,
-            default: () => [],
+            type: [String, Array],
+            default: '',
         },
         options: {
             type: Array,
@@ -37,9 +37,7 @@ export default {
         },
     },
     data() {
-        return {
-            showOptions: false,
-        }
+        return {}
     },
     methods: {
         show(e) {
@@ -69,26 +67,37 @@ export default {
                 e.currentTarget.classList.add('c-dropdown-menu__item__show')
             }
         },
-        changeOption(value, e) {
-            if (this.value.length == 0) {
-                this.value.push({
-                    value: value,
-                })
+        changeOption(option, e) {
+            let value = option.value
+            // props.value类型是string代表单选，props.value类型是Array代表多选
+            if (typeof this.value === 'string') {
+                this.$emit('input', value)
+                let childNodes = e.currentTarget.parentNode.childNodes
+                for (let node of childNodes) {
+                    node.classList.remove('c-dropdown-item__option__active')
+                }
                 e.currentTarget.classList.add('c-dropdown-item__option__active')
             } else {
-                let b = true
-                for (let i = 0; i < this.value.length; i++) {
-                    if (this.value[i].value === value) {
-                        b = false
-                        this.value.splice(i, 1)
-                        e.currentTarget.classList.remove('c-dropdown-item__option__active')
-                    }
-                }
-                if (b) {
+                if (this.value.length == 0) {
                     this.value.push({
                         value: value,
                     })
                     e.currentTarget.classList.add('c-dropdown-item__option__active')
+                } else {
+                    let b = true
+                    for (let i = 0; i < this.value.length; i++) {
+                        if (this.value[i].value === value) {
+                            b = false
+                            this.value.splice(i, 1)
+                            e.currentTarget.classList.remove('c-dropdown-item__option__active')
+                        }
+                    }
+                    if (b) {
+                        this.value.push({
+                            value: value,
+                        })
+                        e.currentTarget.classList.add('c-dropdown-item__option__active')
+                    }
                 }
             }
         },

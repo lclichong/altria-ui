@@ -11,6 +11,7 @@ module.exports = {
             },
         },
     },
+    publicPath: './',
     pages: {
         /**修改入口文件 */
         index: {
@@ -19,5 +20,4 @@ module.exports = {
             filename: 'index.html',
         },
     },
-    publicPath: './',
 }
