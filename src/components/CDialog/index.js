@@ -34,7 +34,7 @@ Dialog.prototype.alert = function(options) {
                 return h(
                     'div',
                     {
-                        class: ['c-dialog', `${this.opacity ? 'c-dialog__show' : 'c-dialog__hide'}`],
+                        class: ['c-dialog', `${this.opacity ? 'c-dialog--show' : 'c-dialog--hide'}`],
                     },
                     [
                         h(
@@ -102,7 +102,7 @@ Dialog.prototype.alert = function(options) {
                     {
                         class: [
                             'c-dialog__overlay',
-                            `${cache[dialog].opacity ? 'c-dialog__overlay__show' : 'c-dialog__overlay__hide'}`,
+                            `${cache[dialog].opacity ? 'c-dialog__overlay--show' : 'c-dialog__overlay--hide'}`,
                         ],
                     },
                     []

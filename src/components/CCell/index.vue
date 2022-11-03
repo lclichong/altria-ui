@@ -1,20 +1,32 @@
 <template>
-    <div :class="[noBorder ? 'cs-cell-no-border' : '', imgList ? 'cs-cell-img-list' : 'cs-cell']">
-        <div v-if="title" class="cs-cell-title">{{ title }}</div>
-        <div v-if="value" class="cs-cell-value">{{ value }}</div>
-        <div v-if="$slots.title" class="cs-cell-title">
+    <div :class="defalutClassName">
+        <div v-if="title" class="c-cell__title">{{ title }}</div>
+        <div v-if="value" class="c-cell__value">{{ value }}</div>
+        <div v-if="$slots.title" class="c-cell__title c-cell--slot__title">
             <slot name="title"></slot>
         </div>
-        <div v-if="$slots.value" class="cs-cell-value">
+        <div v-if="$slots.value" class="c-cell__value c-cell--slot__value">
             <slot name="value"></slot>
         </div>
     </div>
 </template>
 
 <script>
+import { createBem } from '../utils/create-bem.js'
+
 export default {
     name: 'Cell',
-    created() {},
+    computed: {
+        defalutClassName() {
+            let bem = createBem('c-cell')
+            let className = bem()
+            let soltClassName = this.$slots['title'] || this.$slots['value'] ? bem('image') : ''
+            if (soltClassName) {
+                className = className + ' ' + soltClassName
+            }
+            return className
+        },
+    },
     props: {
         title: {
             defalut: '',
@@ -24,11 +36,7 @@ export default {
             defalut: '',
             type: String,
         },
-        noBorder: {
-            default: false,
-            type: Boolean,
-        },
-        imgList: {
+        image: {
             default: false,
             type: Boolean,
         },
