@@ -9,9 +9,9 @@
         </div>
         <div class="c-dropdown-item__content">
             <div
-                @click="changeOption(option, $event)"
+                @click="changeOption(option)"
                 v-for="(option, key) in options"
-                class="c-dropdown-item__option"
+                :class="['c-dropdown-item__option', option.active ? 'c-dropdown-item__option__active' : '']"
                 :key="key"
             >
                 {{ option.text }}
@@ -67,36 +67,41 @@ export default {
                 e.currentTarget.classList.add('c-dropdown-menu__item__show')
             }
         },
-        changeOption(option, e) {
+        changeOption(option) {
             let value = option.value
             // props.value类型是string代表单选，props.value类型是Array代表多选
             if (typeof this.value === 'string') {
-                this.$emit('input', value)
-                let childNodes = e.currentTarget.parentNode.childNodes
-                for (let node of childNodes) {
-                    node.classList.remove('c-dropdown-item__option__active')
+                if (option.active) {
+                    this.$emit('input', '')
+                    this.$set(option, 'active', false)
+                } else {
+                    this.options.forEach((value) => {
+                        this.$set(value, 'active', false)
+                    })
+                    this.$emit('input', value)
+                    this.$set(option, 'active', true)
                 }
-                e.currentTarget.classList.add('c-dropdown-item__option__active')
             } else {
                 if (this.value.length == 0) {
+                    this.$set(option, 'active', true)
                     this.value.push({
                         value: value,
                     })
-                    e.currentTarget.classList.add('c-dropdown-item__option__active')
                 } else {
-                    let b = true
+                    let result = true
                     for (let i = 0; i < this.value.length; i++) {
                         if (this.value[i].value === value) {
-                            b = false
+                            result = false
+                            this.$set(option, 'active', false)
                             this.value.splice(i, 1)
-                            e.currentTarget.classList.remove('c-dropdown-item__option__active')
+                            break
                         }
                     }
-                    if (b) {
+                    if (result) {
                         this.value.push({
                             value: value,
                         })
-                        e.currentTarget.classList.add('c-dropdown-item__option__active')
+                        this.$set(option, 'active', true)
                     }
                 }
             }

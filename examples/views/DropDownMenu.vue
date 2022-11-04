@@ -6,7 +6,12 @@
             <DropDownMenuItem v-model="value3" :options="options3" title="种族"></DropDownMenuItem>
             <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
         </DropDownMenu>
-        <Button type="success" class="c-btn" @click="getOptions">获取值</Button>
+        <div style="margin-top: 200px">
+            <Button type="success" class="c-btn" @click="getValues">获取值</Button>
+        </div>
+        <div>
+            <Button type="success" class="c-btn" @click="getOptions">获取options</Button>
+        </div>
     </div>
 </template>
 
@@ -69,11 +74,17 @@ export default {
         }
     },
     methods: {
-        getOptions() {
+        getValues() {
             console.log('value1', this.value1)
             console.log('value2', this.value2)
             console.log('value3', this.value3)
             console.log('value4', this.value4)
+        },
+        getOptions() {
+            console.log('options1', this.options1)
+            console.log('options2', this.options2)
+            console.log('options3', this.options3)
+            console.log('options4', this.options4)
         },
     },
 }
@@ -83,8 +94,8 @@ export default {
 .c-container {
     height: 100vh;
     .c-btn {
-        margin-top: 200px;
         width: 100px;
+        margin-top: 10px;
     }
 }
 </style>
