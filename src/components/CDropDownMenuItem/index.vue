@@ -1,17 +1,17 @@
 <template>
     <div class="c-dropdown-menu__item">
-        <div @click="show($event)" class="c-dropdown-menu__item">
+        <div @click="show" :class="['c-dropdown-menu__item', contentShow ? 'c-dropdown-menu__item__show' : '']">
             <span class="c-dropdown-menu__title">
                 <div class="c-ellipsis">
                     {{ title ? title : value.length > 0 ? value[0].text : '' }}
                 </div>
             </span>
         </div>
-        <div class="c-dropdown-item__content">
+        <div v-show="contentShow" class="c-dropdown-item__content">
             <div
                 @click="changeOption(option)"
                 v-for="(option, key) in options"
-                :class="['c-dropdown-item__option', option.active ? 'c-dropdown-item__option__active' : '']"
+                :class="['c-dropdown-item__option', setClassName(option)]"
                 :key="key"
             >
                 {{ option.text }}
@@ -37,74 +37,67 @@ export default {
         },
     },
     data() {
-        return {}
+        return {
+            contentShow: false,
+        }
     },
     methods: {
-        show(e) {
-            if (e.currentTarget.nextElementSibling.style.display === 'block') {
-                e.currentTarget.nextElementSibling.style.display = 'none'
+        setClassName(option) {
+            let active = false
+            if (typeof this.value === 'string') {
+                active = this.value === option.value
             } else {
-                let contentList = document.querySelectorAll('.c-dropdown-item__content')
-                for (const c of contentList) {
-                    if (c.style.display === '' || c.style.display === 'block') {
-                        c.style.display = 'none'
+                for (let i = 0; i < this.value.length; i++) {
+                    if (this.value[i].value === option.value) {
+                        active = true
+                        break
                     }
                 }
-                e.currentTarget.nextElementSibling.style.display = 'block'
             }
-            let el = this.$el.children
-            let result = false
-            for (const e of el) {
-                if (e.classList[0] === 'c-dropdown-menu__item') {
-                    result = e.classList.toggle('c-dropdown-menu__item__show')
-                }
-            }
-            if (result) {
-                let itemList = document.querySelectorAll('.c-dropdown-menu__item')
-                for (const c of itemList) {
-                    c.classList.remove('c-dropdown-menu__item__show')
-                }
-                e.currentTarget.classList.add('c-dropdown-menu__item__show')
+            return active ? 'c-dropdown-item__option__active' : ''
+        },
+        show() {
+            if (!this.contentShow) {
+                this.$parent.$children.forEach((value) => {
+                    if (value.contentShow) {
+                        value.contentShow = false
+                    }
+                })
+                this.contentShow = !this.contentShow
+            } else {
+                this.contentShow = !this.contentShow
             }
         },
         changeOption(option) {
-            let value = option.value
+            let optionVal = option.value
             // props.value类型是string代表单选，props.value类型是Array代表多选
             if (typeof this.value === 'string') {
-                if (option.active) {
+                if (this.value === optionVal) {
                     this.$emit('input', '')
-                    this.$set(option, 'active', false)
                 } else {
-                    this.options.forEach((value) => {
-                        this.$set(value, 'active', false)
-                    })
-                    this.$emit('input', value)
-                    this.$set(option, 'active', true)
+                    this.$emit('input', optionVal)
                 }
             } else {
                 if (this.value.length == 0) {
-                    this.$set(option, 'active', true)
                     this.value.push({
-                        value: value,
+                        value: optionVal,
                     })
                 } else {
                     let result = true
                     for (let i = 0; i < this.value.length; i++) {
-                        if (this.value[i].value === value) {
+                        if (this.value[i].value === optionVal) {
                             result = false
-                            this.$set(option, 'active', false)
                             this.value.splice(i, 1)
-                            break
                         }
                     }
                     if (result) {
                         this.value.push({
-                            value: value,
+                            value: optionVal,
                         })
-                        this.$set(option, 'active', true)
                     }
                 }
             }
+            this.setClassName(option)
         },
     },
 }
