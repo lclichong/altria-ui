@@ -13,7 +13,24 @@
                 v-for="(option, key) in options"
                 :class="['c-dropdown-item__option', setClassName(option)]"
                 :key="key"
-            >{{ option.text }}</div>
+            >
+                {{ option.text }}
+                <svg
+                    :class="['c-dropdown-item__option__svg', setClassName(option,'svg')]"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    data-testid="geist-icon"
+                    shape-rendering="geometricPrecision"
+                    viewBox="0 0 24 24"
+                    data-v-02fcfef8
+                    style="color: currentcolor;"
+                >
+                    <path d="M20 6L9 17l-5-5" />
+                </svg>
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +57,7 @@ export default {
         }
     },
     methods: {
-        setClassName(option) {
+        setClassName(option, type) {
             let active = false
             if (typeof this.value === 'string') {
                 active = this.value === option.value
@@ -51,6 +68,9 @@ export default {
                         break
                     }
                 }
+            }
+            if (type) {
+                return active ? 'c-dropdown-item__option__svg--show' : 'c-dropdown-item__option__svg--hide'
             }
             return active ? 'c-dropdown-item__option__active' : ''
         },

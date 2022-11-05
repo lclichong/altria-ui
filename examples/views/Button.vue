@@ -7,17 +7,33 @@
 
         <div class="c-b">
             <p>类型</p>
-            <div><Button type="default">default</Button></div>
-            <div><Button type="success">success</Button></div>
-            <div><Button type="warning">warning</Button></div>
-            <div><Button type="error">error</Button></div>
+            <div>
+                <Button type="default">default</Button>
+            </div>
+            <div>
+                <Button type="success">success</Button>
+            </div>
+            <div>
+                <Button type="warning">warning</Button>
+            </div>
+            <div>
+                <Button type="error">error</Button>
+            </div>
         </div>
         <div class="c-b">
             <p>大小</p>
-            <div><Button type="success" size="mini">mini</Button></div>
-            <div><Button type="success" size="small">small</Button></div>
-            <div><Button type="success" size="medium">medium</Button></div>
-            <div><Button type="success" size="large">large</Button></div>
+            <div>
+                <Button type="success" size="mini">mini</Button>
+            </div>
+            <div>
+                <Button type="success" size="small">small</Button>
+            </div>
+            <div>
+                <Button type="success" size="medium">medium</Button>
+            </div>
+            <div>
+                <Button type="success" size="large">large</Button>
+            </div>
         </div>
 
         <div class="c-b">
@@ -31,7 +47,7 @@
                 <Button loading>Button</Button>
             </div>
             <div>
-                <Button type="success" loading>Button</Button>
+                <Button type="success" loading load-type="circle">Button</Button>
             </div>
             <p>三秒后结束</p>
             <div>
@@ -58,14 +74,17 @@ export default {
     components: {},
     data() {
         return {
-            loading: true,
+            loading: true
         }
     },
     methods: {
         btnTap() {
-            alert('btnTap')
-        },
-    },
+            this.$Dialog.alert({
+                title: '提示',
+                message: 'btnTap'
+            })
+        }
+    }
 }
 </script>
 

@@ -54,6 +54,28 @@
             line-height: 12vw;
             display: flex;
             padding-left: 7vw;
+
+            &__svg {
+                position: absolute;
+                right: 20px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 0px;
+                height: 0px;
+                color: currentColor;
+                &--show {
+                    opacity: 1;
+                    width: 14px;
+                    height: 24px;
+                }
+
+                &--hide {
+                    opacity: 0;
+                    width: 0px;
+                    height: 0px;
+                }
+            }
         }
         .c-dropdown-item__option::after {
             position: absolute;
