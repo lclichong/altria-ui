@@ -1,12 +1,12 @@
 <template>
     <div class="c-dropdown-menu__item">
-        <div @click="show" :class="['c-dropdown-menu__item', contentShow ? 'c-dropdown-menu__item__show' : '']">
+        <div @click="show" :class="['c-dropdown-menu__item', contentShow ? 'c-dropdown-menu__item--show' : '']">
             <span class="c-dropdown-menu__title">
                 <div class="c-ellipsis">{{ title ? title : value.length > 0 ? value[0].text : '' }}</div>
             </span>
         </div>
         <div
-            :class="['c-dropdown-item__content',this.contentShow ? 'c-dropdown-item__content--show' : 'c-dropdown-item__content--hide']"
+            :class="['c-dropdown-item__content', contentShow ? 'c-dropdown-item__content--show' : 'c-dropdown-item__content--hide']"
         >
             <div
                 @click="changeOption(option)"
