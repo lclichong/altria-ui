@@ -36,9 +36,18 @@
         position: absolute;
         top: 48px;
         left: 0px;
-        transition-duration: 0.2s;
-        z-index: 9999;
+        transition-duration: 0.3s;
         background-color: var(--accents-4);
+        opacity: 0;
+        &--show {
+            opacity: 1;
+            z-index: 9999;
+        }
+        &--hide {
+            height: 0px;
+            opacity: 0;
+            z-index: -1;
+        }
         .c-dropdown-item__option {
             position: relative;
             height: 12vw;

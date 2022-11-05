@@ -2,20 +2,18 @@
     <div class="c-dropdown-menu__item">
         <div @click="show" :class="['c-dropdown-menu__item', contentShow ? 'c-dropdown-menu__item__show' : '']">
             <span class="c-dropdown-menu__title">
-                <div class="c-ellipsis">
-                    {{ title ? title : value.length > 0 ? value[0].text : '' }}
-                </div>
+                <div class="c-ellipsis">{{ title ? title : value.length > 0 ? value[0].text : '' }}</div>
             </span>
         </div>
-        <div v-show="contentShow" class="c-dropdown-item__content">
+        <div
+            :class="['c-dropdown-item__content',this.contentShow ? 'c-dropdown-item__content--show' : 'c-dropdown-item__content--hide']"
+        >
             <div
                 @click="changeOption(option)"
                 v-for="(option, key) in options"
                 :class="['c-dropdown-item__option', setClassName(option)]"
                 :key="key"
-            >
-                {{ option.text }}
-            </div>
+            >{{ option.text }}</div>
         </div>
     </div>
 </template>
@@ -26,19 +24,19 @@ export default {
     props: {
         value: {
             type: [String, Array],
-            default: '',
+            default: ''
         },
         options: {
             type: Array,
-            default: () => [],
+            default: () => []
         },
         title: {
-            type: String,
-        },
+            type: String
+        }
     },
     data() {
         return {
-            contentShow: false,
+            contentShow: false
         }
     },
     methods: {
@@ -67,6 +65,7 @@ export default {
             } else {
                 this.contentShow = !this.contentShow
             }
+            this.$parent.itemShow = this.contentShow
         },
         changeOption(option) {
             let optionVal = option.value
@@ -80,7 +79,7 @@ export default {
             } else {
                 if (this.value.length == 0) {
                     this.value.push({
-                        value: optionVal,
+                        value: optionVal
                     })
                 } else {
                     let result = true
@@ -92,14 +91,14 @@ export default {
                     }
                     if (result) {
                         this.value.push({
-                            value: optionVal,
+                            value: optionVal
                         })
                     }
                 }
             }
             this.setClassName(option)
-        },
-    },
+        }
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="c-dropdown-menu">
-        <div class="c-dropdown-menu__bar">
+        <div :class="['c-dropdown-menu__bar', itemShow ? 'c-dropdown-menu__bar--hide--shadow': '']">
             <slot></slot>
         </div>
     </div>
@@ -9,6 +9,11 @@
 <script>
 export default {
     name: 'DropDownMenu',
+    data: function () {
+        return {
+            itemShow: false
+        }
+    }
 }
 </script>
 

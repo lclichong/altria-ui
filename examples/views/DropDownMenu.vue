@@ -19,58 +19,62 @@
 export default {
     data() {
         return {
-            value1: [],
+            value1: [
+                {
+                    value: '测试数据二'
+                }
+            ],
             value2: [],
             value3: [],
-            value4: '',
+            value4: '男',
             options1: [
                 {
                     value: '测试数据一',
-                    text: '测试数据一',
+                    text: '测试数据一'
                 },
                 {
                     value: '测试数据二',
-                    text: '测试数据二',
+                    text: '测试数据二'
                 },
                 {
                     value: '测试数据三',
-                    text: '测试数据三',
-                },
+                    text: '测试数据三'
+                }
             ],
             options2: [
                 {
                     value: '红灯',
-                    text: '红灯',
+                    text: '红灯'
                 },
                 {
                     value: '绿灯',
-                    text: '绿灯',
-                },
+                    text: '绿灯'
+                }
             ],
             options3: [
                 {
                     value: '神',
-                    text: '神',
+                    text: '神'
                 },
                 {
                     value: '魔',
-                    text: '魔',
+                    text: '魔'
                 },
                 {
                     value: '人',
-                    text: '人',
-                },
+                    text: '人'
+                }
             ],
             options4: [
                 {
                     value: '男',
-                    text: '男',
+                    text: '男'
                 },
                 {
                     value: '女',
-                    text: '女',
-                },
-            ],
+                    text: '女'
+                }
+            ]
         }
     },
     methods: {
@@ -85,8 +89,8 @@ export default {
             console.log('value2', this.value2)
             console.log('value3', this.value3)
             console.log('value4', this.value4)
-        },
-    },
+        }
+    }
 }
 </script>
 
