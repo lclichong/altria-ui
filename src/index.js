@@ -2,7 +2,8 @@ import Footer from './components/CFooter/index.js'
 import Swipe from './components/CSwipe'
 import SwipeItem from './components/CSwipeItem'
 import Header from './components/CHeader'
-import Dialog from './components/CDialog'
+import $Dialog from './components/CDialog/index.js'
+import Dialog from './components/CDialog/Dialog.js'
 import Cell from './components/CCell'
 import Input from './components/CInput'
 import Button from './components/CButton'
@@ -11,13 +12,14 @@ import DropDownMenu from './components/CDropDownMenu'
 import DropDownMenuItem from './components/CDropDownMenuItem/index.js'
 import Loading from './components/CLoading'
 import LoadingCircle from './components/CLoading/loading-circle.vue'
+import Overlay from './components/COverlay'
 import './components/index.less'
 import './icon/iconfont'
 
 const version = '1.0'
 
 function install(Vue) {
-    Vue.use(Dialog)
+    Vue.use($Dialog)
     let components = [
         Footer,
         Swipe,
@@ -31,6 +33,8 @@ function install(Vue) {
         Loading,
         LoadingCircle,
         ButtonLoading,
+        Overlay,
+        Dialog,
     ]
     components.forEach(function(item) {
         if (item.name) {
@@ -59,6 +63,7 @@ export {
     Loading,
     LoadingCircle,
     ButtonLoading,
+    Overlay,
 }
 export default {
     install: install,
