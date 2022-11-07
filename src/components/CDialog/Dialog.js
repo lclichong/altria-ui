@@ -1,4 +1,5 @@
 import './index.less'
+import { createBem } from '../utils/create-bem'
 
 export default {
     name: 'Dialog',
@@ -16,6 +17,10 @@ export default {
         },
         value: {
             type: Boolean,
+        },
+        overlay: {
+            type: Boolean,
+            default: true,
         },
     },
     methods: {
@@ -37,11 +42,17 @@ export default {
         },
     },
     render() {
+        const bem = createBem('c-dialog')
         const content = this.$slots && this.$slots.default && this.$slots.default[0]
+        const overlay = () => {
+            if (this.overlay) {
+                return <Overlay visible={this.value}></Overlay>
+            }
+        }
         return (
             <div>
-                <Overlay visible={this.value}></Overlay>
-                <div class={['c-dialog', this.value ? 'c-dialog--show' : 'c-dialog--hide']}>
+                {overlay()}
+                <div class={bem(null, { show: this.value, hide: !this.value, 'del--border': this.overlay })}>
                     <div class="c-dialog__title">{this.title}</div>
                     <div class="c-dialog__content">{content ? content : this.message}</div>
                     <div class="c-dialog__confirm">

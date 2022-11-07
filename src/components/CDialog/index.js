@@ -7,7 +7,7 @@ function Dialog(options) {
     return new Promise((resolve, reject) => {
         if (!instance || !isInDocument(instance.$el)) {
             initInstance()
-            Object.assign(instance, Dialog.currentOptions, options, {
+            Object.assign(instance, Dialog.defaultOptions, options, {
                 resolve,
                 reject,
             })
@@ -51,13 +51,12 @@ function install() {
 
 install()
 
-Dialog.currentOptions = {
+Dialog.defaultOptions = {
     title: '',
     message: '',
     value: false,
+    overlay: true,
 }
-
-Dialog.Component = VanDialog
 
 Vue.prototype.$Dialog = Dialog
 

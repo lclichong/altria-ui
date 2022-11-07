@@ -21,6 +21,11 @@
     visibility: hidden;
     opacity: 0;
     transition: all 0.4s;
+    border: 1px solid var(--accents-5);
+
+    &--del--border {
+        border: none;
+    }
 
     &__title {
         height: 20%;
@@ -60,7 +65,7 @@
         right: -50%;
         bottom: -50%;
         left: -50%;
-        border-top: 1px solid #ebedf0;
+        border-top: 1px solid var(--accents-5);
         -webkit-transform: scale(0.5);
         transform: scale(0.5);
     }
