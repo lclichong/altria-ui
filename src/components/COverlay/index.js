@@ -11,12 +11,6 @@ export default {
     },
     render() {
         const bem = createBem('c-overlay')
-        if (this.visible) {
-            return (
-                <Transition name="overlay-fade">
-                    <div class={bem(null)}></div>
-                </Transition>
-            )
-        }
+        return <div class={bem(null, { show: this.visible, hide: !this.visible })}></div>
     },
 }

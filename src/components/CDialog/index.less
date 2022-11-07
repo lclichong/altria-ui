@@ -4,6 +4,7 @@
     --dialog-button-color: var(--error-default);
     --dialog-overlay-background: var(--overlay-default);
 }
+
 .c-dialog {
     z-index: 2001;
     position: fixed;
@@ -19,10 +20,6 @@
     border-radius: 16px;
     visibility: hidden;
     opacity: 0;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
     transition: all 0.4s;
 
     &__title {
@@ -85,12 +82,8 @@
 
     &--hide {
         visibility: hidden;
-        outline: none;
-        overflow: hidden;
         opacity: 0;
         transform: scale(0);
-        width: 0;
-        height: 0;
     }
 }
 
@@ -104,10 +97,6 @@
     background-color: var(--dialog-overlay-background);
     visibility: hidden;
     opacity: 0;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
     transition: all 0.4s;
 
     &--show {

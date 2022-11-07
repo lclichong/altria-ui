@@ -37,7 +37,7 @@ export default {
         },
     },
     render() {
-        const content = this.$slots.default[0]
+        const content = this.$slots && this.$slots.default && this.$slots.default[0]
         return (
             <div>
                 <Overlay visible={this.value}></Overlay>

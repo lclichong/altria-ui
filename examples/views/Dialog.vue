@@ -14,7 +14,7 @@
 export default {
     data() {
         return {
-            show: false
+            show: false,
         }
     },
     methods: {
@@ -24,11 +24,10 @@ export default {
         showDialogAlert() {
             this.$Dialog.alert({
                 title: '标题',
-                message:
-                    '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容'
+                message: '内容内容内容内容',
             })
-        }
-    }
+        },
+    },
 }
 </script>
 

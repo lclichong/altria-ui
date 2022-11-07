@@ -2,8 +2,7 @@ import Footer from './components/CFooter/index.js'
 import Swipe from './components/CSwipe'
 import SwipeItem from './components/CSwipeItem'
 import Header from './components/CHeader'
-import $Dialog from './components/CDialog/index.js'
-import Dialog from './components/CDialog/Dialog.js'
+import Dialog from './components/CDialog/index.js'
 import Cell from './components/CCell'
 import Input from './components/CInput'
 import Button from './components/CButton'
@@ -19,7 +18,6 @@ import './icon/iconfont'
 const version = '1.0'
 
 function install(Vue) {
-    Vue.use($Dialog)
     let components = [
         Footer,
         Swipe,
@@ -37,7 +35,9 @@ function install(Vue) {
         Dialog,
     ]
     components.forEach(function(item) {
-        if (item.name) {
+        if (item.install) {
+            Vue.use(item)
+        } else if (item.name) {
             Vue.component(item.name, item)
         }
     })
