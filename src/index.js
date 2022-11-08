@@ -12,6 +12,7 @@ import DropDownMenuItem from './components/CDropDownMenuItem/index.js'
 import Loading from './components/CLoading'
 import LoadingCircle from './components/CLoading/loading-circle.vue'
 import Overlay from './components/COverlay'
+import Popup from './components/CPopup'
 import './components/index.less'
 import './icon/iconfont'
 
@@ -33,6 +34,7 @@ function install(Vue) {
         ButtonLoading,
         Overlay,
         Dialog,
+        Popup,
     ]
     components.forEach(function(item) {
         if (item.install) {

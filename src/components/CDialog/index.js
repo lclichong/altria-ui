@@ -49,6 +49,8 @@ Dialog.install = () => {
     Vue.use(VanDialog)
 }
 
+Dialog.Component = VanDialog
+
 function install() {
     Vue.component(VanDialog.name, VanDialog)
 }

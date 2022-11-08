@@ -7,6 +7,7 @@ const Button = () => import('../views/Button.vue')
 const Loading = () => import('../views/Loading.vue')
 const Overlay = () => import('../views/Overlay.vue')
 const Dialog = () => import('../views/Dialog.vue')
+const Popup = () => import('../views/Popup.vue')
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
         path: '/Dialog',
         name: 'Dialog',
         component: Dialog,
+    },
+    {
+        path: '/Popup',
+        name: 'Popup',
+        component: Popup,
     },
 ]
 
