@@ -23,20 +23,16 @@ export default {
             default: true,
         },
     },
-    methods: {
-        btnClick() {
-            this.hideDialog()
-        },
-        showDialog() {
-            if (this.time) {
-                this.$emit('input', true)
+    watch: {
+        value(newVal) {
+            if (newVal && this.time) {
                 setTimeout(() => {
                     this.$emit('input', false)
                 }, this.time)
-            } else {
-                this.$emit('input', true)
             }
         },
+    },
+    methods: {
         hideDialog() {
             this.$emit('input', false)
         },

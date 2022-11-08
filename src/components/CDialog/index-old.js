@@ -65,7 +65,7 @@ Dialog.prototype.alert = function(options) {
                                     {
                                         class: 'c-dialog__button',
                                         on: {
-                                            click: this.btnClick,
+                                            click: this.hideDialog,
                                         },
                                     },
                                     ['确定']
@@ -76,9 +76,6 @@ Dialog.prototype.alert = function(options) {
                 )
             },
             methods: {
-                btnClick() {
-                    this.hideDialog()
-                },
                 showDialog() {
                     if (this.time) {
                         this.opacity = true

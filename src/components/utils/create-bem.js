@@ -1,3 +1,13 @@
+/**
+ * createBem helper
+ * const bem = createBem('button')
+ * bem() // 'button'
+ * bem('text') // 'button__text'
+ * bem(null, { disabled : true }) // 'button button--disabled'
+ * bem('text', { disabled : true }) // 'button__text button__text--disabled'
+ * bem(null, ['disabled', 'primary']) // 'button button--disabled button--primary'
+ */
+
 const parserBem = (el, mods) => {
     if (!mods) return ''
     if (typeof mods === 'string') return ' ' + `${el}--${mods}`

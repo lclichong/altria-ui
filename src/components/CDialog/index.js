@@ -16,6 +16,10 @@ function Dialog(options) {
                 instance.$emit('input', true)
             })
         } else {
+            Object.assign(instance, Dialog.defaultOptions, options, {
+                resolve,
+                reject,
+            })
             instance.$emit('input', true)
         }
     })
@@ -56,6 +60,7 @@ Dialog.defaultOptions = {
     message: '',
     value: false,
     overlay: true,
+    time: undefined,
 }
 
 Vue.prototype.$Dialog = Dialog
