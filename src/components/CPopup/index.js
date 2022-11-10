@@ -30,7 +30,7 @@ export default {
                 <div
                     onClick={this.hidePopup}
                     style={{ zIndex: this.zIndex }}
-                    class={this.bem('overlay', { show: this.overlay, hide: !this.overlay })}
+                    class={this.bem('overlay', { show: this.overlay && this.value, hide: this.overlay && !this.value })}
                 ></div>
             )
         },
@@ -49,10 +49,12 @@ export default {
     },
     render() {
         return (
-            <div style={{ zIndex: this.zIndex }} class={this.bem()} v-show={this.value}>
-                {this.overlay && this.renderOverlay()}
-                {this.value && this.renderContent()}
-            </div>
+            <transition name="c-fade">
+                <div style={{ zIndex: this.zIndex }} class={this.bem()} v-show={this.value}>
+                    {this.overlay && this.renderOverlay()}
+                    {this.value && this.renderContent()}
+                </div>
+            </transition>
         )
     },
 }
