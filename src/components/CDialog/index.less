@@ -6,26 +6,12 @@
 }
 
 .c-dialog {
-    z-index: 2001;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
     width: 80vw;
     height: 40vw;
     font-size: 16px;
     background-color: var(--dialog-background);
     border-radius: 16px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.4s;
     border: 1px solid var(--accents-5);
-
-    &--del--border {
-        border: none;
-    }
 
     &__title {
         height: 20%;
@@ -77,40 +63,5 @@
         border: none;
         outline: none;
         color: var(--dialog-button-color);
-    }
-
-    &--show {
-        visibility: visible;
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    &--hide {
-        visibility: hidden;
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-
-.c-dialog__overlay {
-    z-index: 2000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--dialog-overlay-background);
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.4s;
-
-    &--show {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    &--hide {
-        visibility: hidden;
-        opacity: 0;
     }
 }

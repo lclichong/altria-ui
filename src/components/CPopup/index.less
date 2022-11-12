@@ -1,3 +1,7 @@
+:root {
+    --popup-content-background: var(--accents-4);
+}
+
 .c {
     &-fade-enter,
     &-fade-leave-to {
@@ -14,6 +18,15 @@
     }
     &-pop-center-enter-active,
     &-pop-center-leave-active {
+        transition: all 0.25s;
+    }
+
+    &-pop-top-enter,
+    &-pop-top-leave-to {
+        transform: translateY(-100%);
+    }
+    &-pop-top-enter-active,
+    &-pop-top-leave-active {
         transition: all 0.25s;
     }
 
@@ -70,7 +83,7 @@
 
     &__content {
         overflow: auto;
-        background-color: var(--accents-4);
+        background-color: var(--popup-content-background);
         transition: all 0.25s;
     }
 
@@ -85,15 +98,28 @@
         bottom: 0;
     }
 
+    &--top {
+        min-width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
     &--left {
         min-height: 100%;
         position: absolute;
         left: 0;
+        top: 0;
     }
 
     &--right {
         min-height: 100%;
         position: absolute;
         right: 0;
+        top: 0;
+    }
+
+    &--transparent {
+        --popup-content-background: var(--transparent);
     }
 }

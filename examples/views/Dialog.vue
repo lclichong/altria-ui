@@ -30,7 +30,7 @@ export default {
         return {
             show: false,
             show2: false,
-            show3: false,
+            show3: false
         }
     },
     methods: {
@@ -43,24 +43,24 @@ export default {
         showDialogAlert() {
             this.$Dialog.alert({
                 title: '标题',
-                message: 'this.$Dialog.alert的方式显示',
+                message: 'this.$Dialog.alert的方式显示'
             })
         },
         showDialogAlert2() {
             this.$Dialog.alert({
                 title: '提示',
                 message: 'this.$Dialog.alert的方式显示，去掉Overlay',
-                overlay: false,
+                overlay: false
             })
         },
         showDialogAlert3() {
             this.$Dialog.alert({
                 title: '提示',
                 message: '一秒后隐藏Dialog',
-                time: 1000,
+                time: 1000
             })
-        },
-    },
+        }
+    }
 }
 </script>
 

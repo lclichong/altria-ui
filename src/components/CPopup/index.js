@@ -11,7 +11,7 @@ export default {
         value: {
             handler(newValue) {
                 if (newValue) {
-                    context.zIndex += 1
+                    context.zIndex += 3
                     this.zIndex = context.zIndex
                 }
             },
@@ -40,6 +40,9 @@ export default {
     methods: {
         hidePopup() {
             this.$emit('input', false)
+            if (this.$parent && this.$parent.hideDialog) {
+                this.$parent.hideDialog()
+            }
         },
         renderOverlay() {
             return <div onClick={this.hidePopup} style={{ zIndex: this.zIndex - 1 }} class={this.bem('overlay')}></div>

@@ -25,39 +25,47 @@ export default {
     },
     watch: {
         value(newVal) {
-            if (newVal && this.time) {
-                setTimeout(() => {
-                    this.$emit('input', false)
-                }, this.time)
+            if (newVal) {
+                if (this.time) {
+                    this.popupShow = newVal
+                    setTimeout(() => {
+                        this.$emit('input', false)
+                        this.popupShow = false
+                    }, this.time)
+                } else {
+                    this.popupShow = newVal
+                }
             }
         },
     },
+    data() {
+        return {
+            popupShow: false,
+        }
+    },
     methods: {
         hideDialog() {
+            if (!this.value) {
+                return
+            }
+            this.popupShow = false
             this.$emit('input', false)
         },
     },
     render() {
         const bem = createBem('c-dialog')
         const content = this.$slots && this.$slots.default && this.$slots.default[0]
-        const overlay = () => {
-            if (this.overlay) {
-                return <Overlay visible={this.value}></Overlay>
-            }
-        }
+
         return (
-            <div>
-                {overlay()}
-                <div class={bem(null, { show: this.value, hide: !this.value, 'del--border': this.overlay })}>
+            <Popup value={this.popupShow} overlay={this.overlay} class="c-popup--transparent">
+                <div class={bem(null)}>
                     <div class="c-dialog__title">{this.title}</div>
                     <div class="c-dialog__content">{content ? content : this.message}</div>
-                    <div class="c-dialog__confirm">
-                        <button onClick={this.hideDialog} class="c-dialog__button">
-                            确定
-                        </button>
+                    <div onClick={this.hideDialog} class="c-dialog__confirm">
+                        <button class="c-dialog__button">确定</button>
                     </div>
                 </div>
-            </div>
+            </Popup>
         )
     },
 }

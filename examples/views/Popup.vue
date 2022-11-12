@@ -7,22 +7,34 @@
             <Button @click="show = !show" type="success">center</Button>
         </div>
         <div class="c-demo">
-            <Popup v-model="show2" position="bottom">
+            <Popup v-model="show2" position="top">
+                <div class="content">top</div>
+            </Popup>
+            <Button @click="show2 = !show2" type="success">top</Button>
+        </div>
+        <div class="c-demo">
+            <Popup v-model="show3" position="bottom">
                 <div class="content">bottom</div>
             </Popup>
-            <Button @click="show2 = !show2" type="success">bottom</Button>
+            <Button @click="show3 = !show3" type="success">bottom</Button>
         </div>
         <div class="c-demo">
-            <Popup v-model="show3" position="left">
+            <Popup v-model="show4" position="left">
                 <div class="content">left</div>
             </Popup>
-            <Button @click="show3 = !show3" type="success">left</Button>
+            <Button @click="show4 = !show4" type="success">left</Button>
         </div>
         <div class="c-demo">
-            <Popup v-model="show4" position="right">
+            <Popup v-model="show5" position="right">
                 <div class="content">right</div>
             </Popup>
-            <Button @click="show4 = !show4" type="success">right</Button>
+            <Button @click="show5 = !show5" type="success">right</Button>
+        </div>
+        <div class="c-demo">
+            <Dialog v-model="show6">
+                <div class="content">dialog</div>
+            </Dialog>
+            <Button @click="show6 = !show6" type="success">dialog</Button>
         </div>
     </div>
 </template>
@@ -35,7 +47,9 @@ export default {
             show: false,
             show2: false,
             show3: false,
-            show4: false
+            show4: false,
+            show5: false,
+            show6: false
         }
     },
     methods: {}
@@ -49,9 +63,11 @@ export default {
         padding: 5vw;
     }
     .content {
-        padding: 4vw 21vw;
+        padding: 5vw;
+        width: 60vw;
         background-color: #fff;
         margin: auto;
+        box-sizing: border-box;
     }
 }
 </style>
