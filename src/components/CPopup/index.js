@@ -1,12 +1,27 @@
 import './index.less'
 import { createBem } from '../utils/create-bem'
-import { context } from '../utils/context'
+import context from '../utils/context'
 
 export default {
     name: 'Popup',
     created() {
         this.bem = createBem('c-popup')
-        this.zIndex = context.zIndex
+    },
+    watch: {
+        value: {
+            handler(newValue) {
+                if (newValue) {
+                    context.zIndex += 1
+                    this.zIndex = context.zIndex
+                }
+            },
+            immediate: true,
+        },
+    },
+    data() {
+        return {
+            zIndex: context.zIndex,
+        }
     },
     props: {
         overlay: {
@@ -23,36 +38,26 @@ export default {
         },
     },
     methods: {
+        hidePopup() {
+            this.$emit('input', false)
+        },
         renderOverlay() {
-            console.log(this.zIndex + 1)
-            this.zIndex = this.zIndex + 1
-            return (
-                <div
-                    onClick={this.hidePopup}
-                    style={{ zIndex: this.zIndex }}
-                    class={this.bem('overlay', { show: this.overlay && this.value, hide: this.overlay && !this.value })}
-                ></div>
-            )
+            return <div onClick={this.hidePopup} style={{ zIndex: this.zIndex - 1 }} class={this.bem('overlay')}></div>
         },
         renderContent() {
-            console.log(this.zIndex + 1)
-            this.zIndex = this.zIndex + 1
             return (
                 <div style={{ zIndex: this.zIndex }} class={[this.bem('content'), `c-popup--${this.position}`]}>
                     {this.$slots.default}
                 </div>
             )
         },
-        hidePopup() {
-            this.$emit('input', false)
-        },
     },
     render() {
         return (
             <transition name="c-fade">
-                <div style={{ zIndex: this.zIndex }} class={this.bem()} v-show={this.value}>
+                <div style={{ zIndex: this.zIndex - 2 }} class={this.bem()} v-show={this.value}>
                     {this.overlay && this.renderOverlay()}
-                    {this.value && this.renderContent()}
+                    <transition name={`c-pop-${this.position}`}>{this.value && this.renderContent()}</transition>
                 </div>
             </transition>
         )
