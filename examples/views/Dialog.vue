@@ -1,24 +1,24 @@
 <template>
     <div class="c-container">
-        <div class="c-b">
+        <div class="c-demo">
             <Dialog v-model="show">显示Dialog</Dialog>
             <Button @click="showDialog" type="success">显示Dialog</Button>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <Dialog v-model="show2" :overlay="false" title="提示" message="去掉Overlay"></Dialog>
             <Button @click="showDialog2" type="success">去掉Overlay</Button>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <Button @click="showDialogAlert" type="success">this.$Dialog.alert的方式显示</Button>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <Button @click="showDialogAlert2" type="success">this.$Dialog.alert的方式显示，去掉Overlay</Button>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <Dialog v-model="show3" :time="3000">三秒后隐藏Dialog</Dialog>
             <Button @click="show3 = true" type="success">三秒后隐藏Dialog</Button>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <Button @click="showDialogAlert3" type="success">this.$Dialog.alert的方式显示，一秒后隐藏Dialog</Button>
         </div>
     </div>
@@ -68,9 +68,6 @@ export default {
 .c-container {
     height: 100%;
     overflow-y: scroll;
-    .c-b {
-        margin: 5vw 0;
-    }
 
     button {
         margin-top: 10px;

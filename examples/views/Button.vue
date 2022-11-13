@@ -1,11 +1,11 @@
 <template>
     <div class="c-container">
-        <div class="c-b">
+        <div class="c-demo">
             <p>默认</p>
             <Button>Button</Button>
         </div>
 
-        <div class="c-b">
+        <div class="c-demo">
             <p>类型</p>
             <div>
                 <Button type="default">default</Button>
@@ -20,7 +20,7 @@
                 <Button type="error">error</Button>
             </div>
         </div>
-        <div class="c-b">
+        <div class="c-demo">
             <p>大小</p>
             <div>
                 <Button type="success" size="mini">mini</Button>
@@ -36,12 +36,12 @@
             </div>
         </div>
 
-        <div class="c-b">
+        <div class="c-demo">
             <p>禁用</p>
             <Button size="small" disabled="disabled">Button</Button>
         </div>
 
-        <div class="c-b">
+        <div class="c-demo">
             <p>加载中</p>
             <div>
                 <Button loading>Button</Button>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="c-b">
+        <div class="c-demo">
             <p>阴影</p>
             <div>
                 <Button type="default" shadow>Button</Button>
@@ -92,9 +92,6 @@ export default {
 .c-container {
     height: 100%;
     overflow-y: scroll;
-    .c-b {
-        margin: 5vw 0;
-    }
 
     button {
         margin-top: 10px;

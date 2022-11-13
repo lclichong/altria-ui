@@ -28,10 +28,15 @@ export default {
             if (newVal) {
                 if (this.time) {
                     this.popupShow = newVal
-                    setTimeout(() => {
-                        this.$emit('input', false)
-                        this.popupShow = false
-                    }, this.time)
+                    if (!this.hasTimer) {
+                        this.hasTimer = true
+                        this.timer = setTimeout(() => {
+                            this.$emit('input', false)
+                            this.popupShow = false
+                            this.hasTimer = false
+                            clearTimeout(this.timer)
+                        }, this.time)
+                    }
                 } else {
                     this.popupShow = newVal
                 }
@@ -41,12 +46,18 @@ export default {
     data() {
         return {
             popupShow: false,
+            timer: '',
+            hasTimer: false,
         }
     },
     methods: {
         changeValue() {
             if (!this.value) {
                 return
+            }
+            if (this.hasTimer) {
+                this.hasTimer = false
+                clearTimeout(this.timer)
             }
             this.popupShow = false
             this.$emit('input', false)
