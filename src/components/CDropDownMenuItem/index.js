@@ -22,7 +22,7 @@ export default {
         }
     },
     methods: {
-        showItem() {
+        changeValue() {
             if (!this.contentShow) {
                 this.$parent.$children.forEach((value) => {
                     if (value.contentShow) {
@@ -67,8 +67,8 @@ export default {
         },
     },
     render() {
-        const bem = createBem('c-dropdown-menu')
         const bemItem = createBem('c-dropdown-item')
+        const bem = createBem('c-dropdown-menu')
 
         const options = this.options.map((option) => {
             let active = false
@@ -112,13 +112,13 @@ export default {
             )
         })
         return (
-            <div class="c-dropdown-menu__item">
-                <div onClick={this.showItem} class={bem('item', { show: this.contentShow })}>
-                    <span class="c-dropdown-menu__title">
-                        <div class="c-ellipsis">{this.title}</div>
-                    </span>
+            <div class={bem('item', { show: this.contentShow })}>
+                <div onClick={this.changeValue} class="c-dropdown-menu__title">
+                    <div class="c-ellipsis">{this.title}</div>
                 </div>
-                <div class={bemItem('content', { show: this.contentShow })}>{options}</div>
+                <Popup value={this.contentShow} position="top">
+                    <div class={bemItem('content')}>{options}</div>
+                </Popup>
             </div>
         )
     },

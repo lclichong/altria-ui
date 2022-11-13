@@ -9,7 +9,7 @@ export default {
     created() {},
     data() {
         return {}
-    },
+    }
 }
 </script>
 
@@ -35,5 +35,9 @@ body {
 * {
     touch-action: none;
     touch-action: pan-y;
+}
+
+.c-demo {
+    padding: 5vw;
 }
 </style>

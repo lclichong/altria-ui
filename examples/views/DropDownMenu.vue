@@ -6,11 +6,12 @@
             <DropDownMenuItem v-model="value3" :options="options3" title="种族"></DropDownMenuItem>
             <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
         </DropDownMenu>
+        <cell v-for="l,key in 10" :key="key" :title="'title' + key" :value="'value' + key"></cell>
         <div class="c-button__wrapper">
-            <Button type="success" class="c-btn" @click="getValues">获取值</Button>
+            <Button type="success" size="small" class="c-btn" @click="getValues">获取值</Button>
         </div>
         <div>
-            <Button type="success" class="c-btn" @click="getOptions">获取options</Button>
+            <Button type="success" size="small" class="c-btn" @click="getOptions">获取options</Button>
         </div>
     </div>
 </template>
@@ -98,7 +99,7 @@ export default {
 .c-container {
     height: 100vh;
     .c-button__wrapper {
-        margin-top: 200px;
+        // margin-top: 100px;
     }
     .c-btn {
         width: 100px;

@@ -39,9 +39,12 @@ export default {
     },
     methods: {
         hidePopup() {
+            if (!this.value) {
+                return
+            }
             this.$emit('input', false)
-            if (this.$parent && this.$parent.hideDialog) {
-                this.$parent.hideDialog()
+            if (this.$parent && this.$parent.changeValue) {
+                this.$parent.changeValue()
             }
         },
         renderOverlay() {

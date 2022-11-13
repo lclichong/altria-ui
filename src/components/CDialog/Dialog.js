@@ -44,7 +44,7 @@ export default {
         }
     },
     methods: {
-        hideDialog() {
+        changeValue() {
             if (!this.value) {
                 return
             }
@@ -61,7 +61,7 @@ export default {
                 <div class={bem(null)}>
                     <div class="c-dialog__title">{this.title}</div>
                     <div class="c-dialog__content">{content ? content : this.message}</div>
-                    <div onClick={this.hideDialog} class="c-dialog__confirm">
+                    <div onClick={this.changeValue} class="c-dialog__confirm">
                         <button class="c-dialog__button">确定</button>
                     </div>
                 </div>

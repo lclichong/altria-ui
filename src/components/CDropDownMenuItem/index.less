@@ -20,6 +20,7 @@
             text-overflow: ellipsis;
         }
     }
+
     .c-dropdown-menu__title::after {
         position: absolute;
         top: 50%;
@@ -32,23 +33,9 @@
         opacity: 0.8;
         content: '';
     }
+
     .c-dropdown-item__content {
-        width: 100%;
-        position: absolute;
-        top: 48px;
-        left: 0px;
-        transition-duration: 0.3s;
         background-color: var(--accents-4);
-        opacity: 0;
-        &--show {
-            opacity: 1;
-            z-index: 9999;
-        }
-        &--hide {
-            height: 0px;
-            opacity: 0;
-            z-index: -1;
-        }
         .c-dropdown-item__option {
             position: relative;
             height: 12vw;
@@ -70,7 +57,6 @@
                     width: 14px;
                     height: 24px;
                 }
-
                 &--hide {
                     opacity: 0;
                     width: 0px;

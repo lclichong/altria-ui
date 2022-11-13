@@ -1,5 +1,6 @@
 .c-dropdown-menu {
     user-select: none;
+
     &__bar {
         position: relative;
         display: flex;
@@ -8,6 +9,20 @@
         box-shadow: var(--shadow-mini);
         &--hide--shadow {
             box-shadow: none;
+        }
+    }
+
+    .c-popup {
+        top: 48px;
+        &__overlay {
+            top: 48px;
+        }
+    }
+
+    .c {
+        &-pop-top-enter,
+        &-pop-top-leave-to {
+            transform: translateY(0);
         }
     }
 }
