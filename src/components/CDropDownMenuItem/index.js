@@ -30,10 +30,11 @@ export default {
                     }
                 })
                 this.contentShow = !this.contentShow
+                // this.$parent.itemShow = this.contentShow
             } else {
                 this.contentShow = !this.contentShow
+                // this.$parent.itemShow = this.contentShow
             }
-            this.$parent.itemShow = this.contentShow
         },
         changeOption(option) {
             let optionVal = option.value
@@ -68,8 +69,6 @@ export default {
     },
     render() {
         const bemItem = createBem('c-dropdown-item')
-        const bem = createBem('c-dropdown-menu')
-
         const options = this.options.map((option) => {
             let active = false
             if (typeof this.value === 'string') {
@@ -112,14 +111,13 @@ export default {
             )
         })
         return (
-            <div class={bem('item', { show: this.contentShow })}>
-                <div onClick={this.changeValue} class="c-dropdown-menu__title">
-                    <div class="c-ellipsis">{this.title}</div>
+            <transition name="c-down">
+                <div class="c-dropdown-item--down" v-show={this.contentShow}>
+                    <Popup value={this.contentShow} position="top">
+                        <div class={bemItem('content')}>{options}</div>
+                    </Popup>
                 </div>
-                <Popup value={this.contentShow} position="top">
-                    <div class={bemItem('content')}>{options}</div>
-                </Popup>
-            </div>
+            </transition>
         )
     },
 }

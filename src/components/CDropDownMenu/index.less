@@ -7,22 +7,9 @@
         height: 48px;
         background-color: var(--accents-4);
         box-shadow: var(--shadow-mini);
+        z-index: calc(var(--c-dropdown-item-z-index) + 1);
         &--hide--shadow {
             box-shadow: none;
-        }
-    }
-
-    .c-popup {
-        top: 48px;
-        &__overlay {
-            top: 48px;
-        }
-    }
-
-    .c {
-        &-pop-top-enter,
-        &-pop-top-leave-to {
-            transform: translateY(0);
         }
     }
 }

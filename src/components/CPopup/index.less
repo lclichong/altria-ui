@@ -1,15 +1,17 @@
 :root {
     --popup-content-background: var(--accents-4);
+    --popup-fade-opacity: 0;
+    --popup-fade-time: 0.25s;
 }
 
 .c {
     &-fade-enter,
     &-fade-leave-to {
-        opacity: 0;
+        opacity: var(--popup-fade-opacity);
     }
     &-fade-enter-active,
     &-fade-leave-active {
-        transition: opacity 0.25s;
+        transition: opacity var(--popup-fade-time);
     }
 
     &-pop-center-enter,
@@ -18,7 +20,7 @@
     }
     &-pop-center-enter-active,
     &-pop-center-leave-active {
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &-pop-top-enter,
@@ -27,7 +29,7 @@
     }
     &-pop-top-enter-active,
     &-pop-top-leave-active {
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &-pop-bottom-enter,
@@ -36,7 +38,7 @@
     }
     &-pop-bottom-enter-active,
     &-pop-bottom-leave-active {
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &-pop-left-enter,
@@ -45,7 +47,7 @@
     }
     &-pop-left-enter-active,
     &-pop-left-leave-active {
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &-pop-right-enter,
@@ -54,7 +56,7 @@
     }
     &-pop-right-enter-active,
     &-pop-right-leave-active {
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 }
 
@@ -78,13 +80,13 @@
         bottom: 0;
         left: 0;
         background-color: var(--overlay-default);
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &__content {
         overflow: auto;
         background-color: var(--popup-content-background);
-        transition: all 0.25s;
+        transition: all var(--popup-fade-time);
     }
 
     &--center {
