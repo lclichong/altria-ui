@@ -1,5 +1,7 @@
 import './index.less'
 import { createBem } from '../utils/create-bem'
+import context from '../utils/context'
+import listeners from '../utils/listeners'
 
 export default {
     name: 'DropDownMenuItem',
@@ -19,19 +21,37 @@ export default {
     data() {
         return {
             contentShow: false,
+            top: 0,
+            zIndex: context.zIndex,
         }
     },
     methods: {
-        changeValue() {
+        changeValue(uid) {
             if (!this.contentShow) {
-                this.$parent.$children.forEach((value) => {
-                    if (value.contentShow) {
-                        value.contentShow = false
-                    }
-                })
-                this.contentShow = !this.contentShow
+                // 显示
+                if (listeners.dropDownMenu.vnodes.length > 1) {
+                    // 有多个DropDownMenu的显示
+                    listeners.dropDownMenu.vnodes.forEach((vnode) => {
+                        vnode.$children.forEach((child) => {
+                            if (child._uid !== uid && child.contentShow) {
+                                child.contentShow = !child.contentShow
+                            } else if (child._uid === uid && !child.contentShow) {
+                                child.contentShow = !child.contentShow
+                            }
+                        })
+                    })
+                } else {
+                    // 单个DropDownMenu的显示
+                    this.$parent.$children.forEach((value) => {
+                        if (value.contentShow) {
+                            value.contentShow = !value.contentShow
+                        }
+                    })
+                    this.contentShow = !this.contentShow
+                }
                 // this.$parent.itemShow = this.contentShow
             } else {
+                // 隐藏
                 this.contentShow = !this.contentShow
                 // this.$parent.itemShow = this.contentShow
             }
@@ -112,7 +132,11 @@ export default {
         })
         return (
             <transition name="c-down">
-                <div class="c-dropdown-item--down" v-show={this.contentShow}>
+                <div
+                    class="c-dropdown-item--down"
+                    style={{ top: this.top + 'px', zIndex: this.zIndex + 3 }}
+                    v-show={this.contentShow}
+                >
                     <Popup value={this.contentShow} position="top">
                         <div class={bemItem('content')}>{options}</div>
                     </Popup>
