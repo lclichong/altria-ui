@@ -12,21 +12,30 @@ export default {
         })
     },
     mounted() {
-        this.top = this.$el.offsetTop + 48
+        this.offset = this.$el.offsetTop + 48 - window.scrollY
     },
     data: function() {
         return {
             itemShow: false,
             titles: [],
             children: [],
-            top: 0,
+            offset: 0,
             zIndex: context.zIndex,
         }
+    },
+    methods: {
+        updateOffset(dom) {
+            if (dom) {
+                this.offset = this.$el.offsetTop + 48 - dom.scrollTop
+            } else {
+                this.offset = this.$el.offsetTop + 48 - window.scrollY
+            }
+        },
     },
     render() {
         const bem = createBem('c-dropdown-menu')
         const titles = this.children.map((child) => {
-            child.top = this.top
+            child.offset = this.offset
             let array = []
             let vnode = (
                 <div

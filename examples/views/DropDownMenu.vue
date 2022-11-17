@@ -7,6 +7,12 @@
             <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
         </DropDownMenu>
         <DropDownMenu class="c-mt-200">
+            <DropDownMenuItem v-model="value1" :options="options1" title="名字"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value2" :options="options2" title="兴趣爱好"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value3" :options="options3" title="技能"></DropDownMenuItem>
+            <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
+        </DropDownMenu>
+        <DropDownMenu class="c-mt-200">
             <DropDownMenuItem v-model="value5" :options="options5" title="区域"></DropDownMenuItem>
             <DropDownMenuItem v-model="value6" :options="options6" title="天气"></DropDownMenuItem>
         </DropDownMenu>

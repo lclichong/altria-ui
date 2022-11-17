@@ -1,6 +1,7 @@
 module.exports = {
     devServer: {
         hot: true,
+        port: 8888,
     },
     configureWebpack: {
         resolve: {

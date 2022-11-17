@@ -2,6 +2,7 @@ import './index.less'
 import { createBem } from '../utils/create-bem'
 import context from '../utils/context'
 import listeners from '../utils/listeners'
+import { getScroller } from '../utils/scroll'
 
 export default {
     name: 'DropDownMenuItem',
@@ -21,12 +22,14 @@ export default {
     data() {
         return {
             contentShow: false,
-            top: 0,
+            offset: 0,
             zIndex: context.zIndex,
+            dom: '',
         }
     },
     methods: {
         changeValue(uid) {
+            this.dom = getScroller(this.$parent.$el)
             if (!this.contentShow) {
                 // 显示
                 if (listeners.dropDownMenu.vnodes.length > 1) {
@@ -49,12 +52,20 @@ export default {
                     })
                     this.contentShow = !this.contentShow
                 }
-                // this.$parent.itemShow = this.contentShow
+                document.body.classList.add('c-overflow-hidden')
+                this.$parent.updateOffset(this.dom)
+                this.bindScroll(this.dom)
             } else {
                 // 隐藏
+                document.body.removeAttribute('class')
                 this.contentShow = !this.contentShow
-                // this.$parent.itemShow = this.contentShow
+                if (this.dom) {
+                    this.dom.removeEventListener('scroll', this.onScroll)
+                } else {
+                    window.removeEventListener('scroll', this.onScroll)
+                }
             }
+            // this.$parent.itemShow = this.contentShow
         },
         changeOption(option) {
             let optionVal = option.value
@@ -85,6 +96,16 @@ export default {
                     }
                 }
             }
+        },
+        bindScroll(dom) {
+            if (dom) {
+                dom.addEventListener('scroll', this.onScroll)
+            } else {
+                window.addEventListener('scroll', this.onScroll)
+            }
+        },
+        onScroll() {
+            this.$parent.updateOffset(this.dom)
         },
     },
     render() {
@@ -134,7 +155,7 @@ export default {
             <transition name="c-down">
                 <div
                     class="c-dropdown-item--down"
-                    style={{ top: this.top + 'px', zIndex: this.zIndex + 3 }}
+                    style={{ top: this.offset + 'px', zIndex: this.zIndex + 3 }}
                     v-show={this.contentShow}
                 >
                     <Popup value={this.contentShow} position="top">
