@@ -23,7 +23,6 @@ export default {
         return {
             contentShow: false,
             offset: 0,
-            zIndex: context.zIndex,
             dom: '',
         }
     },
@@ -35,13 +34,16 @@ export default {
                 if (listeners.dropDownMenu.vnodes.length > 1) {
                     // 有多个DropDownMenu的显示
                     listeners.dropDownMenu.vnodes.forEach((vnode) => {
+                        let itemShow = false
                         vnode.$children.forEach((child) => {
                             if (child._uid !== uid && child.contentShow) {
                                 child.contentShow = !child.contentShow
                             } else if (child._uid === uid && !child.contentShow) {
+                                itemShow = true
                                 child.contentShow = !child.contentShow
                             }
                         })
+                        vnode.itemShow = itemShow
                     })
                 } else {
                     // 单个DropDownMenu的显示
@@ -51,6 +53,7 @@ export default {
                         }
                     })
                     this.contentShow = !this.contentShow
+                    this.$parent.itemShow = this.contentShow
                 }
                 document.body.classList.add('c-overflow-hidden')
                 this.$parent.updateOffset(this.dom)
@@ -65,7 +68,6 @@ export default {
                     window.removeEventListener('scroll', this.onScroll)
                 }
             }
-            // this.$parent.itemShow = this.contentShow
         },
         changeOption(option) {
             let optionVal = option.value
@@ -155,7 +157,7 @@ export default {
             <transition name="c-down">
                 <div
                     class="c-dropdown-item--down"
-                    style={{ top: this.offset + 'px', zIndex: this.zIndex + 3 }}
+                    style={{ top: this.offset + 'px', zIndex: context.zIndex + 3 }}
                     v-show={this.contentShow}
                 >
                     <Popup value={this.contentShow} position="top">

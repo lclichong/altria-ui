@@ -20,7 +20,6 @@ export default {
             titles: [],
             children: [],
             offset: 0,
-            zIndex: context.zIndex,
         }
     },
     methods: {
@@ -53,7 +52,10 @@ export default {
         if (titles) {
             return (
                 <div class="c-dropdown-menu">
-                    <div class={['c-dropdown-menu__bar', this.itemShow ? 'c-dropdown-menu__bar--hide--shadow' : '']}>
+                    <div
+                        style={{ zIndex: this.itemShow ? context.zIndex + titles.length * 4 : '' }}
+                        class="c-dropdown-menu__bar"
+                    >
                         {...titles}
                     </div>
                     {this.$slots.default}
