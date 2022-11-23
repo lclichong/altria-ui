@@ -24,6 +24,15 @@
         <div class="c-demo">
             <Button @click="showDialogAlert3" type="success">this.$Dialog.alert的方式显示，一秒后隐藏Dialog</Button>
         </div>
+        <div class="c-demo">
+            <Dialog ref="dialog" @confirm="dialogConfirm" title="提示" v-model="show4" beforeClose
+                >confirm 一秒后隐藏</Dialog
+            >
+            <Button @click="show4 = true" type="success">confirm 一秒后隐藏</Button>
+        </div>
+        <div class="c-demo">
+            <Button @click="showDialogAlert4" type="success">this.$Dialog.alert confirm 一秒后隐藏</Button>
+        </div>
     </div>
 </template>
 
@@ -34,6 +43,7 @@ export default {
             show: false,
             show2: false,
             show3: false,
+            show4: false,
         }
     },
     methods: {
@@ -44,11 +54,15 @@ export default {
             this.show2 = true
         },
         showDialogAlert() {
-            this.$Dialog.alert({
-                title: '提示',
-                message:
-                    '素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方 素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方',
-            })
+            this.$Dialog
+                .alert({
+                    title: '提示',
+                    message:
+                        '素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方 素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方',
+                })
+                .then((result) => {
+                    console.log('result', result)
+                })
         },
         showDialogAlert2() {
             this.$Dialog.alert({
@@ -68,6 +82,25 @@ export default {
             this.$Dialog.alert({
                 message: '内容',
             })
+        },
+        dialogConfirm() {
+            setTimeout(() => {
+                this.$refs.dialog.close()
+            }, 1000)
+        },
+        showDialogAlert4() {
+            this.$Dialog
+                .alert({
+                    title: '提示',
+                    message: '素胚勾勒出青花笔锋浓转淡',
+                    beforeClose: true,
+                })
+                .then((done) => {
+                    console.log('then')
+                    setTimeout(() => {
+                        done()
+                    }, 1000)
+                })
         },
     },
 }

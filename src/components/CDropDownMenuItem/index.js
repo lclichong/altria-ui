@@ -109,6 +109,10 @@ export default {
         onScroll() {
             this.$parent.updateOffset(this.dom)
         },
+        popupHide(done) {
+            done()
+            this.changeValue()
+        },
     },
     render() {
         const bemItem = createBem('c-dropdown-item')
@@ -160,7 +164,7 @@ export default {
                     style={{ top: this.offset + 'px', zIndex: context.zIndex + 3 }}
                     v-show={this.contentShow}
                 >
-                    <Popup value={this.contentShow} position="top">
+                    <Popup v-on:hide={this.popupHide} value={this.contentShow} position="top">
                         <div class={bemItem('content')}>{options}</div>
                     </Popup>
                 </div>

@@ -42,9 +42,12 @@ export default {
             if (!this.value) {
                 return
             }
-            this.$emit('input', false)
-            if (this.$parent && this.$parent.changeValue) {
-                this.$parent.changeValue()
+            if (this._events.hide) {
+                this.$emit('hide', () => {
+                    this.$emit('input', false)
+                })
+            } else {
+                this.$emit('input', false)
             }
         },
         renderOverlay() {

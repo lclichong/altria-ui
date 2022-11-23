@@ -63,6 +63,7 @@ Dialog.defaultOptions = {
     value: false,
     overlay: true,
     time: undefined,
+    beforeClose: false,
 }
 
 Vue.prototype.$Dialog = Dialog

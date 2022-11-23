@@ -21,6 +21,9 @@ export default {
             type: Boolean,
             default: true,
         },
+        beforeClose: {
+            type: Boolean,
+        },
     },
     watch: {
         value(newVal) {
@@ -30,8 +33,7 @@ export default {
                     if (!this.hasTimer) {
                         this.hasTimer = true
                         this.timer = setTimeout(() => {
-                            this.$emit('input', false)
-                            this.popupShow = false
+                            this.close()
                             this.hasTimer = false
                             clearTimeout(this.timer)
                         }, this.time)
@@ -57,9 +59,33 @@ export default {
             if (this.hasTimer) {
                 this.hasTimer = false
                 clearTimeout(this.timer)
+                this.close()
+            } else {
+                if (!this.beforeClose) {
+                    this.close()
+                }
+                if (this._events.confirm) {
+                    this.$emit('confirm')
+                } else if (this.resolve) {
+                    this.resolve(
+                        this.beforeClose
+                            ? () => {
+                                  this.close()
+                              }
+                            : undefined
+                    )
+                }
             }
+        },
+        close() {
             this.popupShow = false
             this.$emit('input', false)
+        },
+        popupHide(done) {
+            if (!this.beforeClose) {
+                done()
+                this.changeValue()
+            }
         },
     },
     render() {
@@ -72,7 +98,12 @@ export default {
         }
 
         return (
-            <Popup value={this.popupShow} overlay={this.overlay} class="c-popup--transparent">
+            <Popup
+                v-on:hide={this.popupHide}
+                value={this.popupShow}
+                overlay={this.overlay}
+                class="c-popup--transparent"
+            >
                 <div class={bem(null)}>
                     {titleVNode()}
                     <div class={['c-dialog__message', this.title ? '' : 'c-dialog--no-title']}>
