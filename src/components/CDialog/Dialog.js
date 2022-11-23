@@ -6,7 +6,6 @@ export default {
     props: {
         title: {
             type: String,
-            default: '标题',
         },
         message: {
             type: String,
@@ -66,14 +65,21 @@ export default {
     render() {
         const bem = createBem('c-dialog')
         const content = this.$slots && this.$slots.default && this.$slots.default[0]
+        const titleVNode = () => {
+            if (this.title) {
+                return <div class="c-dialog__title">{this.title}</div>
+            }
+        }
 
         return (
             <Popup value={this.popupShow} overlay={this.overlay} class="c-popup--transparent">
                 <div class={bem(null)}>
-                    <div class="c-dialog__title">{this.title}</div>
-                    <div class="c-dialog__content">{content ? content : this.message}</div>
+                    {titleVNode()}
+                    <div class={['c-dialog__message', this.title ? '' : 'c-dialog--no-title']}>
+                        {content ? content : this.message}
+                    </div>
                     <div onClick={this.changeValue} class="c-dialog__confirm">
-                        <button class="c-dialog__button">确定</button>
+                        <Button class="c-dialog__button">确定</Button>
                     </div>
                 </div>
             </Popup>

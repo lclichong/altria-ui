@@ -7,34 +7,37 @@
 
 .c-dialog {
     width: 80vw;
-    height: 40vw;
     font-size: 16px;
     background-color: var(--dialog-background);
     border-radius: 16px;
     border: 1px solid var(--accents-5);
 
     &__title {
-        height: 20%;
         display: flex;
         justify-content: center;
         align-items: flex-end;
         font-weight: 500;
+        padding-top: 15px;
     }
 
-    &__content {
-        height: 50%;
+    &__message {
         flex-wrap: wrap;
         display: flex;
         justify-content: center;
         align-items: center;
         color: var(--dialog-content-color);
         font-size: 15px;
-        padding: 0px 20px;
+        padding: 15px 20px;
         line-height: 25px;
+        word-break: break-word;
+        white-space: pre-wrap;
+        text-align: center;
+        min-height: 6vh;
+        max-height: 60vh;
+        overflow-y: scroll;
     }
 
     &__confirm {
-        height: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -57,11 +60,18 @@
     }
 
     &__button {
-        width: 80%;
-        height: 80%;
         background-color: var(--dialog-background);
         border: none;
         outline: none;
         color: var(--dialog-button-color);
+        height: 100%;
+        width: 100%;
+        padding: 15px 0px;
+        border-radius: 0px 0px 16px 16px;
+    }
+
+    &--no-title {
+        min-height: 10vh;
+        padding: 15px 20px 7.5px 15px;
     }
 }
