@@ -64,6 +64,7 @@ Dialog.defaultOptions = {
     overlay: true,
     time: undefined,
     beforeClose: false,
+    confirmButtonText: '',
 }
 
 Vue.prototype.$Dialog = Dialog

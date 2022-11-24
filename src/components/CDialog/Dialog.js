@@ -24,6 +24,10 @@ export default {
         beforeClose: {
             type: Boolean,
         },
+        confirmButtonText: {
+            type: String,
+            default: '确定',
+        },
     },
     watch: {
         value(newVal) {
@@ -110,7 +114,7 @@ export default {
                         {content ? content : this.message}
                     </div>
                     <div onClick={this.changeValue} class="c-dialog__confirm">
-                        <Button class="c-dialog__button">确定</Button>
+                        <Button class="c-dialog__button">{this.confirmButtonText}</Button>
                     </div>
                 </div>
             </Popup>

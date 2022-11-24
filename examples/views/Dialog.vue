@@ -1,7 +1,7 @@
 <template>
     <div class="c-container">
         <div class="c-demo">
-            <Dialog title="提示" v-model="show">显示Dialog</Dialog>
+            <Dialog confirm-button-text="提交" title="提示" v-model="show">显示Dialog</Dialog>
             <Button @click="showDialog" type="success">显示Dialog</Button>
         </div>
         <div class="c-demo">
@@ -59,6 +59,7 @@ export default {
                     title: '提示',
                     message:
                         '素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方 素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方',
+                    confirmButtonText: '提交',
                 })
                 .then((result) => {
                     console.log('result', result)
