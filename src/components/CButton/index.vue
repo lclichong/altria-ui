@@ -1,5 +1,5 @@
 <template>
-    <button @click="btnClick" :class="defalutClassName" :size="size" :disabled="disabled">
+    <button @click="btnClick" :class="defalutClassName" :disabled="disabled">
         <slot></slot>
         <template v-if="loading">
             <ButtonLoading :loadType="loadType"></ButtonLoading>

@@ -43,9 +43,7 @@ export default {
                 return
             }
             if (this._events.hide) {
-                this.$emit('hide', () => {
-                    this.$emit('input', false)
-                })
+                this.$emit('hide')
             } else {
                 this.$emit('input', false)
             }

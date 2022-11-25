@@ -9,7 +9,6 @@ export default {
         },
         message: {
             type: String,
-            default: '',
         },
         time: {
             type: Number,
@@ -27,6 +26,17 @@ export default {
         confirmButtonText: {
             type: String,
             default: '确定',
+        },
+        cancelButtonText: {
+            type: String,
+            default: '取消',
+        },
+        showConfirmButton: {
+            type: Boolean,
+            default: true,
+        },
+        showCancelButton: {
+            type: Boolean,
         },
     },
     watch: {
@@ -56,7 +66,7 @@ export default {
         }
     },
     methods: {
-        changeValue() {
+        changeValue(action) {
             if (!this.value) {
                 return
             }
@@ -65,19 +75,18 @@ export default {
                 clearTimeout(this.timer)
                 this.close()
             } else {
-                if (!this.beforeClose) {
+                if (!this.beforeClose && !this._events.confirm && !this.resolve) {
                     this.close()
-                }
-                if (this._events.confirm) {
+                } else if (this._events.confirm && action === 'confirm') {
                     this.$emit('confirm')
-                } else if (this.resolve) {
-                    this.resolve(
-                        this.beforeClose
-                            ? () => {
-                                  this.close()
-                              }
-                            : undefined
-                    )
+                } else if (this._events.cancel && action === 'cancel') {
+                    this.$emit('cancel')
+                } else if (this.resolve && action === 'confirm') {
+                    this.close()
+                    this.callback(action)
+                } else if (this.reject && action === 'cancel') {
+                    this.close()
+                    this.callback(action)
                 }
             }
         },
@@ -85,21 +94,15 @@ export default {
             this.popupShow = false
             this.$emit('input', false)
         },
-        popupHide(done) {
+        popupHide() {
             if (!this.beforeClose) {
-                done()
-                this.changeValue()
+                this.close()
             }
         },
     },
     render() {
         const bem = createBem('c-dialog')
         const content = this.$slots && this.$slots.default && this.$slots.default[0]
-        const titleVNode = () => {
-            if (this.title) {
-                return <div class="c-dialog__title">{this.title}</div>
-            }
-        }
 
         return (
             <Popup
@@ -109,12 +112,29 @@ export default {
                 class="c-popup--transparent"
             >
                 <div class={bem(null)}>
-                    {titleVNode()}
+                    {this.title && <div class="c-dialog__title">{this.title}</div>}
                     <div class={['c-dialog__message', this.title ? '' : 'c-dialog--no-title']}>
                         {content ? content : this.message}
                     </div>
-                    <div onClick={this.changeValue} class="c-dialog__confirm">
-                        <Button class="c-dialog__button">{this.confirmButtonText}</Button>
+                    <div class="c-dialog__button__wrapper">
+                        {this.showCancelButton && (
+                            <Button
+                                size="default"
+                                onClick={this.changeValue.bind(this, 'cancel')}
+                                class="c-dialog__button c-dialog__button--cancel"
+                            >
+                                {this.cancelButtonText}
+                            </Button>
+                        )}
+                        {this.showConfirmButton && (
+                            <Button
+                                size="default"
+                                onClick={this.changeValue.bind(this, 'confirm')}
+                                class={['c-dialog__button', this.showCancelButton ? 'c-dialog__button--confirm' : '']}
+                            >
+                                {this.confirmButtonText}
+                            </Button>
+                        )}
                     </div>
                 </div>
             </Popup>

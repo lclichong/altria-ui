@@ -109,8 +109,7 @@ export default {
         onScroll() {
             this.$parent.updateOffset(this.dom)
         },
-        popupHide(done) {
-            done()
+        popupHide() {
             this.changeValue()
         },
     },

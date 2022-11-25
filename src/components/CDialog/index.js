@@ -45,6 +45,12 @@ function initInstance() {
 
 Dialog.alert = Dialog
 
+Dialog.confirm = (options) =>
+    Dialog({
+        showCancelButton: true,
+        ...options,
+    })
+
 Dialog.install = () => {
     Vue.use(VanDialog)
 }
@@ -64,7 +70,13 @@ Dialog.defaultOptions = {
     overlay: true,
     time: undefined,
     beforeClose: false,
-    confirmButtonText: '',
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    showConfirmButton: true,
+    showCancelButton: false,
+    callback: (action) => {
+        instance[action === 'confirm' ? 'resolve' : 'reject'](action)
+    },
 }
 
 Vue.prototype.$Dialog = Dialog

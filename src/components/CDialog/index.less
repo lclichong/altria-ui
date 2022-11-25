@@ -1,7 +1,8 @@
 :root {
     --dialog-background: var(--accents-4);
     --dialog-content-color: var(--accents-2);
-    --dialog-button-color: var(--error-default);
+    --dialog-confirm-button-color: var(--error-default);
+    --dialog-cancel-button-color: var(--accents-3);
     --dialog-overlay-background: var(--overlay-default);
 }
 
@@ -37,7 +38,7 @@
         overflow-y: scroll;
     }
 
-    &__confirm {
+    &__button__wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -45,7 +46,17 @@
         position: relative;
     }
 
-    &__confirm::after {
+    &__button {
+        background-color: var(--dialog-background);
+        border: none;
+        outline: none;
+        color: var(--dialog-confirm-button-color);
+        padding: 15px 0px;
+        border-radius: 0px 0px 16px 16px;
+        flex: 1;
+    }
+
+    &__button:before {
         position: absolute;
         box-sizing: border-box;
         content: ' ';
@@ -59,15 +70,28 @@
         transform: scale(0.5);
     }
 
-    &__button {
-        background-color: var(--dialog-background);
-        border: none;
-        outline: none;
-        color: var(--dialog-button-color);
-        height: 100%;
-        width: 100%;
-        padding: 15px 0px;
-        border-radius: 0px 0px 16px 16px;
+    &__button--confirm {
+        border-radius: 0px 0px 16px 0px;
+    }
+
+    &__button--cancel {
+        color: var(--dialog-cancel-button-color);
+        border-radius: 0px 0px 0px 16px;
+        position: relative;
+    }
+
+    &__button--cancel::after {
+        position: absolute;
+        box-sizing: border-box;
+        content: ' ';
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border-right: 1px solid var(--accents-5);
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
     }
 
     &--no-title {
