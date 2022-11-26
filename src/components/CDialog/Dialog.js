@@ -21,7 +21,7 @@ export default {
             default: true,
         },
         beforeClose: {
-            type: Boolean,
+            type: [Boolean, Array],
         },
         confirmButtonText: {
             type: String,
@@ -41,9 +41,9 @@ export default {
     },
     watch: {
         value(newVal) {
+            this.popupShow = newVal
             if (newVal) {
                 if (this.time) {
-                    this.popupShow = newVal
                     if (!this.hasTimer) {
                         this.hasTimer = true
                         this.timer = setTimeout(() => {
@@ -52,9 +52,10 @@ export default {
                             clearTimeout(this.timer)
                         }, this.time)
                     }
-                } else {
-                    this.popupShow = newVal
                 }
+            } else {
+                this.hasTimer = false
+                clearTimeout(this.timer)
             }
         },
     },
@@ -75,18 +76,39 @@ export default {
                 clearTimeout(this.timer)
                 this.close()
             } else {
-                if (!this.beforeClose && !this._events.confirm && !this.resolve) {
-                    this.close()
-                } else if (this._events.confirm && action === 'confirm') {
-                    this.$emit('confirm')
-                } else if (this._events.cancel && action === 'cancel') {
-                    this.$emit('cancel')
-                } else if (this.resolve && action === 'confirm') {
-                    this.close()
-                    this.callback(action)
-                } else if (this.reject && action === 'cancel') {
-                    this.close()
-                    this.callback(action)
+                let type = Object.prototype.toString.call(this.beforeClose)
+                if (this.beforeClose && type === '[object Function]') {
+                    this.beforeClose(action, this.close)
+                } else {
+                    if (!this._events.confirm && !this.resolve) {
+                        this.close()
+                    } else if (
+                        this.beforeClose &&
+                        type === '[object Boolean]' &&
+                        this._events.confirm &&
+                        action === 'confirm'
+                    ) {
+                        this.$emit('confirm')
+                    } else if (!this.beforeClose && this._events.confirm && action === 'confirm') {
+                        this.close()
+                        this.$emit('confirm')
+                    } else if (
+                        this.beforeClose &&
+                        type === '[object Boolean]' &&
+                        this._events.cancel &&
+                        action === 'cancel'
+                    ) {
+                        this.$emit('cancel')
+                    } else if (!this.beforeClose && this._events.cancel && action === 'cancel') {
+                        this.close()
+                        this.$emit('cancel')
+                    } else if (this.resolve && action === 'confirm') {
+                        this.close()
+                        this.callback(action)
+                    } else if (this.reject && action === 'cancel') {
+                        this.close()
+                        this.callback(action)
+                    }
                 }
             }
         },
