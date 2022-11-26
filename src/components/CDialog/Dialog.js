@@ -41,7 +41,6 @@ export default {
     },
     watch: {
         value(newVal) {
-            this.popupShow = newVal
             if (newVal) {
                 if (this.time) {
                     if (!this.hasTimer) {
@@ -61,7 +60,6 @@ export default {
     },
     data() {
         return {
-            popupShow: false,
             timer: '',
             hasTimer: false,
         }
@@ -113,7 +111,6 @@ export default {
             }
         },
         close() {
-            this.popupShow = false
             this.$emit('input', false)
         },
         popupHide() {
@@ -127,12 +124,7 @@ export default {
         const content = this.$slots && this.$slots.default && this.$slots.default[0]
 
         return (
-            <Popup
-                v-on:hide={this.popupHide}
-                value={this.popupShow}
-                overlay={this.overlay}
-                class="c-popup--transparent"
-            >
+            <Popup v-on:hide={this.popupHide} value={this.value} overlay={this.overlay} class="c-popup--transparent">
                 <div class={bem(null)}>
                     {this.title && <div class="c-dialog__title">{this.title}</div>}
                     <div class={['c-dialog__message', this.title ? '' : 'c-dialog--no-title']}>
