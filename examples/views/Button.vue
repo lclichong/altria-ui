@@ -47,9 +47,27 @@
                 <Button loading>Button</Button>
             </div>
             <div>
+                <Button type="success" loading>Button</Button>
+            </div>
+            <div>
+                <Button type="error" loading>Button</Button>
+            </div>
+            <div>
+                <Button type="warning" loading>Button</Button>
+            </div>
+            <div>
+                <Button loading load-type="circle">Button</Button>
+            </div>
+            <div>
                 <Button type="success" loading load-type="circle">Button</Button>
             </div>
-            <p>三秒后结束</p>
+            <div>
+                <Button type="warning" loading load-type="circle">Button</Button>
+            </div>
+            <div>
+                <Button type="error" loading load-type="circle">Button</Button>
+            </div>
+            <p>点击button，三秒结束loading状态</p>
             <div>
                 <Button @click="btnTap" type="success" :loading="loading" load-type="circle">Button</Button>
             </div>
@@ -66,25 +84,23 @@
 
 <script>
 export default {
-    created() {
-        setTimeout(() => {
-            this.loading = false
-        }, 3000)
-    },
-    components: {},
     data() {
         return {
-            loading: true
+            loading: false,
         }
     },
     methods: {
         btnTap() {
             this.$Dialog.alert({
                 title: '提示',
-                message: 'btnTap'
+                message: '点击了',
             })
-        }
-    }
+            this.loading = true
+            setTimeout(() => {
+                this.loading = false
+            }, 3000)
+        },
+    },
 }
 </script>
 

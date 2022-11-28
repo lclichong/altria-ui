@@ -159,6 +159,10 @@ export default {
                     console.log('两秒后隐藏')
                     setTimeout(() => {
                         done()
+                        this.$Dialog.alert({
+                            title: '提示',
+                            message: '隐藏成功',
+                        })
                     }, 2000)
                 } else {
                     done()

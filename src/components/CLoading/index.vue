@@ -1,13 +1,13 @@
 <template>
     <div class="c-loading">
-        <span :class="bem('wrapper')">
+        <div :class="bem('wrapper')">
             <template v-if="getLoadNum > 0">
                 <i v-for="i in getLoadNum" :key="i" :class="setLoadClasses" :style="setLoadStyles"></i>
             </template>
             <template v-else>
                 <LoadingCircle :class="setLoadClasses" :style="setLoadStyles"></LoadingCircle>
             </template>
-        </span>
+        </div>
     </div>
 </template>
 

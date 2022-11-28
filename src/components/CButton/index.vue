@@ -2,7 +2,7 @@
     <button @click="btnClick" :class="defalutClassName" :disabled="disabled">
         <slot></slot>
         <template v-if="loading">
-            <ButtonLoading :loadType="loadType"></ButtonLoading>
+            <ButtonLoading :type="type" :loadType="loadType" :loadingColor="loadingColor"></ButtonLoading>
         </template>
     </button>
 </template>
@@ -13,7 +13,8 @@ export default {
     name: 'Button',
     props: {
         disabled: {
-            default: null,
+            type: Boolean,
+            default: false,
         },
         type: {
             type: String,
@@ -35,9 +36,12 @@ export default {
             type: Boolean,
             default: false,
         },
+        loadingColor: {
+            type: String,
+        },
     },
     computed: {
-        defalutClassName: function () {
+        defalutClassName() {
             const bem = createBem('c-button')
             const result = bem(null, [
                 this.type,
@@ -46,7 +50,7 @@ export default {
             return result.trim()
         },
     },
-    data: function () {
+    data() {
         return {}
     },
     methods: {

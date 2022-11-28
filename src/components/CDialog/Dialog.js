@@ -62,6 +62,10 @@ export default {
         return {
             timer: '',
             hasTimer: false,
+            loading: {
+                confirm: false,
+                cancel: false,
+            },
         }
     },
     methods: {
@@ -75,7 +79,12 @@ export default {
                 this.close()
             } else {
                 if (this.beforeClose) {
-                    this.beforeClose(action, this.close)
+                    this.loading[action] = true
+                    this.beforeClose(action, () => {
+                        this.close()
+                        this.loading.confirm = false
+                        this.loading.cancel = false
+                    })
                 } else {
                     if (this._events.confirm && action === 'confirm') {
                         this.close()
@@ -120,6 +129,9 @@ export default {
                             <Button
                                 size="default"
                                 onClick={this.changeValue.bind(this, 'cancel')}
+                                loading={this.loading.cancel}
+                                loadingColor="inherit"
+                                load-type="circle"
                                 class="c-dialog__button c-dialog__button--cancel"
                             >
                                 {this.cancelButtonText}
@@ -129,6 +141,9 @@ export default {
                             <Button
                                 size="default"
                                 onClick={this.changeValue.bind(this, 'confirm')}
+                                loading={this.loading.confirm}
+                                loadingColor="inherit"
+                                load-type="circle"
                                 class={['c-dialog__button', this.showCancelButton ? 'c-dialog__button--confirm' : '']}
                             >
                                 {this.confirmButtonText}

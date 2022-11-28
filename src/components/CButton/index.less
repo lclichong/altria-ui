@@ -42,19 +42,19 @@
         background-color: var(--button-success-color);
         color: var(--accents-4);
         --button-load-bg: var(--button-success-color);
-        --button-load-color: #fff;
+        --button-load-color: var(--accents-4);
     }
     &--warning {
         background-color: var(--button-warning-color);
         color: var(--accents-4);
         --button-load-bg: var(--button-warning-color);
-        --button-load-color: #fff;
+        --button-load-color: var(--accents-4);
     }
     &--error {
         background-color: var(--button-error-color);
         color: var(--accents-4);
         --button-load-bg: var(--button-error-color);
-        --button-load-color: #fff;
+        --button-load-color: var(--accents-4);
     }
 
     &--mini {
@@ -98,8 +98,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 2;
-        background-color: var(--button-load-bg);
+        background-color: inherit;
+        border-radius: inherit;
     }
 }
 
