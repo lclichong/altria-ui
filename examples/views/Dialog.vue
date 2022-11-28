@@ -25,7 +25,9 @@
             <Button @click="showDialogAlert3" type="success">this.$Dialog.alert的方式显示，一秒后隐藏Dialog</Button>
         </div>
         <div class="c-demo">
-            <Dialog @confirm="confrim" title="提示" v-model="show4" beforeClose>Dialog.alert beforeClose 一秒后隐藏</Dialog>
+            <Dialog @confirm="confrim" title="提示" v-model="show4" :beforeClose="beforeClose"
+                >Dialog.alert beforeClose 一秒后隐藏</Dialog
+            >
             <Button @click="show4 = true" type="success">Dialog.alert beforeClose 一秒后隐藏</Button>
         </div>
         <div class="c-demo">
@@ -36,7 +38,9 @@
             <Button @click="show5 = true" type="success">隐藏确定按钮</Button>
         </div>
         <div class="c-demo">
-            <Dialog show-cancel-button @cancel="cancel" @confirm="confirm2" title="提示" v-model="show6">Dialog.confirm</Dialog>
+            <Dialog show-cancel-button @cancel="cancel" @confirm="confirm2" title="提示" v-model="show6"
+                >Dialog.confirm</Dialog
+            >
             <Button @click="show6 = true" type="success">Dialog.confirm</Button>
         </div>
         <div class="c-demo">
@@ -49,8 +53,9 @@
                 @confirm="confirm3"
                 title="提示"
                 v-model="show7"
-                beforeClose
-            >Dialog.confirm beforeClose</Dialog>
+                :beforeClose="beforeClose2"
+                >Dialog.confirm beforeClose</Dialog
+            >
             <Button @click="show7 = true" type="success">Dialog.confirm beforeClose</Button>
         </div>
         <div class="c-demo">
@@ -69,7 +74,7 @@ export default {
             show4: false,
             show5: false,
             show6: false,
-            show7: false
+            show7: false,
         }
     },
     methods: {
@@ -84,26 +89,26 @@ export default {
                 title: '提示',
                 message:
                     '素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方 素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方素胚勾勒出青花笔锋浓转淡瓶身描绘的牡丹一如你初妆冉冉檀香透过窗心事我了然宣纸上走笔至此搁一半釉色渲染仕女图韵味被私藏而你嫣然的一笑如含苞待放你的美一缕飘散去到我去不了的地方',
-                confirmButtonText: '提交'
+                confirmButtonText: '提交',
             })
         },
         showDialogAlert2() {
             this.$Dialog.alert({
                 title: '提示',
                 message: 'this.$Dialog.alert的方式显示，去掉Overlay',
-                overlay: false
+                overlay: false,
             })
         },
         showDialogAlert3() {
             this.$Dialog.alert({
                 title: '提示',
                 message: '一秒后隐藏Dialog',
-                time: 1000
+                time: 1000,
             })
         },
         noTitle() {
             this.$Dialog.alert({
-                message: '内容'
+                message: '内容',
             })
         },
         confrim() {
@@ -124,7 +129,7 @@ export default {
             this.$Dialog.alert({
                 title: '提示',
                 message: '素胚勾勒出青花笔锋浓转淡',
-                beforeClose
+                beforeClose,
             })
         },
         confirm2() {
@@ -138,7 +143,7 @@ export default {
             this.$Dialog
                 .confirm({
                     title: '提示',
-                    message: '素胚勾勒出青花笔锋浓转淡'
+                    message: '素胚勾勒出青花笔锋浓转淡',
                 })
                 .then((action) => {
                     console.log(action)
@@ -162,7 +167,7 @@ export default {
             this.$Dialog.confirm({
                 title: '提示',
                 message: '素胚勾勒出青花笔锋浓转淡',
-                beforeClose
+                beforeClose,
             })
         },
         cancel2() {
@@ -171,8 +176,30 @@ export default {
         },
         confirm3() {
             console.log('confirm3')
-        }
-    }
+        },
+        beforeClose(action, done) {
+            console.log('action', action)
+            if (action === 'confirm') {
+                console.log('一秒后隐藏')
+                setTimeout(() => {
+                    done()
+                }, 1000)
+            } else {
+                done()
+            }
+        },
+        beforeClose2(action, done) {
+            console.log('action', action)
+            if (action === 'confirm') {
+                console.log('两秒后隐藏')
+                setTimeout(() => {
+                    done()
+                }, 2000)
+            } else {
+                done()
+            }
+        },
+    },
 }
 </script>
 

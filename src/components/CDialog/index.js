@@ -69,7 +69,7 @@ Dialog.defaultOptions = {
     value: false,
     overlay: true,
     time: undefined,
-    beforeClose: false,
+    beforeClose: null,
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     showConfirmButton: true,

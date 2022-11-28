@@ -21,7 +21,7 @@ export default {
             default: true,
         },
         beforeClose: {
-            type: [Boolean, Array],
+            type: Function,
         },
         confirmButtonText: {
             type: String,
@@ -74,30 +74,13 @@ export default {
                 clearTimeout(this.timer)
                 this.close()
             } else {
-                let type = Object.prototype.toString.call(this.beforeClose)
-                if (this.beforeClose && type === '[object Function]') {
+                if (this.beforeClose) {
                     this.beforeClose(action, this.close)
                 } else {
-                    if (!this._events.confirm && !this.resolve) {
-                        this.close()
-                    } else if (
-                        this.beforeClose &&
-                        type === '[object Boolean]' &&
-                        this._events.confirm &&
-                        action === 'confirm'
-                    ) {
-                        this.$emit('confirm')
-                    } else if (!this.beforeClose && this._events.confirm && action === 'confirm') {
+                    if (this._events.confirm && action === 'confirm') {
                         this.close()
                         this.$emit('confirm')
-                    } else if (
-                        this.beforeClose &&
-                        type === '[object Boolean]' &&
-                        this._events.cancel &&
-                        action === 'cancel'
-                    ) {
-                        this.$emit('cancel')
-                    } else if (!this.beforeClose && this._events.cancel && action === 'cancel') {
+                    } else if (this._events.cancel && action === 'cancel') {
                         this.close()
                         this.$emit('cancel')
                     } else if (this.resolve && action === 'confirm') {
@@ -106,6 +89,8 @@ export default {
                     } else if (this.reject && action === 'cancel') {
                         this.close()
                         this.callback(action)
+                    } else {
+                        this.close()
                     }
                 }
             }
