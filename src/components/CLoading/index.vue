@@ -6,6 +6,7 @@
             </template>
             <template v-else>
                 <LoadingCircle :class="setLoadClasses" :style="setLoadStyles"></LoadingCircle>
+                <span class="c-loading__text" :style="{ color: this.color }">{{ this.loadText }}</span>
             </template>
         </div>
     </div>
@@ -62,6 +63,9 @@ export default {
         loadType: {
             type: String,
             default: 'default',
+        },
+        loadText: {
+            type: String,
         },
     },
     data() {

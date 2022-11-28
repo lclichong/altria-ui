@@ -62,10 +62,10 @@
                 <Button type="success" loading load-type="circle">Button</Button>
             </div>
             <div>
-                <Button type="warning" loading load-type="circle">Button</Button>
+                <Button type="warning" loading load-type="circle" load-text="加载中...">Button</Button>
             </div>
             <div>
-                <Button type="error" loading load-type="circle">Button</Button>
+                <Button type="error" loading load-type="circle" load-text="加载中...">Button</Button>
             </div>
             <p>点击button，三秒结束loading状态</p>
             <div>
@@ -79,6 +79,28 @@
                 <Button type="default" shadow>Button</Button>
             </div>
         </div>
+
+        <div class="c-demo">
+            <p>自定义颜色</p>
+            <div>
+                <Button type="success" color="#7232dd">Button</Button>
+            </div>
+            <div>
+                <Button type="success" color="linear-gradient(to right, rgb(255, 96, 52), #9c27b0)">Button</Button>
+            </div>
+            <div>
+                <Button
+                    type="success"
+                    color="#4caf50"
+                    :loading="loading2"
+                    load-type="circle"
+                    load-color="#ff9800"
+                    load-text="加载中..."
+                    >Loading</Button
+                >
+                <Button @click="loading2 = !loading2">改变Loading的值</Button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -87,6 +109,7 @@ export default {
     data() {
         return {
             loading: false,
+            loading2: true,
         }
     },
     methods: {

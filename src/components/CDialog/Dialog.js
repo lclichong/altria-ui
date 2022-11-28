@@ -130,7 +130,7 @@ export default {
                                 size="default"
                                 onClick={this.changeValue.bind(this, 'cancel')}
                                 loading={this.loading.cancel}
-                                loadingColor="inherit"
+                                load-color="inherit"
                                 load-type="circle"
                                 class="c-dialog__button c-dialog__button--cancel"
                             >
@@ -142,7 +142,7 @@ export default {
                                 size="default"
                                 onClick={this.changeValue.bind(this, 'confirm')}
                                 loading={this.loading.confirm}
-                                loadingColor="inherit"
+                                load-color="inherit"
                                 load-type="circle"
                                 class={['c-dialog__button', this.showCancelButton ? 'c-dialog__button--confirm' : '']}
                             >

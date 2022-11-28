@@ -1,6 +1,6 @@
 <template>
     <div class="c-button__loading">
-        <Loading :loadType="loadType" :color="loadingColor" />
+        <Loading :load-type="loadType" :color="loadColor" :load-text="loadText" />
     </div>
 </template>
 
@@ -11,9 +11,12 @@ export default {
         loadType: {
             type: String,
         },
-        loadingColor: {
+        loadColor: {
             type: String,
             default: 'var(--button-load-color)',
+        },
+        loadText: {
+            type: String,
         },
     },
 }

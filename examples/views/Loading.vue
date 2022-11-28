@@ -17,6 +17,9 @@
         <Loading color="#77DFD6" load-type="circle" />
         <p>渐变样式</p>
         <Loading :color="['blue', 'red']" />
+        <p>加载文案</p>
+        <Loading load-type="circle" load-text="加载中..." />
+        <Loading color="#9c27b0" load-type="circle" load-text="加载中..." />
     </div>
 </template>
 

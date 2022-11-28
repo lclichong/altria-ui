@@ -1,8 +1,13 @@
 <template>
-    <button @click="btnClick" :class="defalutClassName" :disabled="disabled">
+    <button @click="btnClick" :class="setButtonClasses" :style="{ background: color }" :disabled="disabled">
         <slot></slot>
         <template v-if="loading">
-            <ButtonLoading :type="type" :loadType="loadType" :loadingColor="loadingColor"></ButtonLoading>
+            <ButtonLoading
+                :type="type"
+                :load-type="loadType"
+                :load-color="loadColor"
+                :load-text="loadText"
+            ></ButtonLoading>
         </template>
     </button>
 </template>
@@ -32,16 +37,22 @@ export default {
             type: String,
             default: 'default',
         },
+        loadColor: {
+            type: String,
+        },
+        loadText: {
+            type: String,
+        },
         shadow: {
             type: Boolean,
             default: false,
         },
-        loadingColor: {
+        color: {
             type: String,
         },
     },
     computed: {
-        defalutClassName() {
+        setButtonClasses() {
             const bem = createBem('c-button')
             const result = bem(null, [
                 this.type,
