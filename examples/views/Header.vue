@@ -12,7 +12,19 @@
         <p>leftArrow rightArrow</p>
         <Header leftArrow rightArrow rightEvent rightText="右边" @on-click-right="rightClick" title="标题"></Header>
         <p>自定义样式</p>
-        <Header title="标题" height="46px"></Header>
+        <Header
+            @on-click-left="leftClick"
+            @on-click-right="rightClick"
+            leftEvent
+            rightEvent
+            leftArrow
+            leftText="返回"
+            rightArrow
+            rightText="右边"
+            id="header"
+            title="标题"
+            height="46px"
+        ></Header>
     </div>
 </template>
 
@@ -41,5 +53,12 @@ export default {
 <style lang="less" scoped>
 .c-container {
     height: 100%;
+
+    #header {
+        --header-background-color: #4caf50;
+        --header-title-color: #ffeb3b;
+        --header-left-color: #ffeb3b;
+        --header-right-color: #ffeb3b;
+    }
 }
 </style>

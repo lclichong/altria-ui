@@ -1,6 +1,9 @@
 :root {
     --header-background-color: var(--accents-6);
     --header-title-font-weight: var(--font-weight-blod);
+    --header-title-color: var(--accents-4);
+    --header-left-color: var(--accents-4);
+    --header-right-color: var(--accents-4);
 }
 
 .c-header {
@@ -9,7 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--accents-4);
     position: relative;
 
     &__left {
@@ -18,30 +20,30 @@
         top: 0px;
         bottom: 0px;
         margin: auto;
-        height: 20px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        color: var(--header-left-color);
 
-        &--arrow {
-            height: 11px;
-            display: inline-block;
+        &__icon {
             margin-left: 5vw;
+            align-items: center;
+            display: inline-flex;
         }
 
-        &--arrow::before {
+        &__icon::before {
             content: '';
-            position: absolute;
-            border-top: 1px solid var(--accents-4);
+            border-top: 1px solid var(--header-left-color);
             width: 10px;
             height: 10px;
-            -webkit-transform: rotate(60deg);
             transform: rotate(-44deg);
-            border-left: 1px solid var(--accents-4);
+            border-left: 1px solid var(--header-left-color);
         }
 
-        &--text {
-            margin-left: 14px;
+        &__text {
+            margin-left: 2px;
+            align-items: center;
+            display: inline-flex;
+            font-size: 15.55px;
         }
     }
 
@@ -51,13 +53,14 @@
         top: 0px;
         bottom: 0px;
         margin: auto;
-        height: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: var(--header-right-color);
 
-        &--text {
-            margin-right: 14px;
+        &__text {
+            margin-right: 4vw;
+            font-size: 15.5px;
         }
     }
 
@@ -73,5 +76,6 @@
         text-overflow: ellipsis;
         font-weight: var(--header-title-font-weight);
         font-size: 1.2rem;
+        color: var(--header-title-color);
     }
 }

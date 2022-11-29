@@ -1,11 +1,11 @@
 <template>
     <div class="c-header" :style="{ height: height }">
         <div v-if="leftArrow" @click="onClickLeft" class="c-header__left">
-            <div class="c-header__left--arrow"></div>
-            <span v-if="leftText" class="c-header__left--text">{{ leftText }}</span>
+            <div class="c-header__left__icon"></div>
+            <span v-if="leftText" class="c-header__left__text">{{ leftText }}</span>
         </div>
         <div v-if="rightArrow" @click="onClickRight" class="c-header__right">
-            <span v-if="rightText" class="c-header__right--text">{{ rightText }}</span>
+            <span v-if="rightText" class="c-header__right__text">{{ rightText }}</span>
         </div>
         <span class="c-header__title">{{ title }}</span>
     </div>
