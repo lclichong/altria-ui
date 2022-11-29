@@ -1,58 +1,77 @@
-@import '../styles/theme.less';
+:root {
+    --header-background-color: var(--accents-6);
+    --header-title-font-weight: var(--font-weight-blod);
+}
 
-.cs-header {
+.c-header {
     height: 40px;
-    background-color: @header-background-color;
+    background-color: var(--header-background-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: var(--accents-4);
     position: relative;
-}
 
-.cs-back-div {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    &__left {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-.cs-left-arrow {
-    height: 11px;
-    display: inline-block;
-    margin-left: 5vw;
-}
+        &--arrow {
+            height: 11px;
+            display: inline-block;
+            margin-left: 5vw;
+        }
 
-.cs-left-span {
-    margin-left: 14px;
-}
+        &--arrow::before {
+            content: '';
+            position: absolute;
+            border-top: 1px solid var(--accents-4);
+            width: 10px;
+            height: 10px;
+            -webkit-transform: rotate(60deg);
+            transform: rotate(-44deg);
+            border-left: 1px solid var(--accents-4);
+        }
 
-.cs-left-arrow::before {
-    content: '';
-    position: absolute;
-    border-top: 1px solid #fff;
-    width: 10px;
-    height: 10px;
-    -webkit-transform: rotate(60deg);
-    transform: rotate(-44deg);
-    border-left: 1px solid #fff;
-}
+        &--text {
+            margin-left: 14px;
+        }
+    }
 
-.cs-back-div:hover {
-    cursor: pointer;
-}
+    &__right {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-.cs-header-title {
-    max-width: 50%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: @header-title-font-size;
-    font-weight: @header-title-font-weight;
-    font-size: 1.2rem;
+        &--text {
+            margin-right: 14px;
+        }
+    }
+
+    &__left:hover,
+    &__right:hover {
+        cursor: pointer;
+    }
+
+    &__title {
+        max-width: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: var(--header-title-font-weight);
+        font-size: 1.2rem;
+    }
 }

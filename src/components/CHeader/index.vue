@@ -1,52 +1,63 @@
 <template>
-    <div class="cs-header" :style="{ height: height }">
-        <div @click="onClickBack" v-if="showBack" class="cs-back-div">
-            <div class="cs-left-arrow"></div>
-            <span class="cs-left-span" v-if="showBackText">{{ backText }}</span>
+    <div class="c-header" :style="{ height: height }">
+        <div v-if="leftArrow" @click="onClickLeft" class="c-header__left">
+            <div class="c-header__left--arrow"></div>
+            <span v-if="leftText" class="c-header__left--text">{{ leftText }}</span>
         </div>
-        <span class="cs-header-title">{{ title }}</span>
+        <div v-if="rightArrow" @click="onClickRight" class="c-header__right">
+            <span v-if="rightText" class="c-header__right--text">{{ rightText }}</span>
+        </div>
+        <span class="c-header__title">{{ title }}</span>
     </div>
 </template>
 
 <script>
 export default {
     name: 'Header',
-    mounted() {},
     props: {
         title: {
             type: String,
-            default: '',
         },
         height: {
             type: String,
-            default: '',
         },
-        backText: {
+        leftText: {
             type: String,
-            default: '返回',
         },
-        showBack: {
+        leftArrow: {
             type: Boolean,
             default: false,
         },
-        showBackText: {
+        leftEvent: {
             type: Boolean,
             default: false,
         },
-        preventGoBack: {
+        rightText: {
+            type: String,
+        },
+        rightArrow: {
+            type: Boolean,
+            default: false,
+        },
+        rightEvent: {
             type: Boolean,
             default: false,
         },
     },
-    data: function () {
+    data() {
         return {}
     },
     methods: {
-        onClickBack() {
-            if (this.preventGoBack) {
-                this.$emit('on-click-back')
+        onClickLeft() {
+            if (this.leftEvent) {
+                this.$emit('on-click-left')
             } else {
                 this.$router ? this.$router.back() : window.history.back()
+            }
+        },
+        onClickRight() {
+            if (this.rightEvent) {
+                this.$emit('on-click-right')
             }
         },
     },

@@ -9,7 +9,7 @@ export default {
     created() {},
     data() {
         return {}
-    }
+    },
 }
 </script>
 
@@ -39,5 +39,17 @@ body {
 
 .c-demo {
     padding: 5vw;
+}
+
+.c-mt-5vw {
+    margin-top: 5vw;
+}
+
+.c-mt-10vw {
+    margin-top: 10vw;
+}
+
+.c-mt-15vw {
+    margin-top: 15vw;
 }
 </style>

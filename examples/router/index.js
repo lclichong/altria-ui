@@ -8,6 +8,7 @@ const Loading = () => import('../views/Loading.vue')
 const Overlay = () => import('../views/Overlay.vue')
 const Dialog = () => import('../views/Dialog.vue')
 const Popup = () => import('../views/Popup.vue')
+const Header = () => import('../views/Header.vue')
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
         path: '/Popup',
         name: 'Popup',
         component: Popup,
+    },
+    {
+        path: '/Header',
+        name: 'Header',
+        component: Header,
     },
 ]
 
