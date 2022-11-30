@@ -1,8 +1,18 @@
 <template>
     <div class="c-container">
-        <Cell v-for="(l, key) in 3" :key="key">
+        <Cell>
             <template slot="title">
-                <img src="../assets/slidea.jpg" />
+                <cue-image width="80%" height="20vw" :src="image" fit="contain"></cue-image>
+            </template>
+            <template slot="value">
+                <p>热门推荐</p>
+                <p>热门推荐热门推荐热门推荐热门推荐热门推荐热门推荐</p>
+                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+            </template>
+        </Cell>
+        <Cell>
+            <template slot="title">
+                <cue-image width="80%" height="20vw" :src="image" fit="cover"></cue-image>
             </template>
             <template slot="value">
                 <p>热门推荐</p>
@@ -17,7 +27,9 @@
 <script>
 export default {
     data() {
-        return {}
+        return {
+            image: require('../assets/cat.jpg'),
+        }
     },
 }
 </script>

@@ -2,10 +2,10 @@
     <div :class="defalutClassName">
         <div v-if="title" class="c-cell__title">{{ title }}</div>
         <div v-if="value" class="c-cell__value">{{ value }}</div>
-        <div v-if="$slots.title" class="c-cell__title c-cell--slot__title">
+        <div v-if="$slots.title" class="c-cell__title">
             <slot name="title"></slot>
         </div>
-        <div v-if="$slots.value" class="c-cell__value c-cell--slot__value">
+        <div v-if="$slots.value" class="c-cell__value">
             <slot name="value"></slot>
         </div>
     </div>

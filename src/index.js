@@ -13,6 +13,7 @@ import Loading from './components/CLoading'
 import LoadingCircle from './components/CLoading/loading-circle.vue'
 import Overlay from './components/COverlay'
 import Popup from './components/CPopup'
+import Image from './components/CImage'
 import './components/index.less'
 import './icon/iconfont'
 
@@ -35,6 +36,7 @@ function install(Vue) {
         Overlay,
         Dialog,
         Popup,
+        Image,
     ]
     components.forEach(function(item) {
         if (item.install) {
