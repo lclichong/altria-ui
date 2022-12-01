@@ -1,5 +1,5 @@
 <template>
-    <div :class="defalutClassName">
+    <div :class="bem()">
         <div v-if="title" :class="bem('title')">{{ title }}</div>
         <div v-if="value" :class="bem('value')">{{ value }}</div>
         <div v-if="$slots.title" :class="bem('title')">
@@ -17,19 +17,10 @@ import { createName } from '../utils/create-name'
 
 export default {
     created() {
+        console.log(this.$slots)
         this.bem = createBem('alt-cell')
     },
     name: createName('cell'),
-    computed: {
-        defalutClassName() {
-            let className = this.bem()
-            let soltClassName = this.$slots['title'] || this.$slots['value'] ? this.bem('image') : ''
-            if (soltClassName) {
-                className = className + ' ' + soltClassName
-            }
-            return className
-        },
-    },
     props: {
         title: {
             defalut: '',
@@ -40,8 +31,8 @@ export default {
             type: String,
         },
         image: {
-            default: false,
             type: Boolean,
+            default: false,
         },
     },
 }

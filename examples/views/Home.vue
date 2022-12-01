@@ -6,9 +6,7 @@
                 <img :src="img.url" :key="key" />
             </alt-swipe-item>
         </alt-swipe>
-        <div class="center">
-            <Input @enter="enter" :value.sync="val" placeholder="搜索"></Input>
-        </div>
+        <alt-input class="home-input" clearable @enter="enter" :value.sync="val" placeholder="请输入"></alt-input>
         <alt-button style="margin-top: 5vw" @click="val = 456" type="success" size="small">修改input的值</alt-button>
         <alt-footer :footer-list="menus" @menuClick="menuClick"></alt-footer>
     </div>
@@ -120,12 +118,11 @@ export default {
 <style lang="less" scoped>
 .home {
     height: 100vh;
-}
-.swipe {
-    height: 43.98vw;
-}
-.center {
-    display: flex;
-    justify-content: center;
+    .swipe {
+        height: 43.98vw;
+    }
+    .home-input {
+        margin-top: 15px;
+    }
 }
 </style>
