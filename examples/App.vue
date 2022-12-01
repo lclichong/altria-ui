@@ -37,19 +37,19 @@ body {
     touch-action: pan-y;
 }
 
-.c-demo {
+.demo {
     padding: 5vw;
 }
 
-.c-mt-5vw {
+.mt-5vw {
     margin-top: 5vw;
 }
 
-.c-mt-10vw {
+.mt-10vw {
     margin-top: 10vw;
 }
 
-.c-mt-15vw {
+.mt-15vw {
     margin-top: 15vw;
 }
 </style>

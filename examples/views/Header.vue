@@ -1,18 +1,32 @@
 <template>
-    <div class="c-container">
+    <div class="container">
         <p>默认</p>
-        <Header title="标题"></Header>
+        <alt-header title="标题"></alt-header>
         <p>leftArrow</p>
-        <Header leftArrow title="标题"></Header>
+        <alt-header leftArrow title="标题"></alt-header>
         <p>leftText</p>
-        <Header leftArrow leftText="返回" title="标题"></Header>
+        <alt-header leftArrow leftText="返回" title="标题"></alt-header>
         <p>leftEvent</p>
-        <Header leftArrow leftEvent @on-click-left="leftClick" title="标题"></Header>
-        <Header class="c-mt-5vw" leftArrow leftEvent leftText="返回" @on-click-left="leftClick" title="标题"></Header>
+        <alt-header leftArrow leftEvent @on-click-left="leftClick" title="标题"></alt-header>
+        <alt-header
+            class="mt-5vw"
+            leftArrow
+            leftEvent
+            leftText="返回"
+            @on-click-left="leftClick"
+            title="标题"
+        ></alt-header>
         <p>leftArrow rightArrow</p>
-        <Header leftArrow rightArrow rightEvent rightText="右边" @on-click-right="rightClick" title="标题"></Header>
+        <alt-header
+            leftArrow
+            rightArrow
+            rightEvent
+            rightText="右边"
+            @on-click-right="rightClick"
+            title="标题"
+        ></alt-header>
         <p>自定义样式</p>
-        <Header
+        <alt-header
             @on-click-left="leftClick"
             @on-click-right="rightClick"
             leftEvent
@@ -24,7 +38,7 @@
             id="header"
             title="标题"
             height="46px"
-        ></Header>
+        ></alt-header>
     </div>
 </template>
 
@@ -51,7 +65,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.c-container {
+.container {
     height: 100%;
 
     #header {

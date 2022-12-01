@@ -1,21 +1,21 @@
 <template>
-    <div class="c-container">
-        <DropDownMenu>
-            <DropDownMenuItem v-model="value1" :options="options1" title="名字"></DropDownMenuItem>
-            <DropDownMenuItem v-model="value2" :options="options2" title="兴趣爱好"></DropDownMenuItem>
-            <DropDownMenuItem v-model="value3" :options="options3" title="技能"></DropDownMenuItem>
-            <DropDownMenuItem v-model="value4" :options="options4" title="性别"></DropDownMenuItem>
-        </DropDownMenu>
-        <Cell v-for="l,key in 10" :title="'title'+key" :value="'value'+key" :key="key"></Cell>
-        <DropDownMenu>
-            <DropDownMenuItem v-model="value5" :options="options5" title="区域"></DropDownMenuItem>
-            <DropDownMenuItem v-model="value6" :options="options6" title="天气"></DropDownMenuItem>
-        </DropDownMenu>
-        <div class="c-button__wrapper">
-            <Button type="success" size="small" class="c-btn" @click="getValues">获取值</Button>
+    <div class="container">
+        <alt-dropdown-menu>
+            <alt-dropdown-item v-model="value1" :options="options1" title="名字"></alt-dropdown-item>
+            <alt-dropdown-item v-model="value2" :options="options2" title="兴趣爱好"></alt-dropdown-item>
+            <alt-dropdown-item v-model="value3" :options="options3" title="技能"></alt-dropdown-item>
+            <alt-dropdown-item v-model="value4" :options="options4" title="性别"></alt-dropdown-item>
+        </alt-dropdown-menu>
+        <alt-cell v-for="(l, key) in 10" :title="'title' + key" :value="'value' + key" :key="key"></alt-cell>
+        <alt-dropdown-menu>
+            <alt-dropdown-item v-model="value5" :options="options5" title="区域"></alt-dropdown-item>
+            <alt-dropdown-item v-model="value6" :options="options6" title="天气"></alt-dropdown-item>
+        </alt-dropdown-menu>
+        <div class="button__wrapper">
+            <alt-button type="success" size="small" class="btn" @click="getValues">获取值</alt-button>
         </div>
         <div>
-            <Button type="success" size="small" class="c-btn" @click="getOptions">获取options</Button>
+            <alt-button type="success" size="small" class="btn" @click="getOptions">获取options</alt-button>
         </div>
     </div>
 </template>
@@ -26,8 +26,8 @@ export default {
         return {
             value1: [
                 {
-                    value: '李四'
-                }
+                    value: '李四',
+                },
             ],
             value2: [],
             value3: [],
@@ -37,79 +37,79 @@ export default {
             options1: [
                 {
                     value: '张三',
-                    text: '张三'
+                    text: '张三',
                 },
                 {
                     value: '李四',
-                    text: '李四'
+                    text: '李四',
                 },
                 {
                     value: '王五',
-                    text: '王五'
-                }
+                    text: '王五',
+                },
             ],
             options2: [
                 {
                     value: '篮球',
-                    text: '篮球'
+                    text: '篮球',
                 },
                 {
                     value: '足球',
-                    text: '足球'
+                    text: '足球',
                 },
                 {
                     value: '台球',
-                    text: '台球'
-                }
+                    text: '台球',
+                },
             ],
             options3: [
                 {
                     value: 'Vue',
-                    text: 'Vue'
+                    text: 'Vue',
                 },
                 {
                     value: 'React',
-                    text: 'React'
+                    text: 'React',
                 },
                 {
                     value: 'CSS',
-                    text: 'CSS'
+                    text: 'CSS',
                 },
                 {
                     value: 'JavaScript',
-                    text: 'JavaScript'
-                }
+                    text: 'JavaScript',
+                },
             ],
             options4: [
                 {
                     value: '男',
-                    text: '男'
+                    text: '男',
                 },
                 {
                     value: '女',
-                    text: '女'
-                }
+                    text: '女',
+                },
             ],
             options5: [
                 {
                     value: '徐汇区',
-                    text: '徐汇区'
+                    text: '徐汇区',
                 },
                 {
                     value: '松江区',
-                    text: '松江区'
-                }
+                    text: '松江区',
+                },
             ],
             options6: [
                 {
                     value: '阴天',
-                    text: '阴天'
+                    text: '阴天',
                 },
                 {
                     value: '晴天',
-                    text: '晴天'
-                }
-            ]
+                    text: '晴天',
+                },
+            ],
         }
     },
     methods: {
@@ -128,23 +128,23 @@ export default {
             console.log('value4', this.value4)
             console.log('value5', this.value5)
             console.log('value6', this.value6)
-        }
-    }
+        },
+    },
 }
 </script>
 
 <style lang="less" scoped>
-.c-container {
+.container {
     height: 100vh;
-    .c-button__wrapper {
+    .button__wrapper {
         margin-top: 100px;
     }
-    .c-btn {
+    .btn {
         width: 100px;
         margin-top: 20px;
     }
 
-    .c-mt-200 {
+    .mt-200 {
         margin-top: 200px;
     }
 }

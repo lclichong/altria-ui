@@ -1,65 +1,67 @@
 <template>
-    <div class="c-container">
-        <div class="c-demo">
-            <Dialog confirm-button-text="提交" title="提示" v-model="show">显示Dialog</Dialog>
-            <Button @click="showDialog" type="success">显示Dialog</Button>
+    <div class="container">
+        <div class="demo">
+            <alt-dialog confirm-button-text="提交" title="提示" v-model="show">显示Dialog</alt-dialog>
+            <alt-button @click="showDialog" type="success">显示Dialog</alt-button>
         </div>
-        <div class="c-demo">
-            <Dialog v-model="show2" :overlay="false" title="提示" message="去掉Overlay"></Dialog>
-            <Button @click="showDialog2" type="success">去掉Overlay</Button>
+        <div class="demo">
+            <alt-dialog v-model="show2" :overlay="false" title="提示" message="去掉Overlay"></alt-dialog>
+            <alt-button @click="showDialog2" type="success">去掉Overlay</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert" type="success">this.$Dialog.alert的方式显示</Button>
+        <div class="demo">
+            <alt-button @click="showDialogAlert" type="success">this.$Dialog.alert的方式显示</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="noTitle" type="success">无标题</Button>
+        <div class="demo">
+            <alt-button @click="noTitle" type="success">无标题</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert2" type="success">this.$Dialog.alert的方式显示，去掉Overlay</Button>
+        <div class="demo">
+            <alt-button @click="showDialogAlert2" type="success">this.$Dialog.alert的方式显示，去掉Overlay</alt-button>
         </div>
-        <div class="c-demo">
-            <Dialog title="提示" v-model="show3" :time="3000">三秒后隐藏Dialog</Dialog>
-            <Button @click="show3 = true" type="success">三秒后隐藏Dialog</Button>
+        <div class="demo">
+            <alt-dialog title="提示" v-model="show3" :time="3000">三秒后隐藏Dialog</alt-dialog>
+            <alt-button @click="show3 = true" type="success">三秒后隐藏Dialog</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert3" type="success">this.$Dialog.alert的方式显示，一秒后隐藏Dialog</Button>
-        </div>
-        <div class="c-demo">
-            <Dialog @confirm="confrim" title="提示" v-model="show4" :beforeClose="beforeClose"
-                >Dialog.alert beforeClose 一秒后隐藏</Dialog
+        <div class="demo">
+            <alt-button @click="showDialogAlert3" type="success"
+                >this.$Dialog.alert的方式显示，一秒后隐藏Dialog</alt-button
             >
-            <Button @click="show4 = true" type="success">Dialog.alert beforeClose 一秒后隐藏</Button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert4" type="success">this.$Dialog.alert beforeClose 两秒后隐藏</Button>
-        </div>
-        <div class="c-demo">
-            <Dialog :show-confirm-button="false" title="提示" v-model="show5">隐藏确定按钮</Dialog>
-            <Button @click="show5 = true" type="success">隐藏确定按钮</Button>
-        </div>
-        <div class="c-demo">
-            <Dialog show-cancel-button @cancel="cancel" @confirm="confirm2" title="提示" v-model="show6"
-                >Dialog.confirm</Dialog
+        <div class="demo">
+            <alt-dialog @confirm="confrim" title="提示" v-model="show4" :beforeClose="beforeClose"
+                >Dialog.alert beforeClose 一秒后隐藏</alt-dialog
             >
-            <Button @click="show6 = true" type="success">Dialog.confirm</Button>
+            <alt-button @click="show4 = true" type="success">Dialog.alert beforeClose 一秒后隐藏</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert5" type="success">this.$Dialog.confirm</Button>
+        <div class="demo">
+            <alt-button @click="showDialogAlert4" type="success">this.$Dialog.alert beforeClose 两秒后隐藏</alt-button>
         </div>
-        <div class="c-demo">
-            <Dialog
+        <div class="demo">
+            <alt-dialog :show-confirm-button="false" title="提示" v-model="show5">隐藏确定按钮</alt-dialog>
+            <alt-button @click="show5 = true" type="success">隐藏确定按钮</alt-button>
+        </div>
+        <div class="demo">
+            <alt-dialog show-cancel-button @cancel="cancel" @confirm="confirm2" title="提示" v-model="show6"
+                >Dialog.confirm</alt-dialog
+            >
+            <alt-button @click="show6 = true" type="success">Dialog.confirm</alt-button>
+        </div>
+        <div class="demo">
+            <alt-button @click="showDialogAlert5" type="success">this.$Dialog.confirm</alt-button>
+        </div>
+        <div class="demo">
+            <alt-dialog
                 show-cancel-button
                 @cancel="cancel2"
                 @confirm="confirm3"
                 title="提示"
                 v-model="show7"
                 :beforeClose="beforeClose2"
-                >Dialog.confirm beforeClose</Dialog
+                >Dialog.confirm beforeClose</alt-dialog
             >
-            <Button @click="show7 = true" type="success">Dialog.confirm beforeClose</Button>
+            <alt-button @click="show7 = true" type="success">Dialog.confirm beforeClose</alt-button>
         </div>
-        <div class="c-demo">
-            <Button @click="showDialogAlert6" type="success">this.$Dialog.confirm beforeClose</Button>
+        <div class="demo">
+            <alt-button @click="showDialogAlert6" type="success">this.$Dialog.confirm beforeClose</alt-button>
         </div>
     </div>
 </template>
@@ -195,10 +197,10 @@ export default {
         beforeClose2(action, done) {
             console.log('action', action)
             if (action === 'confirm') {
-                console.log('两秒后隐藏')
-                setTimeout(() => {
-                    done()
-                }, 2000)
+                // console.log('两秒后隐藏')
+                // setTimeout(() => {
+                //     done()
+                // }, 2000)
             } else {
                 done()
             }
@@ -208,7 +210,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.c-container {
+.container {
     height: 100%;
     overflow-y: scroll;
 

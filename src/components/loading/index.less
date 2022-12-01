@@ -1,0 +1,144 @@
+:root {
+    --loading-default-color: var(--accents-7);
+    --loading-success-color: var(--success-default);
+    --loading-warning-color: var(--warning-default);
+    --loading-error-color: var(--error-default);
+    // default load type
+    --loading-default-mini-size: 4px;
+    --loading-default-small-size: 5px;
+    --loading-default-medium-size: 6px;
+    --loading-default-large-size: 7px;
+    // circle
+    --loading-circle-mini-size: 20px;
+    --loading-circle-small-size: 25px;
+    --loading-circle-medium-size: 30px;
+    --loading-circle-large-size: 35px;
+}
+
+@keyframes loading-blink {
+    0% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes loading-circle {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -40;
+    }
+
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -120;
+    }
+}
+
+.alt-loading {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    i {
+        &.default {
+            background-color: var(--loading-default-color);
+        }
+        &.success {
+            background-color: var(--loading-success-color);
+        }
+        &.warning {
+            background-color: var(--loading-warning-color);
+        }
+        &.error {
+            background-color: var(--loading-error-color);
+        }
+    }
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        user-select: none;
+    }
+
+    &__default {
+        width: var(--loading-default-medium-size);
+        height: var(--loading-default-medium-size);
+        border-radius: 50%;
+        margin: 0 1px;
+        display: inline-block;
+        animation: loading-blink 1.4s infinite both;
+
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        &--mini {
+            width: var(--loading-default-mini-size);
+            height: var(--loading-default-mini-size);
+        }
+
+        &--small {
+            width: var(--loading-default-small-size);
+            height: var(--loading-default-small-size);
+        }
+
+        &--large {
+            width: var(--loading-default-large-size);
+            height: var(--loading-default-large-size);
+        }
+    }
+
+    &__circle {
+        display: block;
+        width: var(--loading-circle-medium-size);
+        height: var(--loading-circle-medium-size);
+
+        &--default {
+            color: var(--loading-default-color);
+        }
+
+        &--success {
+            color: var(--loading-success-color);
+        }
+
+        &--warning {
+            color: var(--loading-warning-color);
+        }
+
+        &--error {
+            color: var(--loading-error-color);
+        }
+
+        circle {
+            animation: loading-circle 1.5s ease-in-out infinite;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+    }
+
+    &__text {
+        margin-left: 5px;
+        font-size: 0.9rem;
+        color: var(--accents-7);
+    }
+}

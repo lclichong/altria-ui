@@ -1,29 +1,29 @@
 <template>
-    <div class="c-container">
-        <div class="c-demo">
+    <div class="container">
+        <div class="demo">
             <p>默认</p>
-            <cue-image @click="imgClick" width="100px" height="100px" :src="image"></cue-image>
+            <alt-image @click="imgClick" width="100px" height="100px" :src="image"></alt-image>
         </div>
-        <div class="c-demo">
+        <div class="demo">
             <p>contain</p>
-            <cue-image width="50vw" height="20vw" :src="image" fit="contain"></cue-image>
+            <alt-image width="50vw" height="20vw" :src="image" fit="contain"></alt-image>
             <p>cover</p>
-            <cue-image width="50vw" height="20vw" :src="image" fit="cover"></cue-image>
+            <alt-image width="50vw" height="20vw" :src="image" fit="cover"></alt-image>
             <p>fill</p>
-            <cue-image width="50vw" height="27vw" :src="image" fit="fill"></cue-image>
+            <alt-image width="50vw" height="27vw" :src="image" fit="fill"></alt-image>
         </div>
         <p>圆形图片</p>
-        <div class="c-demo">
-            <cue-image @click="imgClick" round width="100px" height="100px" :src="image"></cue-image>
+        <div class="demo">
+            <alt-image @click="imgClick" round width="100px" height="100px" :src="image"></alt-image>
         </div>
-        <div class="c-demo">
-            <cue-image round width="50vw" height="20vw" :src="image" fit="contain"></cue-image>
+        <div class="demo">
+            <alt-image round width="50vw" height="20vw" :src="image" fit="contain"></alt-image>
         </div>
-        <div class="c-demo">
-            <cue-image round width="50vw" height="20vw" :src="image" fit="cover"></cue-image>
+        <div class="demo">
+            <alt-image round width="50vw" height="20vw" :src="image" fit="cover"></alt-image>
         </div>
-        <div class="c-demo">
-            <cue-image round width="50vw" height="27vw" :src="image" fit="fill"></cue-image>
+        <div class="demo">
+            <alt-image round width="50vw" height="27vw" :src="image" fit="fill"></alt-image>
         </div>
     </div>
 </template>
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.c-container {
+.container {
     height: 100%;
 }
 </style>

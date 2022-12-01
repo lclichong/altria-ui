@@ -1,28 +1,29 @@
 <template>
-    <div class="c-container">
-        <Overlay>
+    <div class="container">
+        <alt-overlay visible>
             <div class="content">内容内容内容内容内容内容内容</div>
-        </Overlay>
+        </alt-overlay>
     </div>
 </template>
 
-<script>
-export default {
-    components: {},
-    data() {
-        return {}
-    },
-    methods: {}
-}
-</script>
+
 
 <style lang="less" scoped>
-.c-container {
+.container {
     height: 100%;
     .content {
         background-color: #fff;
-        width: 20vw;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+        width: 80%;
         height: 20vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 </style>

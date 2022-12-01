@@ -1,104 +1,106 @@
 <template>
-    <div class="c-container">
-        <div class="c-demo">
+    <div class="alt-container">
+        <div class="demo">
             <p>默认</p>
-            <Button>Button</Button>
+            <alt-button>button</alt-button>
         </div>
 
-        <div class="c-demo">
+        <div class="demo">
             <p>类型</p>
             <div>
-                <Button type="default">default</Button>
+                <alt-button type="default">default</alt-button>
             </div>
             <div>
-                <Button type="success">success</Button>
+                <alt-button type="success">success</alt-button>
             </div>
             <div>
-                <Button type="warning">warning</Button>
+                <alt-button type="warning">warning</alt-button>
             </div>
             <div>
-                <Button type="error">error</Button>
+                <alt-button type="error">error</alt-button>
             </div>
         </div>
-        <div class="c-demo">
+        <div class="demo">
             <p>大小</p>
             <div>
-                <Button type="success" size="mini">mini</Button>
+                <alt-button type="success" size="mini">mini</alt-button>
             </div>
             <div>
-                <Button type="success" size="small">small</Button>
+                <alt-button type="success" size="small">small</alt-button>
             </div>
             <div>
-                <Button type="success" size="medium">medium</Button>
+                <alt-button type="success" size="medium">medium</alt-button>
             </div>
             <div>
-                <Button type="success" size="large">large</Button>
+                <alt-button type="success" size="large">large</alt-button>
             </div>
         </div>
 
-        <div class="c-demo">
+        <div class="demo">
             <p>禁用</p>
-            <Button size="small" disabled="disabled">Button</Button>
+            <alt-button size="small" disabled="disabled">button</alt-button>
         </div>
 
-        <div class="c-demo">
+        <div class="demo">
             <p>加载中</p>
             <div>
-                <Button loading>Button</Button>
+                <alt-button loading>button</alt-button>
             </div>
             <div>
-                <Button type="success" loading>Button</Button>
+                <alt-button type="success" loading>button</alt-button>
             </div>
             <div>
-                <Button type="error" loading>Button</Button>
+                <alt-button type="error" loading>button</alt-button>
             </div>
             <div>
-                <Button type="warning" loading>Button</Button>
+                <alt-button type="warning" loading>button</alt-button>
             </div>
             <div>
-                <Button loading load-type="circle">Button</Button>
+                <alt-button loading load-type="circle">button</alt-button>
             </div>
             <div>
-                <Button type="success" loading load-type="circle">Button</Button>
+                <alt-button type="success" loading load-type="circle">button</alt-button>
             </div>
             <div>
-                <Button type="warning" loading load-type="circle" load-text="加载中...">Button</Button>
+                <alt-button type="warning" loading load-type="circle" load-text="加载中...">button</alt-button>
             </div>
             <div>
-                <Button type="error" loading load-type="circle" load-text="加载中...">Button</Button>
+                <alt-button type="error" loading load-type="circle" load-text="加载中...">button</alt-button>
             </div>
-            <p>点击button，三秒结束loading状态</p>
+            <p>点击alt-button，三秒结束loading状态</p>
             <div>
-                <Button @click="btnTap" type="success" :loading="loading" load-type="circle">Button</Button>
+                <alt-button @click="btnTap" type="success" :loading="loading" load-type="circle">button</alt-button>
             </div>
         </div>
 
-        <div class="c-demo">
+        <div class="demo">
             <p>阴影</p>
             <div>
-                <Button type="default" shadow>Button</Button>
+                <alt-button type="default" shadow>button</alt-button>
             </div>
         </div>
 
-        <div class="c-demo">
+        <div class="demo">
             <p>自定义颜色</p>
             <div>
-                <Button type="success" color="#7232dd">Button</Button>
+                <alt-button type="success" color="#7232dd">button</alt-button>
             </div>
             <div>
-                <Button type="success" color="linear-gradient(to right, rgb(255, 96, 52), #9c27b0)">Button</Button>
+                <alt-button type="success" color="linear-gradient(to right, rgb(255, 96, 52), #9c27b0)"
+                    >button</alt-button
+                >
             </div>
             <div>
-                <Button
+                <alt-button
                     type="success"
                     color="#4caf50"
                     :loading="loading2"
                     load-type="circle"
                     load-color="#ff9800"
                     load-text="加载中..."
-                    >Loading</Button
+                    >Loading</alt-button
                 >
-                <Button @click="loading2 = !loading2">改变Loading的值</Button>
+                <alt-button @click="loading2 = !loading2">改变Loading的值</alt-button>
             </div>
         </div>
     </div>
@@ -128,11 +130,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.c-container {
+.alt-container {
     height: 100%;
     overflow-y: scroll;
 
-    button {
+    .alt-button {
         margin-top: 10px;
     }
 }

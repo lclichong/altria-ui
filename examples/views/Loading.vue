@@ -1,25 +1,25 @@
 <template>
-    <div class="c-container">
+    <div class="container">
         <p>默认</p>
-        <Loading></Loading>
+        <alt-loading></alt-loading>
         <p>类型</p>
-        <Loading type="default"></Loading>
-        <Loading type="success"></Loading>
-        <Loading type="warning"></Loading>
-        <Loading type="error"></Loading>
+        <alt-loading type="default"></alt-loading>
+        <alt-loading type="success"></alt-loading>
+        <alt-loading type="warning"></alt-loading>
+        <alt-loading type="error"></alt-loading>
         <p>尺寸</p>
-        <Loading type="default" size="mini"></Loading>
-        <Loading type="success" size="small"></Loading>
-        <Loading type="warning" size="medium"></Loading>
-        <Loading type="error" size="large"></Loading>
+        <alt-loading type="default" size="mini"></alt-loading>
+        <alt-loading type="success" size="small"></alt-loading>
+        <alt-loading type="warning" size="medium"></alt-loading>
+        <alt-loading type="error" size="large"></alt-loading>
         <p>样式</p>
-        <Loading color="#77DFD6" load-type="default" />
-        <Loading color="#77DFD6" load-type="circle" />
+        <alt-loading color="#77DFD6" load-type="default" />
+        <alt-loading color="#77DFD6" load-type="circle" />
         <p>渐变样式</p>
-        <Loading :color="['blue', 'red']" />
+        <alt-loading :color="['blue', 'red']" />
         <p>加载文案</p>
-        <Loading load-type="circle" load-text="加载中..." />
-        <Loading color="#9c27b0" load-type="circle" load-text="加载中..." />
+        <alt-loading load-type="circle" load-text="加载中..." />
+        <alt-loading color="#9c27b0" load-type="circle" load-text="加载中..." />
     </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.c-loading-container {
-    height: 0px;
+.container {
+    height: 100%;
 }
 </style>
