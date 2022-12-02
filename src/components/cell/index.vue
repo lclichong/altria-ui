@@ -17,7 +17,6 @@ import { createName } from '../utils/create-name'
 
 export default {
     created() {
-        console.log(this.$slots)
         this.bem = createBem('alt-cell')
     },
     name: createName('cell'),

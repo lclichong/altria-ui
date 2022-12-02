@@ -2,14 +2,17 @@
     <alt-cell>
         {{ $slots.label }}
         <template v-if="label" slot="title">
-            <div :class="bem('label')">{{ label }}</div>
+            <div :class="bem('label', { disabled: disabled })">{{ label }}</div>
         </template>
         <template slot="value">
             <div :class="bem()">
                 <input
+                    :readonly="readonly"
+                    :disabled="disabled"
+                    :type="setType"
                     ref="altInput"
                     :class="bem('input')"
-                    @input="$emit('update:value', $event.target.value)"
+                    @input="input"
                     v-model="val"
                     :placeholder="placeholder"
                     @keyup.enter="query"
@@ -31,13 +34,19 @@ export default {
     created() {
         this.bem = createBem('alt-input')
     },
+    computed: {
+        setType() {
+            return this.type !== 'digit' ? this.type : null
+        },
+    },
     props: {
+        value: {
+            type: [Number, String],
+            default: '',
+        },
         placeholder: {
             type: String,
             default: '请输入',
-        },
-        value: {
-            default: '',
         },
         clearable: {
             type: Boolean,
@@ -46,13 +55,25 @@ export default {
         label: {
             type: String,
         },
+        type: {
+            type: String,
+            default: 'text',
+        },
+        disabled: {
+            type: Boolean,
+            default: null,
+        },
+        readonly: {
+            type: Boolean,
+            default: null,
+        },
     },
     watch: {
         value(newVal) {
             this.val = newVal
         },
     },
-    data: function () {
+    data() {
         return {
             val: this.value,
         }
@@ -65,6 +86,12 @@ export default {
         },
         query() {
             this.$emit('enter', this.val)
+        },
+        input() {
+            if (this.type === 'digit') {
+                this.val = this.val.replace(/^(0+)|[^\d]+/g, '')
+            }
+            this.$emit('input', this.val)
         },
     },
 }

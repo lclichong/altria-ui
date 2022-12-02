@@ -2,7 +2,7 @@
 
 :root {
     --input-border-color: var(--accents-1);
-    --input-color: var(--accents-2);
+    --input-color: var(--accents-8);
     --input-placeholder-color: var(--accents-2);
     --input-icon-bg-bolor: var(--accents-2);
     --input-height: 24px;
@@ -49,10 +49,17 @@
     }
 
     &__label {
-        width: 10vw;
+        width: 18vw;
         color: var(--input-label-color);
         text-align: left;
         padding-left: 2vw;
+        &--disabled {
+            color: var(--input-placeholder-color);
+        }
+    }
+
+    :disabled {
+        color: var(--input-placeholder-color);
     }
 
     input::-webkit-input-placeholder,
