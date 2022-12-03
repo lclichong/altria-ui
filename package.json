@@ -1,9 +1,9 @@
 {
-    "name": "lc-best-ui",
-    "version": "0.3.3",
+    "name": "altria-ui",
+    "version": "0.1.0",
     "private": false,
     "main": "dist/lc-best-ui.common.js",
-    "author": "lclichong",
+    "author": "LcLichong",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",

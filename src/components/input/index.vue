@@ -1,8 +1,8 @@
 <template>
-    <alt-cell>
+    <alt-cell :class="bem('cell')">
         {{ $slots.label }}
         <template v-if="label" slot="title">
-            <div :class="bem('label', { disabled: disabled })">{{ label }}</div>
+            <label :class="bem('label', { disabled: disabled })">{{ label }}</label>
         </template>
         <template slot="value">
             <div :class="bem()">
@@ -17,10 +17,13 @@
                     :placeholder="placeholder"
                     @keyup.enter="query"
                 />
-                <svg v-if="clearable" @click="clear" :class="bem('input--clear')" aria-hidden="true">
-                    <use xlink:href="#icon-shanchu"></use>
-                </svg>
+                <div v-if="clearable" @click="clear" :class="bem('input--clear')">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#icon-shanchu" />
+                    </svg>
+                </div>
             </div>
+            <div v-if="error" class="alt-input--error">{{errorText}}</div>
         </template>
     </alt-cell>
 </template>
@@ -37,51 +40,64 @@ export default {
     computed: {
         setType() {
             return this.type !== 'digit' ? this.type : null
-        },
+        }
     },
     props: {
         value: {
             type: [Number, String],
-            default: '',
+            default: ''
         },
         placeholder: {
             type: String,
-            default: '请输入',
+            default: '请输入'
         },
         clearable: {
             type: Boolean,
-            default: false,
+            default: false
         },
         label: {
-            type: String,
+            type: String
         },
         type: {
             type: String,
-            default: 'text',
+            default: 'text'
         },
         disabled: {
             type: Boolean,
-            default: null,
+            default: null
         },
         readonly: {
             type: Boolean,
-            default: null,
+            default: null
         },
+        validate: {
+            type: Object
+        }
     },
     watch: {
         value(newVal) {
             this.val = newVal
+            this.vali()
         },
+        validate: {
+            handler(newVal) {
+                if (newVal) {
+                    this.vali()
+                }
+            },
+            immediate: true
+        }
     },
     data() {
         return {
             val: this.value,
+            error: false,
+            errorText: ''
         }
     },
     methods: {
         clear() {
-            this.val = ''
-            this.$emit('update:value', '')
+            this.$emit('input', '')
             this.$refs.altInput.focus()
         },
         query() {
@@ -93,7 +109,25 @@ export default {
             }
             this.$emit('input', this.val)
         },
-    },
+        vali() {
+            if (!this.validate) {
+                return
+            }
+            if (this.validate.noEmpty != undefined && this.validate.noEmpty && !this.value) {
+                this.errorText = this.validate.errorText
+                this.error = true
+            } else if (this.validate.reg) {
+                if (!this.validate.reg.val.test(this.value)) {
+                    this.errorText = this.validate.reg.errorText
+                    this.error = true
+                } else {
+                    this.error = false
+                }
+            } else {
+                this.error = false
+            }
+        }
+    }
 }
 </script>
 

@@ -1,6 +1,8 @@
 :root {
     --cell-title-color: var(--accents-3);
     --cell-value-color: var(--accents-2);
+    --cell-font-size: var(--font-size-md);
+    --cell-line-height: 24px;
 }
 
 .alt-cell {
@@ -10,6 +12,8 @@
     background-color: var(--accents-4);
     padding: 3vw 4vw;
     align-items: center;
+    line-height: var(--cell-line-height);
+    font-size: var(--cell-font-size);
 
     &__title {
         text-align: left;
@@ -30,7 +34,6 @@
         text-align: left;
         margin-block-start: 0px;
         margin-block-end: 0px;
-        line-height: 25px;
     }
 
     &__image {
