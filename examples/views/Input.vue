@@ -14,6 +14,14 @@
         <p>错误提示</p>
         <alt-input label="用户名" :validate="validate" v-model="username"></alt-input>
         <alt-input label="手机号" :validate="validate2" v-model="phone"></alt-input>
+        <p>按钮插槽</p>
+        <alt-input clearable label="短信验证码" v-model="sms">
+            <template #button>
+                <alt-button size="mini" type="success">获取短信验证码</alt-button>
+            </template>
+        </alt-input>
+        <p>textarea</p>
+        <alt-input label="留言" rows="3" placeholder="请输入留言" type="textarea" v-model="message"></alt-input>
         <div class="demo">
             <alt-button @click="getVal" type="success">获取值</alt-button>
         </div>
@@ -36,16 +44,18 @@ export default {
             phone: '',
             validate: {
                 noEmpty: true,
-                errorText: '用户名不能为空！'
+                errorText: '用户名不能为空！',
             },
             validate2: {
                 noEmpty: true,
                 errorText: '手机号不能为空！',
                 reg: {
                     val: /^1[3-9]{1}[0-9]{9}$/,
-                    errorText: '手机号格式不正确！'
-                }
-            }
+                    errorText: '手机号格式不正确！',
+                },
+            },
+            sms: '',
+            message: '',
         }
     },
     methods: {
@@ -56,8 +66,9 @@ export default {
             console.log('num', this.num)
             console.log('pwd', this.pwd)
             console.log('username', this.username)
-        }
-    }
+            console.log('message', this.message)
+        },
+    },
 }
 </script>
 

@@ -2,7 +2,7 @@
     --input-border-color: var(--accents-1);
     --input-color: var(--accents-8);
     --input-placeholder-color: var(--accents-2);
-    --input-icon-bg-bolor: var(--accents-2);
+    --input-icon-bg-bolor: var(--accents-9);
     --input-height: 24px;
     --input-label-color: var(--accents-8);
     --input-error-color: var(--error-default);
@@ -13,14 +13,25 @@
     position: relative;
     font-size: var(--input-font-size);
     height: var(--input-height);
+    align-items: center;
+    display: flex;
+
+    button {
+        flex: 1;
+    }
 
     &__cell {
+        align-items: normal;
         .alt-cell__title {
             flex: none;
-            width: 18vw;
+            width: 20.5vw;
             color: var(--input-label-color);
-            padding-left: 2vw;
         }
+    }
+
+    &__wrapper {
+        position: relative;
+        flex: 2;
     }
 
     &__input {
@@ -94,5 +105,22 @@
     input:-ms-input-placeholder,
     textarea:-ms-input-placeholder {
         color: var(--input-placeholder-color);
+    }
+}
+
+.alt-textarea__wrapper {
+    .alt-textarea {
+        width: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        box-sizing: border-box;
+        display: block;
+        line-height: inherit;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        font-size: var(--input-font-size);
+        color: var(--input-color);
     }
 }
