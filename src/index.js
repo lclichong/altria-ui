@@ -1,6 +1,6 @@
 import Button from './components/button'
 import Footer from './components/footer/index.js'
-import Swipe from './components/swipe'
+import Swipe from './components/swipe/index.js'
 import SwipeItem from './components/swipeItem'
 import Header from './components/header'
 import Dialog from './components/dialog/index.js'

@@ -40,7 +40,7 @@ export default {
             default: true,
         },
     },
-    data: function () {
+    data () {
         return {
             slideLength: 0,
             transitionSpeed: 0,
