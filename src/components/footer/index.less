@@ -1,4 +1,9 @@
-@import '../styles/theme.less';
+:root {
+    --footer-box-shadow: var(--accents-9);
+    --footer-bg-color: var(--accents-4);
+    --footer-menu-bg-color: var(--accents-9);
+    --footer-border-color: var(--accents-4);
+}
 
 .alt-footer {
     position: fixed;
@@ -8,8 +13,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    box-shadow: 0 2px 12px @footer-box-shadow;
-    background-color: @footer-background-color;
+    box-shadow: 0 2px 12px var(--footer-box-shadow);
+    background-color: var(--footer-bg-color);
 
     .alt-footer-div {
         position: relative;
@@ -17,7 +22,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: @footer-background-color;
+        background-color: var(--footer-bg-color);
 
         .alt-footer-menu {
             position: absolute;
@@ -25,7 +30,6 @@
             width: 100%;
             visibility: hidden;
             opacity: 0;
-            transition: transform 0.3s, -webkit-transform 0.3s;
             transition-duration: 0.2s;
             z-index: -1;
 
@@ -34,8 +38,8 @@
                 align-items: center;
                 justify-content: center;
                 height: 7vh;
-                background-color: @footer-menu-background-color;
-                border-bottom: 1px solid @footer-border-color;
+                background-color: var(--footer-menu-bg-color);
+                border-bottom: 1px solid var(--footer-border-color);
                 box-sizing: border-box;
             }
         }
@@ -55,7 +59,7 @@
         display: inline-block;
         width: 1px;
         height: 60%;
-        background-color: @footer-before-after-color;
+        background-color: var(--accents-2);
     }
 
     .alt-footer-overlay {

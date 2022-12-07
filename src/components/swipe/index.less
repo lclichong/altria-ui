@@ -1,4 +1,6 @@
-@import '../styles/theme.less';
+:root {
+    --swipe-indicator-color: #fff;
+}
 
 .alt-swipe {
     position: relative;
@@ -7,59 +9,38 @@
     -webkit-user-select: none;
     user-select: none;
     position: relative;
-}
 
-.alt-main-slide {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    height: 100%;
-}
-
-.alt-swipe__indicator {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 10px;
-    margin: auto;
-    height: 20px;
-    text-align: center;
-
-    i::after {
-        content: '';
-        background-color: #ebedf0;
-        width: 8px;
-        height: 8px;
-        border-radius: 5px;
-        display: inline-block;
-        opacity: 0.3;
-        transition: opacity 0.2s;
+    &__wrapper {
+        display: flex;
+        height: 100%;
     }
 
-    i:not(:last-child) {
-        margin-right: 5px;
+    &__indicators {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 10px;
+        margin: auto;
+        height: 20px;
+        text-align: center;
+        i::after {
+            content: '';
+            background-color: #ebedf0;
+            width: 8px;
+            height: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+        }
+
+        i:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        .alt-swipe__indicator--active::after {
+            background-color: var(--swipe-indicator-color);
+            opacity: 1;
+        }
     }
-
-    .i--active::after {
-        background-color: @swipe-slide-round-color;
-        opacity: 1;
-    }
-}
-
-.alt-idx {
-    position: fixed;
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    width: 50px;
-    left: 50px;
-    background: red;
-    top: 190px;
-}
-
-.alt-hide {
-    display: none;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    outline: none;
 }

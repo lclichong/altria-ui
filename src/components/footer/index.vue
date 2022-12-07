@@ -21,16 +21,8 @@
 <script>
 export default {
     name: 'Footer',
-    created () {
-        if (this.FooterList.length > 4) {
-            console.error('Supports up to four bottom navigations')
-            this.show = false
-        } else {
-            this.width = 100 / this.FooterList.length
-        }
-    },
-    mounted () {
-
+    created() {
+        this.width = 100 / this.FooterList.length
     },
     props: {
         FooterList: {
@@ -38,7 +30,7 @@ export default {
             default: () => [],
         },
     },
-    data () {
+    data() {
         return {
             idx: 0,
             width: 0,
@@ -46,10 +38,10 @@ export default {
         }
     },
     methods: {
-        showMenu (idx) {
+        showMenu(idx) {
             this.idx = idx === this.idx ? 0 : idx
         },
-        menuClick (e, m) {
+        menuClick(e, m) {
             e = window.event || e
             if (e.stopPropagation) {
                 e.stopPropagation() // IE下阻止事件冒泡

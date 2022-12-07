@@ -1,22 +1,10 @@
-/*
- * @Author: LcLichong
- * @Date: 2021-07-06 16:10:05
- * @Last Modified by: LcLichong
- * @Last Modified time: 2021-08-14 22:33:44
- */
-
-import { createName } from '../utils/create-name'
 import './index.less'
+import { createName } from '../utils/create-name'
 
 export default {
     name: createName('footer'),
     created() {
-        if (this.footerList.length > 4) {
-            console.error('Supports up to four bottom navigations')
-            this.show = false
-        } else {
-            this.width = 100 / this.footerList.length
-        }
+        this.width = 100 / this.footerList.length
         this.defaultHeight = document.documentElement.clientHeight
         window.onresize = () => {
             this.defaultHeight > document.documentElement.clientHeight ? (this.show = false) : (this.show = true)

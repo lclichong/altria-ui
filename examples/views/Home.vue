@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <alt-header title="首页" height="46px"></alt-header>
-        <alt-swipe class="swipe" :speed="speed" :loop="true">
+        <alt-swipe class="swipe" :speed="speed" loop>
             <alt-swipe-item v-for="(img, key) in images" @click.native="swipeClick(img)" :key="key">
                 <img :src="img.url" :key="key" />
             </alt-swipe-item>
