@@ -11,6 +11,7 @@ const Popup = () => import('../views/Popup.vue')
 const Header = () => import('../views/Header.vue')
 const Image = () => import('../views/Image.vue')
 const Input = () => import('../views/Input.vue')
+const Swipe = () => import('../views/Swipe.vue')
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,11 @@ const routes = [
         path: '/Input',
         name: 'Input',
         component: Input,
+    },
+    {
+        path: '/Swipe',
+        name: 'Swipe',
+        component: Swipe,
     },
 ]
 

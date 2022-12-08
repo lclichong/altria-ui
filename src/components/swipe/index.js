@@ -10,10 +10,6 @@ export default {
     mounted() {
         this.init()
     },
-    destroyed() {
-        // 销毁定时任务
-        window.clearInterval(this.interval)
-    },
     computed: {
         size() {
             return this.computedWidth
@@ -37,6 +33,15 @@ export default {
         },
         activeIndicator() {
             return (this.active + this.count) % this.count
+        },
+    },
+    watch: {
+        loop(val) {
+            if (val) {
+                this.autoPlay()
+            } else {
+                this.clear()
+            }
         },
     },
     props: {
@@ -82,8 +87,8 @@ export default {
             }
         },
         autoPlay() {
-            const { speed } = this
-            if (this.loop && speed > 0 && this.count > 1) {
+            const { loop, speed, count } = this
+            if (loop && speed > 0 && count > 1) {
                 this.clear()
                 this.timer = setTimeout(() => {
                     this.next()
@@ -125,14 +130,14 @@ export default {
             return targetOffset
         },
         getTargetActive(pace) {
-            const { active, count, maxCount } = this
             if (pace) {
                 if (this.loop) {
-                    return this.range(active + pace, -1, count)
+                    return this.range(this.active + pace, -1, this.count)
                 }
-                return this.range(active + pace, 0, maxCount)
+                return this.range(this.active + pace, 0, this.maxCount)
+                // return this.active + pace
             }
-            return active
+            return this.active
         },
         range(num, min, max) {
             return Math.min(Math.max(num, min), max)
@@ -141,7 +146,7 @@ export default {
             clearTimeout(this.timer)
         },
         move({ pace = 0, offset = 0, emitChange }) {
-            const { loop, count, active, trackSize, minOffset } = this
+            const { loop, count, active, trackSize } = this
             const children = this.$children
             if (count <= 1) {
                 return
@@ -151,15 +156,16 @@ export default {
             const targetOffset = this.getTargetOffset(targetActive, offset)
             // auto move first and last swipe in loop mode
             if (loop) {
-                if (children[0] && targetOffset !== minOffset) {
-                    const outRightBound = targetOffset < minOffset
-                    children[0].offset = outRightBound ? trackSize : 0
-                }
+                children[0].offset = targetActive === this.count ? trackSize : 0
+                // if (children[0] && targetOffset !== minOffset) {
+                //     const outRightBound = targetOffset < minOffset
+                //     children[0].offset = outRightBound ? trackSize : 0
+                // }
 
-                if (children[count - 1] && targetOffset !== 0) {
-                    const outLeftBound = targetOffset > 0
-                    children[count - 1].offset = outLeftBound ? -trackSize : 0
-                }
+                // if (children[count - 1] && targetOffset !== 0) {
+                //     const outLeftBound = targetOffset > 0
+                //     children[count - 1].offset = outLeftBound ? -trackSize : 0
+                // }
             }
 
             this.active = targetActive
@@ -170,11 +176,13 @@ export default {
             }
         },
         correctPosition() {
+            // transition-duration: 0ms;
             this.swiping = true
             if (this.active <= -1) {
                 this.move({ pace: this.count })
             }
             if (this.active >= this.count) {
+                // this.active = 0
                 this.move({ pace: -this.count })
             }
         },
