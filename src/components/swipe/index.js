@@ -1,6 +1,7 @@
 import './index.less'
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
+import { TouchMixin } from '../mixins/touch'
 
 export default {
     name: createName('swipe'),
@@ -9,7 +10,9 @@ export default {
     },
     mounted() {
         this.init()
+        this.bindTouchEvent(this.$refs.swipe)
     },
+    mixins: [TouchMixin],
     computed: {
         size() {
             return this.computedWidth
@@ -47,21 +50,21 @@ export default {
     props: {
         speed: {
             // 自动轮播间隔
-            type: Number,
-            default: 5000,
+            type: [Number, String],
         },
         duration: {
             // 动画时长
-            type: Number,
+            type: [Number, String],
             default: 500,
         },
         loop: {
             // 是否开启循环播放
             type: Boolean,
+            default: true,
         },
-        initialSwipe: {
-            type: Number,
-            default: 0,
+        touchable: {
+            type: Boolean,
+            default: true,
         },
     },
     data() {
@@ -72,6 +75,8 @@ export default {
             count: 0,
             active: 0,
             rect: null,
+            deltaX: 0,
+            deltaY: 0,
         }
     },
     methods: {
@@ -87,8 +92,8 @@ export default {
             }
         },
         autoPlay() {
-            const { loop, speed, count } = this
-            if (loop && speed > 0 && count > 1) {
+            const { speed, count } = this
+            if (speed > 0 && count > 1) {
                 this.clear()
                 this.timer = setTimeout(() => {
                     this.next()
@@ -96,7 +101,7 @@ export default {
                 }, speed)
             }
         },
-        init(active = +this.initialSwipe) {
+        init(active = 0) {
             if (!this.$el) {
                 return
             }
@@ -135,7 +140,6 @@ export default {
                     return this.range(this.active + pace, -1, this.count)
                 }
                 return this.range(this.active + pace, 0, this.maxCount)
-                // return this.active + pace
             }
             return this.active
         },
@@ -146,7 +150,8 @@ export default {
             clearTimeout(this.timer)
         },
         move({ pace = 0, offset = 0, emitChange }) {
-            const { loop, count, active, trackSize } = this
+            // eslint-disable-next-line no-unused-vars
+            const { loop, count, active, trackSize, minOffset } = this
             const children = this.$children
             if (count <= 1) {
                 return
@@ -156,16 +161,15 @@ export default {
             const targetOffset = this.getTargetOffset(targetActive, offset)
             // auto move first and last swipe in loop mode
             if (loop) {
-                children[0].offset = targetActive === this.count ? trackSize : 0
-                // if (children[0] && targetOffset !== minOffset) {
-                //     const outRightBound = targetOffset < minOffset
-                //     children[0].offset = outRightBound ? trackSize : 0
-                // }
+                if (children[0] && targetOffset !== minOffset) {
+                    const outRightBound = targetOffset < minOffset
+                    children[0].offset = outRightBound ? trackSize : 0
+                }
 
-                // if (children[count - 1] && targetOffset !== 0) {
-                //     const outLeftBound = targetOffset > 0
-                //     children[count - 1].offset = outLeftBound ? -trackSize : 0
-                // }
+                if (children[count - 1] && targetOffset !== 0) {
+                    const outLeftBound = targetOffset > 0
+                    children[count - 1].offset = outLeftBound ? -trackSize : 0
+                }
             }
 
             this.active = targetActive
@@ -198,6 +202,7 @@ export default {
             }
 
             this.correctPosition()
+            this.resetTouchStatus()
             ra(() => {
                 ra(() => {
                     this.swiping = false
@@ -208,11 +213,55 @@ export default {
                 })
             })
         },
+        onTouchStart(event) {
+            if (!this.touchable) return
+            this.clear()
+            this.touchStartTime = Date.now()
+            this.touchStart(event)
+            this.correctPosition()
+        },
+        onTouchMove(event) {
+            if (!this.touchable || !this.swiping) return
+            this.touchMove(event)
+            if (this.direction === 'horizontal') {
+                event.stopPropagation()
+                this.move({ offset: this.deltaX })
+            }
+        },
+        onTouchEnd() {
+            if (!this.touchable || !this.swiping) return
+
+            const { size, deltaX } = this
+            const duration = Date.now() - this.touchStartTime
+            const speed = deltaX / duration
+            const shouldSwipe = Math.abs(speed) > 0.25 || Math.abs(deltaX) > size / 2
+
+            if (shouldSwipe && this.direction === 'horizontal') {
+                const offset = this.offsetX
+
+                let pace = 0
+
+                if (this.loop) {
+                    pace = offset > 0 ? (deltaX > 0 ? -1 : 1) : 0
+                } else {
+                    pace = -Math[deltaX > 0 ? 'ceil' : 'floor'](deltaX / size)
+                }
+                this.move({
+                    pace,
+                    emitChange: true,
+                })
+            } else if (deltaX) {
+                this.move({ pace: 0 })
+            }
+
+            this.swiping = false
+            this.autoPlay()
+        },
     },
     render() {
         return (
             <div class={this.bem()}>
-                <div class="alt-swipe__wrapper" style={this.trackStyle}>
+                <div ref="swipe" class="alt-swipe__wrapper" style={this.trackStyle}>
                     {this.$slots.default}
                 </div>
                 {this.genIndicator()}
