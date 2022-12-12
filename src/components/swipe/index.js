@@ -150,7 +150,6 @@ export default {
             clearTimeout(this.timer)
         },
         move({ pace = 0, offset = 0, emitChange }) {
-            // eslint-disable-next-line no-unused-vars
             const { loop, count, active, trackSize, minOffset } = this
             const children = this.$children
             if (count <= 1) {
@@ -191,7 +190,7 @@ export default {
             }
         },
         next() {
-            const ra = window.requestAnimationFrame || fallback
+            const raf = window.requestAnimationFrame || fallback
             let prev = Date.now()
             function fallback(fn) {
                 const curr = Date.now()
@@ -203,8 +202,8 @@ export default {
 
             this.correctPosition()
             this.resetTouchStatus()
-            ra(() => {
-                ra(() => {
+            raf(() => {
+                raf(() => {
                     this.swiping = false
                     this.move({
                         pace: 1,
