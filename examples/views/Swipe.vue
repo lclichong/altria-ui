@@ -1,6 +1,19 @@
 <template>
     <div class="container">
-        <alt-swipe class="swipe" speed="3000">
+        <p>默认</p>
+        <alt-swipe>
+            <alt-swipe-item v-for="(img, key) in images" :key="key">
+                <img :src="img.url" />
+            </alt-swipe-item>
+        </alt-swipe>
+        <p>轮播</p>
+        <alt-swipe :autoplay="autoplay">
+            <alt-swipe-item v-for="(img, key) in images" :key="key">
+                <img :src="img.url" />
+            </alt-swipe-item>
+        </alt-swipe>
+        <p>不显示指示器</p>
+        <alt-swipe :showIndicators="false" :autoplay="autoplay">
             <alt-swipe-item v-for="(img, key) in images" :key="key">
                 <img :src="img.url" />
             </alt-swipe-item>
@@ -23,6 +36,7 @@ export default {
                     url: require('../assets/slidee.jpg'),
                 },
             ],
+            autoplay: 2000,
         }
     },
 }

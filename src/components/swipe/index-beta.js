@@ -62,10 +62,6 @@ export default {
             type: Boolean,
             default: true,
         },
-        showIndicators: {
-            type: Boolean,
-            default: true,
-        },
     },
     data() {
         return {
@@ -88,7 +84,7 @@ export default {
             }
         },
         genIndicator() {
-            if (this.count > 0 && this.showIndicators) {
+            if (this.count > 0) {
                 let indicators = []
                 for (let i = 0; i < this.count; i++) {
                     let indicator = <i class={i === this.activeIndicator ? 'alt-swipe__indicator--active' : ''}></i>
@@ -122,60 +118,38 @@ export default {
             this.count = this.$children.length
             this.computedWidth = this.$el.offsetWidth
             this.active = active
-            this.offset = this.getTargetOffset(active)
+            this.offset = 0
             this.$children.forEach((swipe) => {
                 swipe.offset = 0
             })
             this.autoPlay()
         },
-        getTargetOffset(targetActive, offset = 0) {
-            let currentPosition = targetActive * this.size
-            if (!this.loop) {
-                currentPosition = Math.min(currentPosition, -this.minOffset)
-            }
-
-            let targetOffset = offset - currentPosition
-            if (!this.loop) {
-                targetOffset = this.range(targetOffset, this.minOffset, 0)
-            }
-
-            return targetOffset
-        },
-        getTargetActive(pace) {
-            if (pace) {
-                if (this.loop) {
-                    return this.range(this.active + pace, -1, this.count)
-                }
-                return this.range(this.active + pace, 0, this.maxCount)
-            }
-            return this.active
-        },
-        range(num, min, max) {
-            return Math.min(Math.max(num, min), max)
-        },
         clear() {
             clearTimeout(this.timer)
         },
-        move({ pace = 0, offset = 0, emitChange }) {
-            const { loop, count, active, trackSize, minOffset } = this
+        move({ pace = 0, emitChange }) {
+            const { loop, count, active, trackSize, size } = this
             const children = this.$children
             if (count <= 1) {
                 return
             }
-
-            const targetActive = this.getTargetActive(pace)
-            const targetOffset = this.getTargetOffset(targetActive, offset)
-            // auto move first and last swipe in loop mode
+            let targetActive = 0
             if (loop) {
-                if (children[0] && targetOffset !== minOffset) {
-                    const outRightBound = targetOffset < minOffset
-                    children[0].offset = outRightBound ? trackSize : 0
+                targetActive = active + pace > count ? 0 : active + pace
+                children[0].offset = targetActive === count || active == count - 1 ? trackSize : 0
+            } else {
+                if (active + pace > count - 1) {
+                    targetActive = count - 1
+                } else if (active + pace < 0) {
+                    targetActive = 0
+                } else {
+                    targetActive = active + pace
                 }
-
-                if (children[count - 1] && targetOffset !== 0) {
-                    const outLeftBound = targetOffset > 0
-                    children[count - 1].offset = outLeftBound ? -trackSize : 0
-                }
+            }
+            let targetOffset = 0 - targetActive * size
+            if (loop && targetOffset < 0) {
+                // left
+                children[count - 1].offset = 0
             }
 
             this.active = targetActive
@@ -189,6 +163,7 @@ export default {
             // transition-duration: 0ms;
             this.swiping = true
             if (this.active <= -1) {
+                // this.active = 3
                 this.move({ pace: this.count })
             }
             if (this.active >= this.count) {
@@ -197,7 +172,7 @@ export default {
             }
         },
         next() {
-            const raf = window.requestAnimationFrame || fallback
+            const ra = window.requestAnimationFrame || fallback
             let prev = Date.now()
             function fallback(fn) {
                 const curr = Date.now()
@@ -209,8 +184,8 @@ export default {
 
             this.correctPosition()
             this.resetTouchStatus()
-            raf(() => {
-                raf(() => {
+            ra(() => {
+                ra(() => {
                     this.swiping = false
                     this.move({
                         pace: 1,
@@ -231,7 +206,40 @@ export default {
             this.touchMove(event)
             if (this.direction === 'horizontal') {
                 event.stopPropagation()
-                this.move({ offset: this.deltaX })
+                let { active, deltaX, size, loop, count, trackSize } = this
+                let currentPosition = active * size
+                let targetOffset = deltaX - currentPosition
+                const children = this.$children
+                if (deltaX < 0) {
+                    // right
+                    if (loop) {
+                        this.offset = targetOffset
+                        if (active === count - 1) {
+                            children[0].offset = trackSize
+                        } else {
+                            children[0].offset = 0
+                        }
+                    } else {
+                        if (active != count - 1) {
+                            this.offset = targetOffset
+                        }
+                    }
+                } else {
+                    // left
+                    if (loop) {
+                        this.offset = targetOffset
+                        children[0].offset = 0
+                        if (active === 0) {
+                            children[count - 1].offset = 0 - trackSize
+                        } else {
+                            children[count - 1].offset = 0
+                        }
+                    } else {
+                        if (active != 0) {
+                            this.offset = targetOffset
+                        }
+                    }
+                }
             }
         },
         onTouchEnd() {
