@@ -4,29 +4,15 @@
     </div>
 </template>
 
-<script>
-export default {
-    created() {},
-    data() {
-        return {}
-    },
-}
-</script>
-
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
 }
 
 html {
-    font-size: 4vw;
+    height: 100vh;
 }
 
-html,
 body {
     height: 100vh;
     margin: 0px;
@@ -39,6 +25,7 @@ body {
 
 .demo {
     padding: 5vw;
+    text-align: center;
 }
 
 .mt-5vw {
@@ -51,5 +38,12 @@ body {
 
 .mt-15vw {
     margin-top: 15vw;
+}
+
+p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    line-height: 40px;
+    text-align: center;
 }
 </style>

@@ -7,7 +7,11 @@
             </alt-swipe-item>
         </alt-swipe>
         <alt-input class="home-input" clearable @enter="enter" v-model="val" placeholder="请输入"></alt-input>
-        <alt-button style="margin-top: 5vw" @click="val = 456" type="success" size="small">修改input的值</alt-button>
+        <div class="demo">
+            <alt-button style="margin-top: 5vw" @click="val = 456" type="success" size="small"
+                >修改input的值</alt-button
+            >
+        </div>
         <alt-footer :footer-list="menus" @menuClick="menuClick"></alt-footer>
     </div>
 </template>
