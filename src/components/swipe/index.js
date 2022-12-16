@@ -12,10 +12,12 @@ export default {
         this.init()
         this.bindTouchEvent(this.$refs.swipe)
         window.addEventListener('visibilitychange', this.onVisibilityChange)
+        window.addEventListener('resize', this.resize)
     },
     beforeDestroy() {
         this.clear()
         window.removeEventListener('visibilitychange', this.onVisibilityChange)
+        window.removeEventListener('resize', this.resize)
     },
     mixins: [TouchMixin],
     computed: {
@@ -86,6 +88,9 @@ export default {
             } else {
                 this.autoPlay()
             }
+        },
+        resize() {
+            this.init(this.activeIndicator)
         },
         genIndicator() {
             if (this.count > 0 && this.showIndicators) {
