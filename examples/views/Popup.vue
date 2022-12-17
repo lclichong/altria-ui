@@ -30,10 +30,6 @@
             </alt-popup>
             <alt-button @click="show5 = !show5" type="success">right</alt-button>
         </div>
-        <div class="demo">
-            <alt-dialog title="提示" v-model="show6"> dialog </alt-dialog>
-            <alt-button @click="show6 = !show6" type="success">dialog</alt-button>
-        </div>
     </div>
 </template>
 
@@ -47,10 +43,10 @@ export default {
             show3: false,
             show4: false,
             show5: false,
-            show6: false,
+            show6: false
         }
     },
-    methods: {},
+    methods: {}
 }
 </script>
 

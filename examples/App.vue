@@ -11,6 +11,7 @@
 
 html {
     height: 100vh;
+    font-size: 14px;
 }
 
 body {

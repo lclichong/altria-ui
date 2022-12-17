@@ -14,7 +14,7 @@
         <div class="button__wrapper">
             <alt-button type="success" size="small" class="btn" @click="getValues">获取值</alt-button>
         </div>
-        <div>
+        <div class="button__wrapper">
             <alt-button type="success" size="small" class="btn" @click="getOptions">获取options</alt-button>
         </div>
     </div>
@@ -26,8 +26,8 @@ export default {
         return {
             value1: [
                 {
-                    value: '李四',
-                },
+                    value: '李四'
+                }
             ],
             value2: [],
             value3: [],
@@ -37,79 +37,79 @@ export default {
             options1: [
                 {
                     value: '张三',
-                    text: '张三',
+                    text: '张三'
                 },
                 {
                     value: '李四',
-                    text: '李四',
+                    text: '李四'
                 },
                 {
                     value: '王五',
-                    text: '王五',
-                },
+                    text: '王五'
+                }
             ],
             options2: [
                 {
                     value: '篮球',
-                    text: '篮球',
+                    text: '篮球'
                 },
                 {
                     value: '足球',
-                    text: '足球',
+                    text: '足球'
                 },
                 {
                     value: '台球',
-                    text: '台球',
-                },
+                    text: '台球'
+                }
             ],
             options3: [
                 {
                     value: 'Vue',
-                    text: 'Vue',
+                    text: 'Vue'
                 },
                 {
                     value: 'React',
-                    text: 'React',
+                    text: 'React'
                 },
                 {
                     value: 'CSS',
-                    text: 'CSS',
+                    text: 'CSS'
                 },
                 {
                     value: 'JavaScript',
-                    text: 'JavaScript',
-                },
+                    text: 'JavaScript'
+                }
             ],
             options4: [
                 {
                     value: '男',
-                    text: '男',
+                    text: '男'
                 },
                 {
                     value: '女',
-                    text: '女',
-                },
+                    text: '女'
+                }
             ],
             options5: [
                 {
                     value: '徐汇区',
-                    text: '徐汇区',
+                    text: '徐汇区'
                 },
                 {
                     value: '松江区',
-                    text: '松江区',
-                },
+                    text: '松江区'
+                }
             ],
             options6: [
                 {
                     value: '阴天',
-                    text: '阴天',
+                    text: '阴天'
                 },
                 {
                     value: '晴天',
-                    text: '晴天',
-                },
-            ],
+                    text: '晴天'
+                }
+            ]
         }
     },
     methods: {
@@ -128,24 +128,21 @@ export default {
             console.log('value4', this.value4)
             console.log('value5', this.value5)
             console.log('value6', this.value6)
-        },
-    },
+        }
+    }
 }
 </script>
 
 <style lang="less" scoped>
 .container {
-    height: 100vh;
+    height: 100%;
     .button__wrapper {
-        margin-top: 100px;
+        height: 80px;
+        text-align: center;
     }
     .btn {
         width: 100px;
         margin-top: 20px;
-    }
-
-    .mt-200 {
-        margin-top: 200px;
     }
 }
 </style>
