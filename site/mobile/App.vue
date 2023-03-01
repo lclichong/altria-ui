@@ -4,9 +4,13 @@
     </div>
 </template>
 
-<style>
+<style lang="less">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 html {
@@ -27,6 +31,10 @@ body {
 .demo {
     padding: 5vw;
     text-align: center;
+    p {
+        line-height: 35px;
+        margin-top: 10px;
+    }
 }
 
 .mt-5vw {
@@ -44,7 +52,6 @@ body {
 p {
     margin-block-start: 0px;
     margin-block-end: 0px;
-    line-height: 40px;
     text-align: center;
 }
 </style>

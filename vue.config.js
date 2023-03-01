@@ -1,22 +1,33 @@
+const { resolve } = require('path')
+
 module.exports = {
-    devServer: {
-        hot: true,
-        port: 8888,
-    },
+    publicPath: process.env.NODE_ENV === 'production' ? '././' : './',
+    productionSourceMap: process.env.NODE_ENV !== 'production',
     configureWebpack: {
-        resolve: {
-            alias: {
-                components: '@/components',
-            },
+        module: {
+            rules: [
+                {
+                    test: /\.md$/,
+                    use: [
+                        'vue-loader',
+                        {
+                            loader: resolve(__dirname, 'loaders/md-loader/index.js'),
+                        },
+                    ],
+                },
+            ],
         },
     },
-    publicPath: './',
     pages: {
-        /**修改入口文件 */
-        index: {
-            entry: 'examples/main.js',
+        pc: {
+            entry: 'site/pc/main.js',
             template: 'public/index.html',
             filename: 'index.html',
+        },
+        mobile: {
+            entry: 'site/mobile/main.js',
+            template: 'public/mobile.html',
+            filename: 'mobile.html',
         },
     },
 }
