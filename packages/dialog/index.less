@@ -1,14 +1,13 @@
 :root {
     --dialog-background: var(--accents-4);
     --dialog-content-color: var(--accents-2);
-    --dialog-confirm-button-color: var(--error-default);
+    --dialog-confirm-button-color: var(--success-default);
     --dialog-cancel-button-color: var(--accents-3);
     --dialog-overlay-background: var(--overlay-default);
 }
 
 .alt-dialog {
     width: 80vw;
-    font-size: 16px;
     background-color: var(--dialog-background);
     border-radius: 16px;
     border: 1px solid var(--accents-5);
@@ -17,7 +16,8 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 600;
         padding-top: 15px;
     }
 
@@ -27,7 +27,7 @@
         justify-content: center;
         align-items: center;
         color: var(--dialog-content-color);
-        font-size: 15px;
+        font-size: 14px;
         padding: 15px 20px;
         line-height: 25px;
         word-break: break-word;
@@ -44,6 +44,8 @@
         align-items: center;
         box-sizing: border-box;
         position: relative;
+        border-top: 0.5px solid var(--accents-5);
+        border-radius: 0px 0px 16px 16px;
     }
 
     &__button {
@@ -52,22 +54,9 @@
         outline: none;
         color: var(--dialog-confirm-button-color);
         padding: 15px 0px;
-        border-radius: 0px 0px 16px 16px;
+        border-radius: inherit;
         flex: 1;
-    }
-
-    &__button:before {
-        position: absolute;
-        box-sizing: border-box;
-        content: ' ';
-        pointer-events: none;
-        top: -50%;
-        right: -50%;
-        bottom: -50%;
-        left: -50%;
-        border-top: 1px solid var(--accents-5);
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
+        font-size: 15px;
     }
 
     &__button--confirm {

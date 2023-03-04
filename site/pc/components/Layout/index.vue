@@ -7,12 +7,7 @@
             <slot />
         </main>
         <div class="alt-doc__simulator">
-            <iframe
-                ref="iframe"
-                :src="simulator"
-                :style="simulatorStyle"
-                frameborder="0"
-            />
+            <iframe ref="iframe" :src="simulator" :style="simulatorStyle" frameborder="0" />
         </div>
     </div>
 </template>
@@ -61,7 +56,7 @@ export default {
 .alt-doc__main {
     .card {
         margin-bottom: 24px;
-        padding: 24px;
+        padding: 15px 24px;
         background-color: #fff;
         border-radius: 12px;
         box-shadow: 0 8px 12px #ebedf0;

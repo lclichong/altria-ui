@@ -130,20 +130,20 @@ export default {
                     <div class={[bem('message'), this.title ? '' : 'alt-dialog--no-title']}>
                         {content ? content : this.message}
                     </div>
-                    <div class={bem('button__wrapper')}>
-                        {this.showCancelButton && (
-                            <alt-button
-                                size="default"
-                                onClick={this.changeValue.bind(this, 'cancel')}
-                                loading={this.loading.cancel}
-                                load-color="inherit"
-                                load-type="circle"
-                                class={bem('button', { cancel: true })}
-                            >
-                                {this.cancelButtonText}
-                            </alt-button>
-                        )}
-                        {this.showConfirmButton && (
+                    {this.showConfirmButton && (
+                        <div class={bem('button__wrapper')}>
+                            {this.showCancelButton && (
+                                <alt-button
+                                    size="default"
+                                    onClick={this.changeValue.bind(this, 'cancel')}
+                                    loading={this.loading.cancel}
+                                    load-color="inherit"
+                                    load-type="circle"
+                                    class={bem('button', { cancel: true })}
+                                >
+                                    {this.cancelButtonText}
+                                </alt-button>
+                            )}
                             <alt-button
                                 size="default"
                                 onClick={this.changeValue.bind(this, 'confirm')}
@@ -154,8 +154,8 @@ export default {
                             >
                                 {this.confirmButtonText}
                             </alt-button>
-                        )}
-                    </div>
+                        </div>
+                    )}
                 </div>
             </alt-popup>
         )

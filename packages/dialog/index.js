@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VanDialog from './Dialog'
+import AltDialog from './Dialog'
 
 let instance
 
@@ -34,7 +34,7 @@ function initInstance() {
         instance.$destroy()
     }
 
-    instance = new (Vue.extend(VanDialog))({
+    instance = new (Vue.extend(AltDialog))({
         el: document.createElement('div'),
     })
 
@@ -52,13 +52,13 @@ Dialog.confirm = (options) =>
     })
 
 Dialog.install = () => {
-    Vue.use(VanDialog)
+    Vue.use(AltDialog)
 }
 
-Dialog.Component = VanDialog
+Dialog.Component = AltDialog
 
 function install() {
-    Vue.component(VanDialog.name, VanDialog)
+    Vue.component(AltDialog.name, AltDialog)
 }
 
 install()

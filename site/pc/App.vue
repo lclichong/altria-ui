@@ -6,7 +6,9 @@
     </div>
 </template>
 
-<style>
+<style lang="less">
+@import url('../common/style/var.less');
+
 html,
 body {
     height: 100%;
