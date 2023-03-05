@@ -1,14 +1,11 @@
 <template>
-    <div id="app">
+    <div class="app">
+        <demo-nav></demo-nav>
         <router-view />
     </div>
 </template>
 
 <style lang="less">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }
@@ -16,11 +13,16 @@
 html {
     height: 100vh;
     font-size: 14px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 body {
     height: 100vh;
     margin: 0px;
+}
+
+.app {
+    height: 100%;
 }
 
 * {
@@ -53,5 +55,9 @@ p {
     margin-block-start: 0px;
     margin-block-end: 0px;
     text-align: center;
+}
+
+a {
+    text-decoration: none;
 }
 </style>

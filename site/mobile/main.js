@@ -2,9 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import altUI from '../../packages/index.js'
+import components from './components/index.js'
 
 Vue.config.productionTip = false
 Vue.use(altUI)
+Vue.use(components)
 
 new Vue({
     router,

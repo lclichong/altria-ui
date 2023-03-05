@@ -1,5 +1,9 @@
 export const routes = [
     {
+        name: '开发指南',
+        children: [{ title: '介绍', route: { name: 'Home' } }],
+    },
+    {
         name: '基础组件',
         children: [
             { title: 'Button 按钮', route: { name: 'Button' } },

@@ -32,7 +32,6 @@ export default {
         $route: {
             handler() {
                 const menuName = window.location.hash
-                // const path = location.pathname.replace(/\/index(\.html)?/, '/')
                 this.simulator = `${this.$simulatorPath}/mobile.html${menuName}`
                 this.$nextTick(() => {
                     this.$refs.main.scrollTop = 0

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../components/DemoHome/index.vue'
 
 const path = require.context('../../../packages', true, /.vue$/)
 let collectRoute = []
@@ -9,8 +10,12 @@ for (let p of path.keys()) {
         const name = sourceName[0]
         const nameUper = name.charAt(0).toUpperCase() + name.slice(1)
         collectRoute.push({
-            path: `/${name}`,
-            name: nameUper,
+            path: `/zh-CN/${nameUper}`,
+            name: `zh-CN/${nameUper}`,
+            meta: {
+                lang: 'zh-CN',
+                name: nameUper,
+            },
             component: path(p).default,
         })
     }
@@ -21,17 +26,34 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        redirect: { name: 'Button' },
+        redirect: { name: 'zh-CN' },
+    },
+    {
+        path: '/zh-CN/home',
+        name: 'zh-CN',
+        component: Home,
+        meta: {
+            lang: 'zh-CN',
+        },
     },
     ...collectRoute,
 ]
 
 const router = new VueRouter({
     routes,
-    // eslint-disable-next-line no-unused-vars
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior() {
         return { x: 0, y: 0 }
     },
+})
+
+router.afterEach(() => {
+    window.top.postMessage(
+        {
+            type: 'replacePath',
+            value: router.history.current.path,
+        },
+        '*'
+    )
 })
 
 export default router

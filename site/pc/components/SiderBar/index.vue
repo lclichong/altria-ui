@@ -1,22 +1,13 @@
 <template>
     <div class="alt-doc__sider">
-        <div
-            v-for="(r, key) in Routes"
-            class="alt-doc__route-content"
-            :key="key"
-        >
+        <div v-for="(r, key) in Routes" class="alt-doc__route-content" :key="key">
             <span class="title">{{ r.name }}</span>
-            <div
-                v-for="(c, key) in r.children"
-                :key="key"
-                class="route__children"
-            >
+            <div v-for="(c, key) in r.children" :key="key" class="route__children">
                 <span
                     @click="goToHandler(c)"
                     :class="[active === c.route.name ? 'color' : '']"
                     class="route__children__title"
-                    >{{ c.title }}</span
-                >
+                >{{ c.title }}</span>
             </div>
         </div>
     </div>
@@ -26,10 +17,15 @@
 import { routes } from './index.js'
 
 export default {
-    created() {
-        this.active = this.$route.name
-    },
     name: 'SiderBar',
+    watch: {
+        $route: {
+            handler(value) {
+                this.active = value.meta.name
+            },
+            immediate: true
+        }
+    },
     data() {
         return {
             Routes: routes,
@@ -38,9 +34,9 @@ export default {
     },
     methods: {
         goToHandler(c) {
-            if (c.route.name != this.$route.name) {
+            if (c.route.name != this.$route.meta.name) {
                 this.active = c.route.name
-                this.$router.push({ path: c.route.name })
+                this.$router.push({ path: '/zh-CN/' + c.route.name })
             }
         }
     }
