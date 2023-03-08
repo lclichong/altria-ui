@@ -46,11 +46,11 @@ const router = new VueRouter({
     },
 })
 
-router.afterEach(() => {
+router.afterEach((to) => {
     window.top.postMessage(
         {
             type: 'replacePath',
-            value: router.history.current.path,
+            value: to.fullPath,
         },
         '*'
     )
