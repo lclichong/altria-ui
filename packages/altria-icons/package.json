@@ -1,0 +1,19 @@
+{
+    "name": "@altria/icons",
+    "version": "0.1.5",
+    "description": "Icons of altria",
+    "main": "lib/index.js",
+    "module": "dist/index.js",
+    "type": "module",
+    "files": [
+        "dist",
+        "lib"
+    ],
+    "scripts": {
+        "build": "node lib/index.js"
+    },
+    "dependencies": {
+        "fs-extra": "^9.0.1",
+        "webfont": "^9.0.0"
+    }
+}

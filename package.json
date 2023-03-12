@@ -1,51 +1,16 @@
 {
-    "name": "altria-ui",
-    "version": "0.1.0",
-    "private": false,
-    "author": "LcLichong",
+    "private": true,
+    "version": "0.1.5",
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint",
-        "lib": "vue-cli-service build --target lib packages/index.js"
-    },
-    "dependencies": {
-        "core-js": "^3.6.5",
-        "vue": "^2.6.12",
-        "vue-router": "^3.2.0"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-router": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^6.2.2",
-        "less": "^4.1.1",
-        "less-loader": "^6.0.0",
-        "vue-loader": "^15.10.1",
-        "vue-template-compiler": "^2.6.12",
-        "markdown-it": "^13.0.1",
-        "highlight.js": "^11.7.0"
+        "dev": "pnpm --dir ./packages/altria-cli serve",
+        "build:site": "pnpm --dir ./packages/altria-cli build",
+        "build:icons": "pnpm --dir ./packages/altria-icons build"
     },
     "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {}
+        "ignorePatterns": [
+            "packages/altria-icons/**"
+        ]
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ]
+    "author": "lichong",
+    "license": "MIT"
 }
