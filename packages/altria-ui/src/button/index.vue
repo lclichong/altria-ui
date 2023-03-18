@@ -1,13 +1,8 @@
 <template>
-    <button @click="btnClick" :class="setButtonClasses" :style="{ background: color }" :disabled="disabled">
+    <button @click="handleClick" :class="setButtonClasses" :style="{ background: color }" :disabled="disabled">
         <slot></slot>
         <template v-if="loading">
-            <alt-button-loading
-                :type="type"
-                :load-type="loadType"
-                :load-color="loadColor"
-                :load-text="loadText"
-            ></alt-button-loading>
+            <alt-button-loading :type="type" :load-type="loadType" :load-color="loadColor" :load-text="loadText"></alt-button-loading>
         </template>
     </button>
 </template>
@@ -21,59 +16,59 @@ export default {
     props: {
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         type: {
             type: String,
-            default: 'default',
+            default: 'default'
         },
         size: {
             type: String,
-            default: 'medium',
+            default: 'medium'
         },
         loading: {
             type: Boolean,
-            default: false,
+            default: false
         },
         loadType: {
             type: String,
-            default: 'default',
+            default: 'default'
         },
         loadColor: {
-            type: String,
+            type: String
         },
         loadText: {
-            type: String,
+            type: String
         },
         shadow: {
             type: Boolean,
-            default: false,
+            default: false
         },
         color: {
-            type: String,
-        },
+            type: String
+        }
     },
     computed: {
         setButtonClasses() {
             const bem = createBem('alt-button')
             const result = bem(null, [
                 this.type,
-                { disabled: this.disabled, size: this.size, loading: this.loading, shadow: this.shadow },
+                { disabled: this.disabled, size: this.size, loading: this.loading, shadow: this.shadow }
             ])
             return result.trim()
-        },
+        }
     },
     data() {
         return {}
     },
     methods: {
-        btnClick() {
+        handleClick(event) {
             if (this.disabled || this.loading) {
                 return
             }
-            this.$emit('click')
-        },
-    },
+            this.$emit('click', event)
+        }
+    }
 }
 </script>
 

@@ -52,9 +52,7 @@ Vue.use(Button)
 ```html
 <alt-button type="success" loading>button</alt-button>
 <alt-button type="warning" loading load-type="circle">button</alt-button>
-<alt-button type="error" loading load-type="circle" load-text="加载中...">
-    button
-</alt-button>
+<alt-button type="error" loading load-type="circle" load-text="加载中..."> button </alt-button>
 ```
 
 ### 阴影
@@ -71,14 +69,12 @@ Vue.use(Button)
 
 ```html
 <alt-button type="success" color="#7232dd">button</alt-button>
-<alt-button type="success" color="linear-gradient(to right, #ff6034, #9c27b0)">
-    button
-</alt-button>
+<alt-button type="success" color="linear-gradient(to right, #ff6034, #9c27b0)"> button </alt-button>
 ```
 
 ## API
 
-### props
+### Props
 
 | 属性      | 说明             | 类型      | 可选值                             | 默认      |
 | --------- | ---------------- | --------- | ---------------------------------- | --------- |
@@ -89,6 +85,12 @@ Vue.use(Button)
 | load-type | 设置加载中的风格 | _string_  | `default, circle`                  | `default` |
 | load-text | 加载状态提示文字 | _string_  | `-`                                | `-`       |
 | shadow    | 是否显示阴影     | _boolean_ | `true, false`                      | `false`   |
+
+### Events
+
+| 事件名 | 说明           | 回调参数       |
+| ------ | -------------- | -------------- |
+| click  | 点击按钮时触发 | _event: Event_ |
 
 ### 样式变量
 
