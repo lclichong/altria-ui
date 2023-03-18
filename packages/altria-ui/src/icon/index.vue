@@ -1,5 +1,5 @@
 <template>
-    <i :class="['alt-icon','alt-icon--set', 'alt-icon-' + name]" :style="setStyle"></i>
+    <i @click="handleClick" :class="['alt-icon','alt-icon--set', 'alt-icon-' + name]" :style="setStyle"></i>
 </template>
 
 <script>
@@ -23,6 +23,11 @@ export default {
                 color: this.color,
                 fontSize: this.size + 'px'
             }
+        }
+    },
+    methods: {
+        handleClick(event) {
+            this.$emit('click', event)
         }
     }
 }

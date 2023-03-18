@@ -18,6 +18,9 @@
         },
         "rules": {}
     },
+    "devDependencies": {
+        "clipboard": "^2.0.6"
+    },
     "author": "lichong",
     "license": "MIT"
 }

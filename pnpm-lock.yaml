@@ -55,7 +55,10 @@ importers:
       webfont: registry.npmmirror.com/webfont/9.0.0
 
   packages/altria-ui:
-    specifiers: {}
+    specifiers:
+      clipboard: ^2.0.6
+    devDependencies:
+      clipboard: registry.npmmirror.com/clipboard/2.0.11
 
 packages:
 
@@ -3887,6 +3890,16 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
+  registry.npmmirror.com/clipboard/2.0.11:
+    resolution: {integrity: sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/clipboard/-/clipboard-2.0.11.tgz}
+    name: clipboard
+    version: 2.0.11
+    dependencies:
+      good-listener: registry.npmmirror.com/good-listener/1.2.2
+      select: registry.npmmirror.com/select/1.1.2
+      tiny-emitter: registry.npmmirror.com/tiny-emitter/2.1.0
+    dev: true
+
   registry.npmmirror.com/clipboardy/2.3.0:
     resolution: {integrity: sha512-mKhiIL2DrQIsuXMgBgnfEHOZOryC7kY7YO//TN6c63wlEm3NG5tz+YgY5rVi29KCmq/QQjKYvM7a19+MDOTHOQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/clipboardy/-/clipboardy-2.3.0.tgz}
     name: clipboardy
@@ -4965,6 +4978,12 @@ packages:
     name: delayed-stream
     version: 1.0.0
     engines: {node: '>=0.4.0'}
+    dev: true
+
+  registry.npmmirror.com/delegate/3.2.0:
+    resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/delegate/-/delegate-3.2.0.tgz}
+    name: delegate
+    version: 3.2.0
     dev: true
 
   registry.npmmirror.com/depd/1.1.2:
@@ -6443,6 +6462,14 @@ packages:
       slash: registry.npmmirror.com/slash/2.0.0
     transitivePeerDependencies:
       - supports-color
+
+  registry.npmmirror.com/good-listener/1.2.2:
+    resolution: {integrity: sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/good-listener/-/good-listener-1.2.2.tgz}
+    name: good-listener
+    version: 1.2.2
+    dependencies:
+      delegate: registry.npmmirror.com/delegate/3.2.0
+    dev: true
 
   registry.npmmirror.com/gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gopd/-/gopd-1.0.1.tgz}
@@ -10498,6 +10525,12 @@ packages:
     version: 2.0.0
     dev: true
 
+  registry.npmmirror.com/select/1.1.2:
+    resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/select/-/select-1.1.2.tgz}
+    name: select
+    version: 1.1.2
+    dev: true
+
   registry.npmmirror.com/selfsigned/1.10.14:
     resolution: {integrity: sha512-lkjaiAye+wBZDCBsu5BGi0XiLRxeUlsGod5ZP924CRSEoGuZAw/f7y9RKu28rwTfiHVhdavhB0qH0INV6P1lEA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/selfsigned/-/selfsigned-1.10.14.tgz}
     name: selfsigned
@@ -11460,6 +11493,12 @@ packages:
     resolution: {integrity: sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/timsort/-/timsort-0.3.0.tgz}
     name: timsort
     version: 0.3.0
+    dev: true
+
+  registry.npmmirror.com/tiny-emitter/2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz}
+    name: tiny-emitter
+    version: 2.1.0
     dev: true
 
   registry.npmmirror.com/tmp/0.0.33:
