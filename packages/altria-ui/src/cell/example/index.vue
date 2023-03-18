@@ -3,12 +3,7 @@
         <alt-cell title="单元格" value="内容" />
         <alt-cell>
             <template slot="title">
-                <alt-image
-                    width="80%"
-                    height="20vw"
-                    :src="image"
-                    fit="contain"
-                ></alt-image>
+                <alt-image width="80%" height="20vw" :src="image" fit="contain"></alt-image>
             </template>
             <template slot="value">
                 <p>素胚勾勒出青花笔锋浓转淡</p>
@@ -18,12 +13,7 @@
         </alt-cell>
         <alt-cell>
             <template slot="title">
-                <alt-image
-                    width="80%"
-                    height="20vw"
-                    :src="image"
-                    fit="cover"
-                ></alt-image>
+                <alt-image width="80%" height="20vw" :src="image" fit="cover"></alt-image>
             </template>
             <template slot="value">
                 <p>宣纸上走笔至此搁一半</p>
