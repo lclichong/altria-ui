@@ -6,8 +6,6 @@
 
 ### 引入
 
-通过以下方式来全局注册组件。
-
 ```js
 import Vue from 'vue'
 import { Dialog } from 'altria-ui'
@@ -186,7 +184,7 @@ export default {
 | $Dialog.alert   | 展示消息提示弹窗 | `options` | `Promise` |
 | $Dialog.confirm | 展示消息确认弹窗 | `options` | `Promise` |
 
-### options
+### Options
 
 通过函数调用 `Dialog` 时，支持传入以下选项：
 
@@ -202,7 +200,7 @@ export default {
 | showConfirmButton | 是否显示确认按钮                         | _boolean_                | `true`  |
 | showCancelButton  | 是否显示取消按钮                         | _boolean_                | `false` |
 
-### props
+### Props
 
 通过组件调用 `Dialog` 时，支持以下 Props：
 
