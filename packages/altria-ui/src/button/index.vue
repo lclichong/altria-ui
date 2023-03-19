@@ -10,9 +10,13 @@
 <script>
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
+import AltButtonLoading from './button-loading.vue'
 
 export default {
     name: createName('button'),
+    components: {
+        AltButtonLoading
+    },
     props: {
         disabled: {
             type: Boolean,

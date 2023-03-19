@@ -1,4 +1,4 @@
-import Button from './button'
+import Button from './button/'
 import Footer from './footer/index.js'
 import Swipe from './swipe/index.js'
 import SwipeItem from './swipeItem/index.js'
@@ -6,11 +6,9 @@ import Header from './header'
 import Dialog from './dialog/index.js'
 import Cell from './cell'
 import Input from './input'
-import ButtonLoading from './button/button-loading.vue'
 import DropDownMenu from './dropdown-menu/index.js'
 import DropDownMenuItem from './dropdown-item/index.js'
 import Loading from './loading'
-import LoadingCircle from './loading/loading-circle.vue'
 import Overlay from './overlay'
 import Popup from './popup'
 import Image from './image'
@@ -32,8 +30,6 @@ function install(Vue) {
         DropDownMenu,
         DropDownMenuItem,
         Loading,
-        LoadingCircle,
-        ButtonLoading,
         Overlay,
         Dialog,
         Popup,
@@ -67,9 +63,8 @@ export {
     Input,
     Button,
     Loading,
-    LoadingCircle,
-    ButtonLoading,
     Overlay,
+    Image,
     Icon,
 }
 export default {

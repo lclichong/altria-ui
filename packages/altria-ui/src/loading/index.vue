@@ -15,9 +15,13 @@
 <script>
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
+import AltLoadingCircle from './loading-circle.vue'
 
 export default {
     name: createName('loading'),
+    components: {
+        AltLoadingCircle
+    },
     created() {
         this.bem = createBem('alt-loading')
     },
@@ -34,11 +38,11 @@ export default {
             const beArrColor = isArray(this.color)
             if (this.loadType === 'circle') {
                 return {
-                    color: beArrColor ? '' : this.color,
+                    color: beArrColor ? '' : this.color
                 }
             }
             return {
-                background: beArrColor ? `linear-gradient(${this.color.join()})` : this.color,
+                background: beArrColor ? `linear-gradient(${this.color.join()})` : this.color
             }
         },
         getLoadNum() {
@@ -47,31 +51,31 @@ export default {
             } else {
                 return 3
             }
-        },
+        }
     },
     props: {
         size: {
             type: String,
-            default: 'medium',
+            default: 'medium'
         },
         type: {
             type: String,
-            default: 'default',
+            default: 'default'
         },
         color: {
-            default: '',
+            default: ''
         },
         loadType: {
             type: String,
-            default: 'default',
+            default: 'default'
         },
         loadText: {
-            type: String,
-        },
+            type: String
+        }
     },
     data() {
         return {}
-    },
+    }
 }
 </script>
 
