@@ -12,7 +12,7 @@ import Loading from './loading'
 import Overlay from './overlay'
 import Popup from './popup'
 import Image from './image'
-import Icon from './icon'
+import Icon from './icon/'
 import './styles/index.less'
 import './icon/iconfont.js'
 
