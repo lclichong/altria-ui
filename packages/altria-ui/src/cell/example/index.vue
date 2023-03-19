@@ -21,15 +21,17 @@
                 <p>而你嫣然的一笑如含苞待放</p>
             </template>
         </alt-cell>
-        <alt-cell
-            title="你的美一缕飘散、去到我去不了的地方、天青色等烟雨 而我在等你"
-            value="炊烟袅袅升起 隔江千万里、在瓶底书汉隶仿前朝的飘逸、就当我为遇见你伏笔"
-        />
+        <alt-cell title="你的美一缕飘散、去到我去不了的地方、天青色等烟雨 而我在等你" value="炊烟袅袅升起 隔江千万里、在瓶底书汉隶仿前朝的飘逸、就当我为遇见你伏笔" />
     </div>
 </template>
 
 <script>
+import AltImage from '../../image'
+
 export default {
+    components: {
+        AltImage
+    },
     data() {
         return {
             image: 'https://varlet.gitee.io/varlet-ui-vue2/cat.jpg'
