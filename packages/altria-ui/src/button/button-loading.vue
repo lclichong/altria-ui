@@ -6,9 +6,13 @@
 
 <script>
 import { createName } from '../utils/create-name'
+import AltLoading from '../loading'
 
 export default {
     name: createName('button-loading'),
+    components: {
+        AltLoading
+    },
     props: {
         loadType: {
             type: String
