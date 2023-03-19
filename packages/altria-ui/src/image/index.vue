@@ -1,6 +1,6 @@
 <template>
-    <div @click="onClick" :class="[bem(), round ? bem('round') : '']" :style="style">
-        <img :class="bem('img')" :src="src" :style="{ objectFit: fit }" />
+    <div @click="handleClick" :class="[bem(), round ? bem('round') : '']" :style="style">
+        <img :class="bem('img')" :src="src" :alt="alt" :style="{ objectFit: fit }" />
     </div>
 </template>
 
@@ -18,37 +18,41 @@ export default {
         style() {
             const style = {}
             if (this.width) {
-                style.width = this.width
+                style.width = isNaN(this.width) ? this.width : this.width + 'px'
             }
             if (this.height) {
-                style.height = this.height
+                style.height = isNaN(this.height) ? this.height : this.height + 'px'
             }
             return style
-        },
+        }
     },
     props: {
         width: {
-            type: String,
+            type: [String, Number]
         },
         height: {
-            type: String,
+            type: [String, Number]
         },
         fit: {
             type: String,
+            default: 'fill'
         },
         src: {
-            type: String,
+            type: String
+        },
+        alt: {
+            type: String
         },
         round: {
             type: Boolean,
-            default: false,
-        },
+            default: false
+        }
     },
     methods: {
-        onClick(event) {
+        handleClick(event) {
             this.$emit('click', event)
-        },
-    },
+        }
+    }
 }
 </script>
 

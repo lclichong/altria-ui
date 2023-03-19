@@ -9,6 +9,7 @@ export const locales = {
                     { title: 'Button 按钮', route: { name: 'Button' } },
                     { title: 'Cell 单元格', route: { name: 'Cell' } },
                     { title: 'Icon 图标', route: { name: 'Icon' } },
+                    { title: 'Image 图片', route: { name: 'Image' } },
                 ],
             },
             {
