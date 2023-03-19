@@ -76,15 +76,15 @@ Vue.use(Button)
 
 ### Props
 
-| 属性      | 说明             | 类型      | 可选值                             | 默认      |
-| --------- | ---------------- | --------- | ---------------------------------- | --------- |
-| type      | 按钮属性         | _string_  | `default, success, warning, error` | `default` |
-| size      | 按钮大小         | _string_  | `mini, small, medium, large`       | `medium`  |
-| disabled  | 是否禁用按钮     | _boolean_ | `true, false`                      | `false`   |
-| loading   | 是否启用加载中   | _boolean_ | `true, false`                      | `false`   |
-| load-type | 设置加载中的风格 | _string_  | `default, circle`                  | `default` |
-| load-text | 加载状态提示文字 | _string_  | `-`                                | `-`       |
-| shadow    | 是否显示阴影     | _boolean_ | `true, false`                      | `false`   |
+| 参数      | 说明                                                  | 类型      | 默认      |
+| --------- | ----------------------------------------------------- | --------- | --------- |
+| type      | 按钮属性，可选值为`default`、`success`、`warning`、`error` | _string_  | `default` |
+| size      | 按钮大小，可选值为`mini`、`small`、`medium`、`large`       | _string_  | `medium`  |
+| disabled  | 是否禁用按钮                                          | _boolean_ | `false`   |
+| loading   | 是否启用加载中                                        | _boolean_ | `false`   |
+| load-type | 设置加载中的风格，可选值为`default`、`circle`          | _string_  | `default` |
+| load-text | 加载状态提示文字                                      | _string_  | `-`       |
+| shadow    | 是否显示阴影                                          | _boolean_ | `false`   |
 
 ### Events
 
