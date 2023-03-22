@@ -19,21 +19,13 @@
                         @keyup.enter="query"
                     />
                     <div v-if="clearable && value" @click="clear" :class="bem('input--clear')">
-                        <svg aria-hidden="true">
-                            <use xlink:href="#icon-shanchu" />
-                        </svg>
+                        <alt-icon name="close-circle"></alt-icon>
                     </div>
                 </div>
                 <slot name="button"></slot>
             </div>
             <div v-if="type === 'textarea'" class="alt-textarea__wrapper">
-                <textarea
-                    @input="input"
-                    :rows="rows"
-                    v-model="val"
-                    :placeholder="placeholder"
-                    class="alt-textarea"
-                ></textarea>
+                <textarea @input="input" :rows="rows" v-model="val" :placeholder="placeholder" class="alt-textarea"></textarea>
             </div>
             <div v-if="error" class="alt-input--error">{{ errorText }}</div>
         </template>
@@ -43,52 +35,58 @@
 <script>
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
+import AltCell from '../cell'
+import AltIcon from '../icon'
 
 export default {
     name: createName('input'),
+    components: {
+        AltCell,
+        AltIcon
+    },
     created() {
         this.bem = createBem('alt-input')
     },
     computed: {
         setType() {
             return this.type !== 'digit' ? this.type : null
-        },
+        }
     },
     props: {
         value: {
             type: [Number, String],
-            default: '',
+            default: ''
         },
         placeholder: {
             type: String,
-            default: '请输入',
+            default: '请输入'
         },
         clearable: {
             type: Boolean,
-            default: false,
+            default: false
         },
         label: {
-            type: String,
+            type: String
         },
         type: {
             type: String,
-            default: 'text',
+            default: 'text'
         },
         disabled: {
             type: Boolean,
-            default: null,
+            default: null
         },
         readonly: {
             type: Boolean,
-            default: null,
+            default: null
         },
         validate: {
-            type: Object,
+            type: Object
         },
         rows: {
             type: String,
-            default: '1',
-        },
+            default: '1'
+        }
     },
     watch: {
         value(newVal) {
@@ -101,14 +99,14 @@ export default {
                     this.vali()
                 }
             },
-            immediate: true,
-        },
+            immediate: true
+        }
     },
     data() {
         return {
             val: this.value,
             error: false,
-            errorText: '',
+            errorText: ''
         }
     },
     methods: {
@@ -142,8 +140,8 @@ export default {
             } else {
                 this.error = false
             }
-        },
-    },
+        }
+    }
 }
 </script>
 

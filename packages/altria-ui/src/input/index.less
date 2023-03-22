@@ -24,7 +24,7 @@
         align-items: normal;
         .alt-cell__title {
             flex: none;
-            width: 20.5vw;
+            width: 22.5vw;
             color: var(--input-label-color);
         }
     }
@@ -39,12 +39,17 @@
         border: none;
         height: 100%;
         outline: none;
+        font-size: var(--input-font-size);
         caret-color: var(--input-color);
         color: var(--input-color);
         background-color: inherit;
         box-sizing: border-box;
         padding: 0px;
         padding-right: 30px;
+
+        &::placeholder {
+            color: var(--input-placeholder-color);
+        }
 
         &--clear {
             position: absolute;
@@ -56,10 +61,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            svg {
-                width: 18px;
-                height: 18px;
-                fill: var(--input-icon-bg-bolor);
+            i {
+                font-size: 16px;
+                color: var(--input-icon-bg-bolor);
             }
         }
 
@@ -86,26 +90,6 @@
     :disabled {
         color: var(--input-placeholder-color);
     }
-
-    input::-webkit-input-placeholder,
-    textarea::-webkit-input-placeholder {
-        color: var(--input-placeholder-color);
-    }
-
-    input:-moz-placeholder,
-    textarea:-moz-placeholder {
-        color: var(--input-placeholder-color);
-    }
-
-    input::-moz-placeholder,
-    textarea::-moz-placeholder {
-        color: var(--input-placeholder-color);
-    }
-
-    input:-ms-input-placeholder,
-    textarea:-ms-input-placeholder {
-        color: var(--input-placeholder-color);
-    }
 }
 
 .alt-textarea__wrapper {
@@ -122,5 +106,11 @@
         padding: 0;
         font-size: var(--input-font-size);
         color: var(--input-color);
+        background-color: inherit;
+        font: inherit;
+
+        &::placeholder {
+            color: var(--input-placeholder-color);
+        }
     }
 }

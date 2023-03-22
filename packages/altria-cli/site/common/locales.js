@@ -13,6 +13,10 @@ export const locales = {
                 ],
             },
             {
+                name: '表单组件',
+                children: [{ title: 'Input 输入框', route: { name: 'Input' } }],
+            },
+            {
                 name: '反馈组件',
                 children: [{ title: 'Dialog 弹出框', route: { name: 'Dialog' } }],
             },
