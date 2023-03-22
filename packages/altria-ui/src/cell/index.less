@@ -15,6 +15,22 @@
     line-height: var(--cell-line-height);
     font-size: var(--cell-font-size);
 
+    &::after {
+        content: ' ';
+        position: absolute;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--accents-1);
+        left: 16px;
+        right: 0px;
+        bottom: 0px;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+
+    &:last-child::after {
+        display: none;
+    }
+
     &__title {
         text-align: left;
         flex: 1;
@@ -39,16 +55,4 @@
     &__image {
         align-items: center;
     }
-}
-
-.alt-cell::after {
-    content: ' ';
-    position: absolute;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--accents-1);
-    left: 16px;
-    right: 0px;
-    bottom: 0px;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
 }
