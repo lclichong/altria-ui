@@ -20,7 +20,7 @@ Vue.use(Image)
 支持 `img` 标签的原生属性，如`width`、`height`、`alt`。
 
 ```html
-<alt-image width="100" height="80" src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_9924.jpg"></alt-image>
+<alt-image width="100" height="80" :src="image"></alt-image>
 ```
 
 ### 填充模式
@@ -37,7 +37,7 @@ Vue.use(Image)
 export default {
     data() {
         return {
-            image: 'https://images.dog.ceo/breeds/corgi-cardigan/n02113186_9924.jpg',
+            image: require('../../../public/fj.jpg'),
         }
     },
 }

@@ -34,7 +34,7 @@ export default {
     },
     data() {
         return {
-            image: 'https://varlet.gitee.io/varlet-ui-vue2/cat.jpg'
+            image: require('../../../public/fj.jpg')
         }
     }
 }

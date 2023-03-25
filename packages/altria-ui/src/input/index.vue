@@ -84,7 +84,7 @@ export default {
             type: Object
         },
         rows: {
-            type: String,
+            type: [Number, String],
             default: '1'
         }
     },
@@ -117,11 +117,11 @@ export default {
         query() {
             this.$emit('enter', this.val)
         },
-        input() {
+        input(event) {
             if (this.type === 'digit') {
                 this.val = this.val.replace(/^(0+)|[^\d]+/g, '')
             }
-            this.$emit('input', this.val)
+            this.$emit('input', this.val, event)
         },
         vali() {
             if (!this.validate) {

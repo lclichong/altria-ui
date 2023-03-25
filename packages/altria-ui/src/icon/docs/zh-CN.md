@@ -28,7 +28,8 @@ Vue.use(Icon)
 通过 `size` 属性设置不同大小的图标组件。
 
 ```html
-<alt-icon name="checkbox-marked-circle"></alt-icon> <alt-icon size="30" name="checkbox-marked-circle"></alt-icon>
+<alt-icon name="checkbox-marked-circle"></alt-icon> 
+<alt-icon size="30" name="checkbox-marked-circle"></alt-icon>
 ```
 
 ### 颜色

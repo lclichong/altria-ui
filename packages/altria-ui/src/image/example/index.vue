@@ -2,7 +2,7 @@
     <div class="alt-container">
         <div class="demo">
             <p>基础用法</p>
-            <alt-image width="100" height="80" src="https://images.dog.ceo/breeds/corgi-cardigan/n02113186_9924.jpg"></alt-image>
+            <alt-image width="100" height="80" :src="image"></alt-image>
         </div>
         <div class="demo">
             <p>填充模式</p>
@@ -32,7 +32,7 @@
 export default {
     data() {
         return {
-            image: 'https://images.dog.ceo/breeds/corgi-cardigan/n02113186_9924.jpg'
+            image: require('../../../public/fj.jpg')
         }
     }
 }
