@@ -1,1 +1,1 @@
-# altria-ui
+# @altria/cli

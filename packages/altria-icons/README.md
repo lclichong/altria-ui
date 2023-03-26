@@ -1,1 +1,1 @@
-altria-icons
+# @altria/icons
