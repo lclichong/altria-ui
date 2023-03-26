@@ -79,8 +79,6 @@ export default {
 
 <style lang="less" scoped>
 .alt-container {
-    height: 100%;
-
     .alt-button {
         margin-top: 10px;
     }

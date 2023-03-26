@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="alt-container">
         <div class="demo">
             <alt-dialog title="提示" v-model="show">素胚勾勒出青花笔锋浓转淡</alt-dialog>
             <alt-button @click="show = true" type="success">消息弹窗</alt-button>
@@ -102,10 +102,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.container {
-    height: 100%;
-    overflow-y: scroll;
-
+.alt-container {
     button {
         margin-top: 10px;
     }

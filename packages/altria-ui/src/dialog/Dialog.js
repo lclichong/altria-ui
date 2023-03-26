@@ -2,11 +2,13 @@ import './index.less'
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
 import AltPopup from '../popup'
+import AltButton from '../button'
 
 export default {
     name: createName('dialog'),
     components: {
         AltPopup,
+        AltButton,
     },
     props: {
         title: {

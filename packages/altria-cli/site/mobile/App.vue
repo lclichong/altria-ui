@@ -30,12 +30,15 @@ body {
     touch-action: pan-y;
 }
 
-.demo {
-    padding: 5vw;
-    text-align: center;
-    p {
-        line-height: 35px;
-        margin-top: 10px;
+.alt-container {
+    height: calc(100% - 56px);
+    .demo {
+        padding: 5vw;
+        text-align: center;
+        p {
+            line-height: 35px;
+            margin-top: 10px;
+        }
     }
 }
 

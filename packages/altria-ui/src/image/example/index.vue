@@ -40,8 +40,6 @@ export default {
 
 <style lang="less" scoped>
 .alt-container {
-    height: 100%;
-
     .demo,
     p {
         text-align: left;

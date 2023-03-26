@@ -39,9 +39,3 @@ export default {
     }
 }
 </script>
-
-<style lang="less">
-.alt-container {
-    height: 100%;
-}
-</style>

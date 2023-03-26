@@ -37,6 +37,7 @@ export default {
     padding: 25px 25px;
     background-color: #fff;
     box-sizing: border-box;
+    overflow-y: scroll;
     .demo-home__description {
         margin: 20px 0px;
         color: rgba(69, 90, 100, 0.6);

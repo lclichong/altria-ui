@@ -61,12 +61,11 @@ export default {
 
 <style lang="less" scoped>
 .alt-container {
-    height: 100%;
-    p {
-        text-align: left;
-    }
     .demo {
         text-align: left;
+        p {
+            text-align: left;
+        }
     }
     .demo-icon-title {
         padding: 5vw 5vw 0 5vw;

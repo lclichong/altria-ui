@@ -76,8 +76,6 @@ export default {
 
 <style lang="less" scoped>
 .alt-container {
-    height: 100%;
-
     .demo {
         padding: 5vw 0 0 0;
         p {
