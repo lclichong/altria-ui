@@ -20,6 +20,10 @@ export const locales = {
                 name: '反馈组件',
                 children: [{ title: 'Dialog 弹出框', route: { name: 'Dialog' } }],
             },
+            {
+                name: '导航组件',
+                children: [{ title: 'Header 导航栏', route: { name: 'Header' } }],
+            },
         ],
     },
 }

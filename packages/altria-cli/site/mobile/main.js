@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { Cell, Button, Dialog, Icon, Image, Input } from '@altria/ui'
+import { Button, Cell, Dialog, Header, Icon, Image, Input } from '@altria/ui'
 import components from './components/index.js'
 
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Cell)
-Vue.use(Icon)
-Vue.use(Input)
-Vue.use(Image)
 Vue.use(Dialog)
+Vue.use(Header)
+Vue.use(Icon)
+Vue.use(Image)
+Vue.use(Input)
+
 Vue.use(components)
 
 new Vue({
