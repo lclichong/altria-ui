@@ -52,7 +52,7 @@ Vue.use(Button)
 ```html
 <alt-button type="success" loading>button</alt-button>
 <alt-button type="warning" loading load-type="circle">button</alt-button>
-<alt-button type="error" loading load-type="circle" load-text="加载中..."> button </alt-button>
+<alt-button type="error" loading load-type="circle" load-text="加载中...">button</alt-button>
 ```
 
 ### 阴影
@@ -69,7 +69,7 @@ Vue.use(Button)
 
 ```html
 <alt-button type="success" color="#7232dd">button</alt-button>
-<alt-button type="success" color="linear-gradient(to right, #ff6034, #9c27b0)"> button </alt-button>
+<alt-button type="success" color="linear-gradient(to right, #ff6034, #9c27b0)">button</alt-button>
 ```
 
 ## API
