@@ -32,7 +32,7 @@ export default {
             type: String
         },
         height: {
-            type: String
+            type: [String, Number]
         },
         leftText: {
             type: String
@@ -62,15 +62,15 @@ export default {
     },
     methods: {
         onClickLeft() {
-            if (this._events['on-click-left']) {
-                this.$emit('on-click-left')
+            if (this._events['click-left']) {
+                this.$emit('click-left')
             } else {
                 this.$router ? this.$router.back() : window.history.back()
             }
         },
         onClickRight() {
-            if (this._events['on-click-right']) {
-                this.$emit('on-click-right')
+            if (this._events['click-right']) {
+                this.$emit('click-right')
             }
         }
     }

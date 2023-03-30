@@ -5,27 +5,23 @@
             <alt-header title="标题"></alt-header>
         </div>
         <div class="demo">
-            <p>显示左侧箭头</p>
-            <alt-header leftArrow title="标题"></alt-header>
-        </div>
-        <div class="demo">
-            <p>左侧文本</p>
+            <p>左侧箭头和文本</p>
             <alt-header leftArrow leftText="返回" title="标题"></alt-header>
         </div>
         <div class="demo">
-            <p>事件</p>
+            <p>点击事件</p>
             <alt-header
                 leftArrow
                 leftText="返回"
-                @on-click-left="leftClick"
+                @click-left="onClickLeft"
                 rightText="右边"
-                @on-click-right="rightClick"
+                @click-right="onClickRight"
                 title="标题"
             ></alt-header>
         </div>
         <div class="demo">
             <p>插槽</p>
-            <alt-header id="header" title="标题" height="46" @on-click-left="leftClick" @on-click-right="rightClick">
+            <alt-header id="header" title="标题" height="46" @click-left="onClickLeft" @click-right="onClickRight">
                 <template #left>
                     <alt-icon class="demo-icon__left" name="star-outline" size="17"></alt-icon>
                 </template>
@@ -44,17 +40,14 @@ export default {
     components: {
         AltIcon
     },
-    data() {
-        return {}
-    },
     methods: {
-        leftClick() {
+        onClickLeft() {
             this.$Dialog.alert({
                 title: '提示',
                 message: '左边'
             })
         },
-        rightClick() {
+        onClickRight() {
             this.$Dialog.alert({
                 title: '提示',
                 message: '右边'
