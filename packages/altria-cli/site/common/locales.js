@@ -10,6 +10,7 @@ export const locales = {
                     { title: 'Cell 单元格', route: { name: 'Cell' } },
                     { title: 'Icon 图标', route: { name: 'Icon' } },
                     { title: 'Image 图片', route: { name: 'Image' } },
+                    { title: 'Popup 弹出层', route: { name: 'Popup' } },
                 ],
             },
             {

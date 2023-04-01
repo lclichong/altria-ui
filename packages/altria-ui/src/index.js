@@ -10,7 +10,7 @@ import DropDownMenu from './dropdown-menu/index.js'
 import DropDownMenuItem from './dropdown-item/index.js'
 import Loading from './loading'
 import Overlay from './overlay'
-import Popup from './popup'
+import Popup from './popup/index.js'
 import Image from './image/index.js'
 import Icon from './icon/index.js'
 import './styles/index.less'
@@ -65,6 +65,7 @@ export {
     Overlay,
     Image,
     Icon,
+    Popup,
 }
 export default {
     install: install,
