@@ -51,17 +51,12 @@ Dialog.confirm = (options) =>
         ...options,
     })
 
-Dialog.install = () => {
-    Vue.use(AltDialog)
-}
-
-Dialog.Component = AltDialog
-
-function install() {
+Dialog.install = function (Vue) {
+    Vue.prototype.$Dialog = Dialog
     Vue.component(AltDialog.name, AltDialog)
 }
 
-install()
+Dialog.Component = AltDialog
 
 Dialog.defaultOptions = {
     title: '',
@@ -78,7 +73,5 @@ Dialog.defaultOptions = {
         instance[action === 'confirm' ? 'resolve' : 'reject'](action)
     },
 }
-
-Vue.prototype.$Dialog = Dialog
 
 export default Dialog
