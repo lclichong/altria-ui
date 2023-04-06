@@ -25,7 +25,13 @@
                 <slot name="button"></slot>
             </div>
             <div v-if="type === 'textarea'" class="alt-textarea__wrapper">
-                <textarea @input="input" :rows="rows" v-model="val" :placeholder="placeholder" class="alt-textarea"></textarea>
+                <textarea
+                    @input="input"
+                    :rows="rows"
+                    v-model="val"
+                    :placeholder="placeholder"
+                    class="alt-textarea"
+                ></textarea>
             </div>
             <div v-if="error" class="alt-input--error">{{ errorText }}</div>
         </template>
@@ -49,7 +55,11 @@ export default {
     },
     computed: {
         setType() {
-            return this.type !== 'digit' ? this.type : null
+            if (this.type === 'digit' || this.type === 'number') {
+                return 'text'
+            } else {
+                return this.type
+            }
         }
     },
     props: {
@@ -119,7 +129,9 @@ export default {
         },
         input(event) {
             if (this.type === 'digit') {
-                this.val = this.val.replace(/^(0+)|[^\d]+/g, '')
+                this.val = this.val.replace(/\D/g, '')
+            } else if (this.type === 'number') {
+                this.val = this.val.replace(/^\D*(\d*(?:\.\d{0,20})?).*$/g, '$1')
             }
             this.$emit('input', this.val, event)
         },
