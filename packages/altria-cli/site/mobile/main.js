@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { Button, Cell, Dialog, Header, Icon, Image, Input, Popup } from '@altria/ui'
+import { Button, Cell, Dialog, Header, Icon, Image, Input, Popup, Swipe, SwipeItem } from '@altria/ui'
 import components from './components/index.js'
+import '@altria/touch-emulator'
 
 Vue.config.productionTip = false
 Vue.use(Button)
@@ -13,6 +14,8 @@ Vue.use(Icon)
 Vue.use(Image)
 Vue.use(Input)
 Vue.use(Popup)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
 
 Vue.use(components)
 

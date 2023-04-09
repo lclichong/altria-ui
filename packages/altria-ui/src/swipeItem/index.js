@@ -1,35 +1,7 @@
-import './index.less'
-import { createName } from '../utils/create-name'
-import { createBem } from '../utils/create-bem'
+import SwipeItem from './SwipeItem.js'
 
-export default {
-    name: createName('swipe-item'),
-    created() {
-        this.bem = createBem('alt-swipe-item')
-    },
-    computed: {
-        setStyle() {
-            const style = {}
-            const { size } = this.$parent
-            if (size) {
-                style.width = `${size}px`
-            }
-            if (this.offset) {
-                style.transform = `translateX(${this.offset}px)`
-            }
-            return style
-        },
-    },
-    data() {
-        return {
-            offset: 0,
-        }
-    },
-    render() {
-        return (
-            <div class={this.bem()} style={this.setStyle}>
-                {this.$slots.default}
-            </div>
-        )
-    },
+SwipeItem.install = function (Vue) {
+    Vue.component(SwipeItem.name, SwipeItem)
 }
+
+export default SwipeItem

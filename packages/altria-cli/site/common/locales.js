@@ -22,6 +22,10 @@ export const locales = {
                 children: [{ title: 'Dialog 弹出框', route: { name: 'Dialog' } }],
             },
             {
+                name: '展示组件',
+                children: [{ title: 'Swipe 轮播', route: { name: 'Swipe' } }],
+            },
+            {
                 name: '导航组件',
                 children: [{ title: 'Header 导航栏', route: { name: 'Header' } }],
             },
