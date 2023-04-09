@@ -1,0 +1,8 @@
+{
+    "name": "@altria/touch-emulator",
+    "version": "1.0.0",
+    "description": "altria touch emulator",
+    "main": "index.js",
+    "module": "index.js",
+    "license": "MIT"
+}
