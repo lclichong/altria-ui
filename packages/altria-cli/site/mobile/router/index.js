@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/DemoHome/index.vue'
+import { isMobile } from '../../common'
+
+if (!isMobile && frameElement == null) {
+    location.replace('index.html' + location.hash)
+}
 
 const path = require.context('@altria/ui/src', true, /.vue$/)
 let collectRoute = []

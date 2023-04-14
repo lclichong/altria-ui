@@ -12,7 +12,9 @@ if (process.env.NODE_ENV === 'production') {
     Vue.prototype.$simulatorPath = ''
 }
 
-new Vue({
-    router,
-    render: (h) => h(App),
-}).$mount('#app')
+setTimeout(() => {
+    new Vue({
+        router,
+        render: (h) => h(App),
+    }).$mount('#app')
+}, 100)

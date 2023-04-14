@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { isMobile } from '../../common'
+
+if (isMobile) {
+    location.replace('mobile.html' + location.hash)
+}
 
 const path = require.context('@altria/ui/src', true, /.md$/)
 const collectRoute = path.keys().map((p) => {
