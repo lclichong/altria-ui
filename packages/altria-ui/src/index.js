@@ -1,39 +1,39 @@
 import Button from './button/index.js'
-import Footer from './footer/index.js'
-import Swipe from './swipe/index.js'
-import SwipeItem from './swipeItem/index.js'
-import Header from './header/index.js'
-import Dialog from './dialog/index.js'
 import Cell from './cell/index.js'
+import Dialog from './dialog/index.js'
+import DropDownMenu from './dropdownMenu/index.js'
+import DropDownMenuItem from './dropdownItem/index.js'
+import Footer from './footer/index.js'
+import Header from './header/index.js'
+import Icon from './icon/index.js'
+import Image from './image/index.js'
 import Input from './input/index.js'
-import DropDownMenu from './dropdown-menu/index.js'
-import DropDownMenuItem from './dropdown-item/index.js'
 import Loading from './loading'
 import Overlay from './overlay'
 import Popup from './popup/index.js'
-import Image from './image/index.js'
-import Icon from './icon/index.js'
+import Swipe from './swipe/index.js'
+import SwipeItem from './swipeItem/index.js'
+
 import './styles/index.less'
 
 const version = '1.0'
 
 function install(Vue) {
     let components = [
-        Footer,
-        Swipe,
-        SwipeItem,
-        Header,
         Cell,
-        Input,
-        Button,
+        Dialog,
         DropDownMenu,
         DropDownMenuItem,
+        Footer,
+        Header,
+        Icon,
+        Image,
+        Input,
         Loading,
         Overlay,
-        Dialog,
         Popup,
-        Image,
-        Icon,
+        Swipe,
+        SwipeItem,
     ]
     components.forEach(function (item) {
         if (item.install) {
@@ -53,20 +53,23 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
     install,
     version,
-    Footer,
-    Swipe,
-    SwipeItem,
-    Header,
-    Dialog,
-    Cell,
-    Input,
     Button,
+    Cell,
+    Dialog,
+    DropDownMenu,
+    DropDownMenuItem,
+    Footer,
+    Header,
+    Icon,
+    Image,
+    Input,
     Loading,
     Overlay,
-    Image,
-    Icon,
     Popup,
+    Swipe,
+    SwipeItem,
 }
+
 export default {
     install: install,
     version: version,

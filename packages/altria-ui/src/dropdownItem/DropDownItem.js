@@ -4,9 +4,15 @@ import { createName } from '../utils/create-name'
 import context from '../utils/context'
 import listeners from '../utils/listeners'
 import { getScroller } from '../utils/scroll'
+import AltIcon from '../icon'
+import AltPopup from '../popup'
 
 export default {
     name: createName('dropdown-item'),
+    components: {
+        AltIcon,
+        AltPopup,
+    },
     props: {
         value: {
             type: [String, Array],
@@ -136,24 +142,13 @@ export default {
                     class={['alt-dropdown-item__option', active ? 'alt-dropdown-item__option__active' : '']}
                 >
                     {option.text}
-                    <svg
+                    <alt-icon
                         class={[
                             'alt-dropdown-item__option__svg',
                             active ? 'alt-dropdown-item__option__svg--show' : 'alt-dropdown-item__option__svg--hide',
                         ]}
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
-                        data-testid="geist-icon"
-                        shape-rendering="geometricPrecision"
-                        viewBox="0 0 24 24"
-                        data-v-02fcfef8
-                        style="color: currentcolor;"
-                    >
-                        <path d="M20 6L9 17l-5-5" />
-                    </svg>
+                        name="check"
+                    ></alt-icon>
                 </div>
             )
         })

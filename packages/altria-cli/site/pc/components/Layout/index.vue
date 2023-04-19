@@ -133,8 +133,8 @@ export default {
     flex-direction: row;
     height: 100%;
     aside {
-        min-width: 220px;
-        max-width: 220px;
+        min-width: 250px;
+        max-width: 250px;
         background-color: #fff;
         box-shadow: 0 8px 12px #ebedf0;
         padding: 20px;
@@ -169,7 +169,7 @@ export default {
 
         @media (max-width: 1440px) {
             right: auto;
-            left: 1035px;
+            left: 1050px;
         }
 
         &-fixed {

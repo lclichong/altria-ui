@@ -15,7 +15,10 @@ export default {
     mounted() {
         this.offset = this.$el.offsetTop + 48 - window.scrollY
     },
-    data: function() {
+    destroyed() {
+        document.body.removeAttribute('class')
+    },
+    data() {
         return {
             itemShow: false,
             titles: [],

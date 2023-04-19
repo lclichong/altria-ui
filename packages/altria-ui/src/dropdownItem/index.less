@@ -1,5 +1,6 @@
 :root {
     --dropdown-item-z-index: 10;
+    --dropdown-item-active-color: var(--error-default);
 }
 
 .alt {
@@ -54,11 +55,11 @@
         margin-top: -1px;
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg);
-        border-color: transparent transparent #ee0a24 #ee0a24;
+        border-color: transparent transparent var(--dropdown-item-active-color) var(--dropdown-item-active-color);
     }
 
     &--show .alt-ellipsis {
-        color: #ee0a24;
+        color: var(--dropdown-item-active-color);
     }
 }
 
@@ -111,7 +112,7 @@
             transform: scaleY(0.5);
         }
         .alt-dropdown-item__option__active {
-            color: red;
+            color: var(--dropdown-item-active-color);
         }
     }
 
