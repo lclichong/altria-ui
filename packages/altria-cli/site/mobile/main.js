@@ -11,6 +11,7 @@ import {
     Icon,
     Image,
     Input,
+    Loading,
     Popup,
     Swipe,
     SwipeItem,
@@ -28,6 +29,7 @@ Vue.use(Header)
 Vue.use(Icon)
 Vue.use(Image)
 Vue.use(Input)
+Vue.use(Loading)
 Vue.use(Popup)
 Vue.use(Swipe)
 Vue.use(SwipeItem)

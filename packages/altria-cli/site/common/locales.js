@@ -22,6 +22,7 @@ export const locales = {
                 children: [
                     { title: 'Dialog 弹出框', route: { name: 'Dialog' } },
                     { title: 'DropdownMenu 下拉菜单', route: { name: 'DropdownMenu' } },
+                    { title: 'Loading 加载', route: { name: 'Loading' } },
                 ],
             },
             {

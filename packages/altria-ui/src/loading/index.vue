@@ -27,7 +27,7 @@ export default {
     },
     computed: {
         setLoadClasses() {
-            let setLoadClasses = this.bem(this.loadType, { size: this.size }) + ` ${this.type}`
+            let setLoadClasses = this.bem(this.loadType, { size: this.size })
             return setLoadClasses
         },
         setLoadStyles() {
@@ -58,12 +58,8 @@ export default {
             type: String,
             default: 'medium'
         },
-        type: {
-            type: String,
-            default: 'default'
-        },
         color: {
-            default: ''
+            type: [String, Array]
         },
         loadType: {
             type: String,

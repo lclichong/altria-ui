@@ -140,6 +140,7 @@ export default {
         padding: 20px;
         font-size: 15px;
         box-sizing: border-box;
+        overflow-y: scroll;
     }
 
     .alt-doc__main {
