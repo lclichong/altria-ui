@@ -12,6 +12,7 @@ import {
     Image,
     Input,
     Loading,
+    Overlay,
     Popup,
     Swipe,
     SwipeItem,
@@ -30,6 +31,7 @@ Vue.use(Icon)
 Vue.use(Image)
 Vue.use(Input)
 Vue.use(Loading)
+Vue.use(Overlay)
 Vue.use(Popup)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
