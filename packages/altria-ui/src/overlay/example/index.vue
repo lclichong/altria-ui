@@ -1,11 +1,11 @@
 <template>
     <div class="alt-container">
         <div class="demo">
-            <alt-overlay v-model="show"> </alt-overlay>
+            <alt-overlay v-model="show" @click="show = false"> </alt-overlay>
             <alt-button @click="show = true" type="success">显示遮罩</alt-button>
         </div>
         <div class="demo">
-            <alt-overlay v-model="show2">
+            <alt-overlay v-model="show2" @click="show2 = false">
                 <div class="content" @click.stop></div>
             </alt-overlay>
             <alt-button @click="show2 = true" type="success">嵌入内容</alt-button>

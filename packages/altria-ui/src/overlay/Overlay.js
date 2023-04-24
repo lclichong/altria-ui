@@ -15,19 +15,15 @@ export default {
         },
     },
     methods: {
-        hideOverlay() {
-            if (!this.value) {
-                return
-            } else {
-                this.$emit('input', false)
-            }
+        handleClick(event) {
+            this.$emit('click', event)
         },
     },
     render() {
         const bem = createBem('alt-overlay')
         return (
             <div
-                onClick={this.hideOverlay}
+                onClick={this.handleClick}
                 style={{ zIndex: this.zIndex }}
                 class={bem(null, { show: this.value, hide: !this.value })}
             >

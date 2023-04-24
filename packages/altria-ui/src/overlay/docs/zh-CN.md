@@ -20,7 +20,7 @@ Vue.use(Overlay)
 通过 `v-model` 设置遮罩层是否展示。
 
 ```html
-<alt-overlay v-model="show"></alt-overlay> 
+<alt-overlay v-model="show" @click="show = false"></alt-overlay> 
 <alt-button @click="show = true" type="success">显示遮罩</alt-button>
 ```
 
@@ -39,10 +39,10 @@ export default {
 通过默认插槽的方式嵌入内容。
 
 ```html
-<alt-overlay v-model="show2">
+<alt-overlay v-model="show" @click="show = false">
     <div class="content" @click.stop></div>
 </alt-overlay>
-<alt-button @click="show2 = true" type="success">嵌入内容</alt-button>
+<alt-button @click="show = true" type="success">嵌入内容</alt-button>
 ```
 
 ```css
