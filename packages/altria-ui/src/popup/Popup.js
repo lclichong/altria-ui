@@ -2,9 +2,13 @@ import './index.less'
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
 import context from '../utils/context'
+import AltOverlay from '../overlay'
 
 export default {
     name: createName('popup'),
+    components: {
+        AltOverlay,
+    },
     created() {
         this.bem = createBem('alt-popup')
     },
@@ -50,7 +54,14 @@ export default {
             }
         },
         renderOverlay() {
-            return <div onClick={this.hidePopup} style={{ zIndex: this.zIndex - 1 }} class={this.bem('overlay')}></div>
+            return (
+                <alt-overlay
+                    value={this.value}
+                    onClick={this.hidePopup}
+                    zIndex={this.zIndex - 1}
+                    class={this.bem('overlay')}
+                ></alt-overlay>
+            )
         },
         renderContent() {
             return (
