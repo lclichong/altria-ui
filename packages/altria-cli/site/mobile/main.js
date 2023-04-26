@@ -16,6 +16,8 @@ import {
     Popup,
     Swipe,
     SwipeItem,
+    Tabbar,
+    TabbarItem,
 } from '@altria/ui'
 import components from './components/index.js'
 import '@altria/touch-emulator'
@@ -35,6 +37,8 @@ Vue.use(Overlay)
 Vue.use(Popup)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
 
 Vue.use(components)
 

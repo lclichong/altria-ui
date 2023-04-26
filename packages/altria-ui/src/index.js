@@ -3,7 +3,8 @@ import Cell from './cell/index.js'
 import Dialog from './dialog/index.js'
 import DropDownMenu from './dropdownMenu/index.js'
 import DropDownMenuItem from './dropdownItem/index.js'
-import Footer from './footer/index.js'
+import Tabbar from './tabbar/index.js'
+import TabbarItem from './tabbarItem/index.js'
 import Header from './header/index.js'
 import Icon from './icon/index.js'
 import Image from './image/index.js'
@@ -24,7 +25,6 @@ function install(Vue) {
         Dialog,
         DropDownMenu,
         DropDownMenuItem,
-        Footer,
         Header,
         Icon,
         Image,
@@ -34,6 +34,8 @@ function install(Vue) {
         Popup,
         Swipe,
         SwipeItem,
+        Tabbar,
+        TabbarItem,
     ]
     components.forEach(function (item) {
         if (item.install) {
@@ -58,7 +60,6 @@ export {
     Dialog,
     DropDownMenu,
     DropDownMenuItem,
-    Footer,
     Header,
     Icon,
     Image,
@@ -68,6 +69,8 @@ export {
     Popup,
     Swipe,
     SwipeItem,
+    Tabbar,
+    TabbarItem,
 }
 
 export default {

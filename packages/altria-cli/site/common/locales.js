@@ -32,7 +32,10 @@ export const locales = {
             },
             {
                 name: '导航组件',
-                children: [{ title: 'Header 导航栏', route: { name: 'Header' } }],
+                children: [
+                    { title: 'Header 导航栏', route: { name: 'Header' } },
+                    { title: 'Tabbar 标签栏', route: { name: 'Tabbar' } },
+                ],
             },
         ],
     },
