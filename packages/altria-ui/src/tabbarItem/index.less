@@ -1,6 +1,10 @@
 :root {
-    --tabbar-active-color: var(--accents-10);
-    --tabbar-dot-background-color: var(--error-default);
+    --tabbar-item-inactive-color: var(--accents-8);
+    --tabbar-item-active-color: var(--accents-10);
+    --tabbar-item-dot-background-color: var(--error-default);
+    --tabbar-item-badge-background-color: var(--error-default);
+    --tabbar-item-font-size: var(--font-size-sm);
+    --tabbar-item-icon-size: 22px;
 }
 
 .alt-tabbar-item {
@@ -9,18 +13,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #646566;
-    font-size: 12px;
+    color: var(--tabbar-item-inactive-color);
+    font-size: var(--tabbar-item-font-size);
     overflow: hidden;
     flex: 1;
 
     .alt-icon {
-        font-size: 22px;
+        font-size: var(--tabbar-item-icon-size);
         color: currentColor;
     }
 
     &--active {
-        color: var(--tabbar-active-color);
+        color: var(--tabbar-item-active-color);
     }
 
     &__icon {
@@ -33,7 +37,7 @@
             right: 0px;
             top: 0px;
             border-radius: 50%;
-            background-color: var(--tabbar-dot-background-color);
+            background-color: var(--tabbar-item-dot-background-color);
         }
     }
 
@@ -49,7 +53,7 @@
         color: #fff;
         font-family: -apple-system-font, Helvetica Neue, Arial, sans-serif;
         box-sizing: border-box;
-        background-color: var(--tabbar-dot-background-color);
+        background-color: var(--tabbar-item-badge-background-color);
     }
 }
 

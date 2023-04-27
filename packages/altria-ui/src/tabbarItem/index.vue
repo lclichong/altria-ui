@@ -1,5 +1,5 @@
 <template>
-    <div @click="handleClick" :class="setClasses">
+    <div @click="handleClick" :class="setClasses" :style="{ color: setColor }">
         <div :class="bem('icon')">
             <alt-icon :name="icon"></alt-icon>
             <div v-if="dot" :class="bem('icon__dot')"></div>
@@ -26,6 +26,10 @@ export default {
         setClasses() {
             const bem = createBem('alt-tabbar-item')
             return bem(null, { active: this.active })
+        },
+        setColor() {
+            const activeColor = this.$parent.activeColor
+            return this.active ? activeColor : ''
         }
     },
     props: {
@@ -49,7 +53,7 @@ export default {
         }
     },
     methods: {
-        handleClick() {
+        handleClick(event) {
             const uid = this._uid
             let index = ''
             for (let i = 0; i < this.$parent.$children.length; i++) {
@@ -62,6 +66,7 @@ export default {
                 }
             }
             this.$parent.$emit('input', index)
+            this.$emit('click', index, event)
         }
     }
 }

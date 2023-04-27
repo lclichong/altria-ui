@@ -28,7 +28,31 @@
             </alt-tabbar>
         </div>
         <div class="demo">
-            <alt-button style="margin-top: 30px" @click="getActive" type="success">获取值</alt-button>
+            <p>自定义颜色</p>
+            <alt-tabbar v-model="active4" active-color="#ba68c8">
+                <alt-tabbar-item icon="home-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="magnify">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="account-circle-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="cog-outline">标签</alt-tabbar-item>
+            </alt-tabbar>
+        </div>
+        <div class="demo">
+            <p>点击事件</p>
+            <alt-tabbar v-model="active5">
+                <alt-tabbar-item @click="handleClick" icon="home-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item @click="handleClick" icon="magnify">标签</alt-tabbar-item>
+                <alt-tabbar-item @click="handleClick" icon="account-circle-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item @click="handleClick" icon="cog-outline">标签</alt-tabbar-item>
+            </alt-tabbar>
+        </div>
+        <div class="demo">
+            <p>切换事件</p>
+            <alt-tabbar v-model="active6" @change="handleChange">
+                <alt-tabbar-item icon="home-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="magnify">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="account-circle-outline">标签</alt-tabbar-item>
+                <alt-tabbar-item icon="cog-outline">标签</alt-tabbar-item>
+            </alt-tabbar>
         </div>
     </div>
 </template>
@@ -38,15 +62,25 @@ export default {
     data() {
         return {
             active: 0,
-            active2: 'home',
-            active3: 1
+            active2: 'friends',
+            active3: 1,
+            active4: 0,
+            active5: 0,
+            active6: 0
         }
     },
     methods: {
-        getActive() {
-            console.log('active', this.active)
-            console.log('active2', this.active2)
-            console.log('active3', this.active3)
+        handleClick(active) {
+            this.$Dialog.alert({
+                title: '提示',
+                message: 'clicked ' + active
+            })
+        },
+        handleChange(active) {
+            this.$Dialog.alert({
+                title: '提示',
+                message: 'changed to ' + active
+            })
         }
     }
 }
@@ -54,14 +88,15 @@ export default {
 
 <style lang="less" scoped>
 .alt-container {
+    .alt-tabbar {
+        position: relative;
+    }
     .demo {
+        padding: 5vw 0 0;
         p {
             text-align: left;
             margin-left: 5vw;
-            margin-top: 3vw;
-            margin-bottom: 1vw;
         }
-        padding: 0px;
     }
 }
 </style>
