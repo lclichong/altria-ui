@@ -1,7 +1,7 @@
 <template>
     <div class="alt-container">
         <div class="demo">
-            <p>默认</p>
+            <p>基础用法</p>
             <alt-input v-model="val"></alt-input>
         </div>
         <div class="demo">

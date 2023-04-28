@@ -1,6 +1,6 @@
 <template>
     <div class="alt-container">
-        <p>默认</p>
+        <p>基础用法</p>
         <alt-swipe>
             <alt-swipe-item>1</alt-swipe-item>
             <alt-swipe-item>2</alt-swipe-item>
