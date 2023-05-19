@@ -3,9 +3,16 @@ import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
 import context from '../utils/context'
 import listeners from '../utils/listeners'
+import { ClickOutsideMixin } from '../mixins/click-outside'
 
 export default {
     name: createName('dropdown-menu'),
+    mixins: [
+        ClickOutsideMixin({
+            event: 'click',
+            method: 'onClickOutside',
+        }),
+    ],
     created() {
         listeners.dropDownMenu.vnodes.push(this)
         this.$nextTick(() => {
@@ -33,6 +40,13 @@ export default {
             } else {
                 this.offset = this.$el.offsetTop + 48 - window.scrollY
             }
+        },
+        onClickOutside() {
+            this.children.forEach((child) => {
+                if (child.contentShow) {
+                    child.popupHide()
+                }
+            })
         },
     },
     render() {

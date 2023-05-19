@@ -12,9 +12,7 @@ function getDirection(x, y) {
     return ''
 }
 
-function on(target, event, handler) {
-    target.addEventListener(event, handler, false)
-}
+import { on } from './event'
 
 export const TouchMixin = {
     data() {
