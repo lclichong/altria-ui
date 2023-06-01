@@ -21,6 +21,7 @@ const version = '1.0'
 
 function install(Vue) {
     let components = [
+        Button,
         Cell,
         Dialog,
         DropDownMenu,
