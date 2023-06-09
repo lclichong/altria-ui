@@ -69,6 +69,7 @@ export default {
                 // 隐藏
                 document.body.removeAttribute('class')
                 this.contentShow = !this.contentShow
+                this.$parent.itemShow = false
                 if (this.dom) {
                     this.dom.removeEventListener('scroll', this.onScroll)
                 } else {
