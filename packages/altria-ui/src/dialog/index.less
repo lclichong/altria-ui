@@ -48,7 +48,7 @@
         border-radius: 0px 0px 16px 16px;
     }
 
-    &__button {
+    .alt-dialog &__button {
         background-color: var(--dialog-background);
         border: none;
         outline: none;
@@ -59,17 +59,18 @@
         font-size: 15px;
     }
 
-    &__button--confirm {
+    .alt-dialog &__button--confirm {
+        color: var(--dialog-confirm-button-color);
         border-radius: 0px 0px 16px 0px;
     }
 
-    &__button--cancel {
+    .alt-dialog &__button--cancel {
         color: var(--dialog-cancel-button-color);
         border-radius: 0px 0px 0px 16px;
         position: relative;
     }
 
-    &__button--cancel::after {
+    .alt-dialog &__button--cancel::after {
         position: absolute;
         box-sizing: border-box;
         content: ' ';
