@@ -3,9 +3,8 @@
     "version": "0.1.5",
     "scripts": {
         "dev": "pnpm --dir ./packages/altria-cli serve",
-        "build:site": "pnpm --dir ./packages/altria-cli build",
+        "build:doc": "pnpm --dir ./packages/altria-cli build",
         "build:icons": "pnpm --dir ./packages/altria-icons build",
-        "build:docs": "pnpm --dir ./packages/altria-cli build",
         "build:umd": "pnpm --dir ./packages/altria-cli lib"
     },
     "eslintConfig": {
