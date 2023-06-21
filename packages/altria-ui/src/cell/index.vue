@@ -40,6 +40,6 @@ export default {
 }
 </script>
 
-<style lang="less">
+<!-- <style lang="less">
 @import 'index.less';
-</style>
+</style> -->

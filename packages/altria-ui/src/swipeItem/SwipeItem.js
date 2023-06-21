@@ -1,4 +1,3 @@
-import './index.less'
 import { createName } from '../utils/create-name'
 import { createBem } from '../utils/create-bem'
 

@@ -2,7 +2,12 @@
     <button @click="handleClick" :class="setButtonClasses" :style="{ background: color }" :disabled="disabled">
         <slot></slot>
         <template v-if="loading">
-            <alt-button-loading :type="type" :load-type="loadType" :load-color="loadColor" :load-text="loadText"></alt-button-loading>
+            <alt-button-loading
+                :type="type"
+                :load-type="loadType"
+                :load-color="loadColor"
+                :load-text="loadText"
+            ></alt-button-loading>
         </template>
     </button>
 </template>
@@ -75,7 +80,3 @@ export default {
     }
 }
 </script>
-
-<style lang="less">
-@import 'index.less';
-</style>

@@ -52,8 +52,6 @@ const routes = [
     ...collectRoute,
 ]
 
-console.log('pc', routes)
-
 const router = new VueRouter({
     routes,
 })

@@ -19,6 +19,7 @@ import {
     Tabbar,
     TabbarItem,
 } from '@altria/ui'
+import '@altria/ui/src/index.less'
 import components from './components/index.js'
 import '@altria/touch-emulator'
 

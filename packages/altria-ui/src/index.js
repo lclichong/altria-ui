@@ -15,8 +15,6 @@ import Popup from './popup/index.js'
 import Swipe from './swipe/index.js'
 import SwipeItem from './swipeItem/index.js'
 
-import './styles/index.less'
-
 const version = '1.0'
 
 function install(Vue) {

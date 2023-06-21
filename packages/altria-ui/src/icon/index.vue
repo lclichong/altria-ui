@@ -1,9 +1,10 @@
 <template>
-    <i @click="handleClick" :class="['alt-icon','alt-icon--set', 'alt-icon-' + name]" :style="setStyle"></i>
+    <i @click="handleClick" :class="['alt-icon', 'alt-icon--set', 'alt-icon-' + name]" :style="setStyle"></i>
 </template>
 
 <script>
 import { createName } from '../utils/create-name'
+
 export default {
     name: createName('icon'),
     props: {
@@ -33,6 +34,6 @@ export default {
 }
 </script>
 
-<style lang="less">
+<!-- <style lang="less">
 @import 'index.less';
-</style>
+</style> -->

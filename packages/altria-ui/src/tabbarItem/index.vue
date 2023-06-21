@@ -72,6 +72,6 @@ export default {
 }
 </script>
 
-<style lang="less">
+<!-- <style lang="less">
 @import url('./index.less');
-</style>
+</style> -->
