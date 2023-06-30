@@ -1,6 +1,6 @@
 {
     "name": "@altria/icons",
-    "version": "0.1.5",
+    "version": "1.0.0",
     "description": "Icons of altria",
     "main": "lib/index.js",
     "module": "dist/index.js",

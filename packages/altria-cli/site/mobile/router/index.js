@@ -8,7 +8,16 @@ for (let p of path.keys()) {
     if (p.includes('example')) {
         const sourceName = p.match(/(?<=\.\/).*?(?=\/)/g)
         const name = sourceName[0]
-        const nameUper = name.charAt(0).toUpperCase() + name.slice(1)
+        let nameUper = ''
+        if (name.indexOf('-') >= 0) {
+            nameUper =
+                name.charAt(0).toUpperCase() +
+                name.substring(1, name.indexOf('-') + 1) +
+                name.charAt(name.indexOf('-') + 1).toUpperCase() +
+                name.slice(name.indexOf('-') + 2)
+        } else {
+            nameUper = name.charAt(0).toUpperCase() + name.slice(1)
+        }
         collectRoute.push({
             path: `/zh-CN/${nameUper}`,
             name: `zh-CN/${nameUper}`,

@@ -1,10 +1,10 @@
 import Button from './button/index.js'
 import Cell from './cell/index.js'
 import Dialog from './dialog/index.js'
-import DropDownMenu from './dropdownMenu/index.js'
-import DropDownMenuItem from './dropdownItem/index.js'
+import DropdownMenu from './dropdown-menu/index.js'
+import DropdownItem from './dropdown-item/index.js'
 import Tabbar from './tabbar/index.js'
-import TabbarItem from './tabbarItem/index.js'
+import TabbarItem from './tabbar-item/index.js'
 import Header from './header/index.js'
 import Icon from './icon/index.js'
 import Image from './image/index.js'
@@ -13,7 +13,7 @@ import Loading from './loading/index.js'
 import Overlay from './overlay/index.js'
 import Popup from './popup/index.js'
 import Swipe from './swipe/index.js'
-import SwipeItem from './swipeItem/index.js'
+import SwipeItem from './swipe-item/index.js'
 
 const version = '1.0'
 
@@ -22,8 +22,8 @@ function install(Vue) {
         Button,
         Cell,
         Dialog,
-        DropDownMenu,
-        DropDownMenuItem,
+        DropdownMenu,
+        DropdownItem,
         Header,
         Icon,
         Image,
@@ -57,8 +57,8 @@ export {
     Button,
     Cell,
     Dialog,
-    DropDownMenu,
-    DropDownMenuItem,
+    DropdownMenu,
+    DropdownItem,
     Header,
     Icon,
     Image,

@@ -1,12 +1,24 @@
 {
-    "private": true,
-    "version": "0.1.5",
+    "name": "altria",
+    "description": "Vue2 UI组件库",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "style": "lib/index.css",
     "scripts": {
         "dev": "pnpm --dir ./packages/altria-cli serve",
         "build:doc": "pnpm --dir ./packages/altria-cli build",
         "build:icons": "pnpm --dir ./packages/altria-icons build",
         "build:es": "rm -rf es dist && cross-env rollup_format=es rollup -c ./build/rollup.config.js && cross-env rollup_format=es gulp -f ./build/gulpfile.js",
         "build:lib": "rm -rf lib dist && cross-env rollup_format=cjs rollup -c ./build/rollup.config.js && cross-env rollup_format=cjs gulp -f ./build/gulpfile.js"
+    },
+    "files": [
+        "es",
+        "lib",
+        "dist"
+    ],
+    "dependencies": {
+        "vue-runtime-helpers": "^1.1.2"
     },
     "devDependencies": {
         "@rollup/plugin-alias": "^5.0.0",

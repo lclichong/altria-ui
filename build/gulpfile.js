@@ -18,7 +18,6 @@ function resolvePath(dir) {
     return path.resolve(__dirname, '../', dir)
 }
 
-// 这里的babel只需要最简单的配置即可,打包成es
 const babelConfig = {
     presets: [
         [
@@ -92,7 +91,7 @@ function buildStyle() {
         .pipe(cssnano())
         .pipe(dest(resolve(outputDir)))
 
-    // 所有组件的样式，压缩 打包到dist目录
+    // 所有组件的样式，压缩打包到dist目录
     const wholeMin = src('../packages/altria-ui/src/index.less')
         .pipe(less())
         .pipe(postcss([autoprefixer()]))

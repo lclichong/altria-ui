@@ -5,8 +5,8 @@ import {
     Button,
     Cell,
     Dialog,
-    DropDownMenu,
-    DropDownMenuItem,
+    DropdownMenu,
+    DropdownItem,
     Header,
     Icon,
     Image,
@@ -27,8 +27,8 @@ Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Cell)
 Vue.use(Dialog)
-Vue.use(DropDownMenu)
-Vue.use(DropDownMenuItem)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 Vue.use(Header)
 Vue.use(Icon)
 Vue.use(Image)

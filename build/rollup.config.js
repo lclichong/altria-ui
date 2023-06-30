@@ -116,12 +116,6 @@ function getESConfigs() {
     return result
 }
 
-/**
- * umd，导出所有的组件 unpkg，可直接用script引用
- * 打包出的有循环依赖，https://juejin.cn/post/6862635764981235719
- * 但此时(2022-08-18)并没有发现有beta的版本，最新版22.0.2问题依然存在
- * @returns
- */
 function getUMDConfig() {
     const entry = resolvePath('packages/altria-ui/src') + '/index.js'
     return {

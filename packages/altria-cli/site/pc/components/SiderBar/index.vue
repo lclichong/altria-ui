@@ -7,7 +7,8 @@
                     @click="goToHandler(c)"
                     :class="[active === c.route.name ? 'color' : '']"
                     class="route__children__title"
-                >{{ c.title }}</span>
+                    >{{ c.title }}</span
+                >
             </div>
         </div>
     </div>

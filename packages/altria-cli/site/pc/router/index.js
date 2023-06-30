@@ -10,7 +10,16 @@ const path = require.context('@altria/ui/src', true, /.md$/)
 const collectRoute = path.keys().map((p) => {
     const sourceName = p.match(/(?<=\.\/).*?(?=\/)/g)
     const name = sourceName[0]
-    const nameUper = name.charAt(0).toUpperCase() + name.slice(1)
+    let nameUper = ''
+    if (name.indexOf('-') >= 0) {
+        nameUper =
+            name.charAt(0).toUpperCase() +
+            name.substring(1, name.indexOf('-') + 1) +
+            name.charAt(name.indexOf('-') + 1).toUpperCase() +
+            name.slice(name.indexOf('-') + 2)
+    } else {
+        nameUper = name.charAt(0).toUpperCase() + name.slice(1)
+    }
     if (name === 'markdown') {
         const sourceName = p.match(/(?<=markdown\/).*?(?=\.md)/g)
         const name = sourceName[0]

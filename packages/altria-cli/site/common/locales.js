@@ -21,7 +21,7 @@ export const locales = {
                 name: '反馈组件',
                 children: [
                     { title: 'Dialog 弹出框', route: { name: 'Dialog' } },
-                    { title: 'DropdownMenu 下拉菜单', route: { name: 'DropdownMenu' } },
+                    { title: 'DropdownMenu 下拉菜单', route: { name: 'Dropdown-Menu' } },
                     { title: 'Loading 加载', route: { name: 'Loading' } },
                     { title: 'Overlay 遮罩层', route: { name: 'Overlay' } },
                 ],

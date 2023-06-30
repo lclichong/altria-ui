@@ -8,10 +8,10 @@
 
 ```js
 import Vue from 'vue'
-import { DropDownMenu, DropDownMenuItem } from 'altria-ui'
+import { DropdownMenu, DropdownItem } from 'altria-ui'
 
-Vue.use(DropDownMenu)
-Vue.use(DropDownMenuItem)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 ```
 
 ## 代码演示
