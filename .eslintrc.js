@@ -1,7 +1,6 @@
-{
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module"
-    }
+module.exports = {
+    parserOptions: {
+        ecmaVersion: 7,
+        sourceType: 'module',
+    },
 }
-  
