@@ -1,7 +1,7 @@
 {
     "name": "altria-ui",
     "description": "Vue2 UI组件库",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "lib/index.js",
     "module": "es/index.js",
     "style": "lib/index.css",
