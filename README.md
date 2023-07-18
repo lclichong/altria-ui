@@ -1,6 +1,6 @@
 <div align="center">
-  <p style="font-size:30px">ALTRIA-UI</p>
-  <h3>基于 Vue2 的移动端组件库</h3>
+  <h1>ALTRIA-UI</h1>
+  <p>基于 Vue2 的移动端组件库</p>
   <br>
 </div>
 
