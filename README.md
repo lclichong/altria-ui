@@ -1,7 +1,6 @@
 <div align="center">
   <h1>ALTRIA-UI</h1>
   <p>基于 Vue2 的移动端组件库</p>
-  <br>
 </div>
 
 ### 快速上手
