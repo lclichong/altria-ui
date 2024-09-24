@@ -106,7 +106,7 @@ function getESConfigs() {
         return createESConfig(entry, outputFile, externals)
     })
     // 所有组件
-    const entry = resolvePath('packages/altria-ui/src') + '/index.js'
+    const entry = resolvePath('packages/altria-ui/src/index.js')
 
     const indexExternals = (id) => {
         return id !== entry
