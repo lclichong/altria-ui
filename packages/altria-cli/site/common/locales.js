@@ -24,6 +24,7 @@ export const locales = {
                     { title: 'DropdownMenu 下拉菜单', route: { name: 'Dropdown-Menu' } },
                     { title: 'Loading 加载', route: { name: 'Loading' } },
                     { title: 'Overlay 遮罩层', route: { name: 'Overlay' } },
+                    { title: 'PullRefresh 下拉刷新', route: { name: 'Pull-Refresh' } },
                 ],
             },
             {

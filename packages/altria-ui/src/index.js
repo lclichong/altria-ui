@@ -12,6 +12,7 @@ import Input from './input/index.js'
 import Loading from './loading/index.js'
 import Overlay from './overlay/index.js'
 import Popup from './popup/index.js'
+import PullRefresh from './pull-refresh/index.js'
 import Swipe from './swipe/index.js'
 import SwipeItem from './swipe-item/index.js'
 
@@ -31,6 +32,7 @@ function install(Vue) {
         Loading,
         Overlay,
         Popup,
+        PullRefresh,
         Swipe,
         SwipeItem,
         Tabbar,
@@ -66,6 +68,7 @@ export {
     Loading,
     Overlay,
     Popup,
+    PullRefresh,
     Swipe,
     SwipeItem,
     Tabbar,

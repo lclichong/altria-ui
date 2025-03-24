@@ -1,0 +1,29 @@
+:root {
+    --pull-refresh-head-height: 50px;
+    --pull-refresh-head-font-size: var(--font-size-md);
+    --pull-refresh-head-text-color: var(--accents-2);
+}
+
+.alt-pull-refresh {
+    height: 100%;
+    position: relative;
+    user-select: none;
+
+    &__indicator {
+        height: var(--pull-refresh-head-height);
+        width: 100%;
+        position: absolute;
+        top: 0;
+        transform: translateY(-100%);
+        text-align: center;
+        color: var(--pull-refresh-head-text-color);
+        font-size: var(--pull-refresh-head-font-size);
+        transition: transform 0.3s, opacity 0.3s;
+        opacity: 0;
+    }
+
+    &__content {
+        min-height: 100%;
+        transition: transform 0.3s;
+    }
+}

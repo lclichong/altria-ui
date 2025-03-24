@@ -14,6 +14,7 @@ import {
     Loading,
     Overlay,
     Popup,
+    PullRefresh,
     Swipe,
     SwipeItem,
     Tabbar,
@@ -36,6 +37,7 @@ Vue.use(Input)
 Vue.use(Loading)
 Vue.use(Overlay)
 Vue.use(Popup)
+Vue.use(PullRefresh)
 Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Tabbar)
