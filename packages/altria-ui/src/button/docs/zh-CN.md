@@ -83,7 +83,7 @@ Vue.use(Button)
 | disabled  | 是否禁用按钮                                          | _boolean_ | `false`   |
 | loading   | 是否启用加载中                                        | _boolean_ | `false`   |
 | load-type | 设置加载中的风格，可选值为`default`、`circle`          | _string_  | `default` |
-| load-text | 加载状态提示文字                                      | _string_  | `-`       |
+| load-text | 加载状态提示文字                                      | _string_  | -      |
 | shadow    | 是否显示阴影                                          | _boolean_ | `false`   |
 
 ### Events
