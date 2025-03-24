@@ -40,19 +40,11 @@ function mdLoader(source) {
             } else {
                 if (isStart) {
                     htmlContentArr.splice(indexArr[i].index + num, 0, '</div>')
-                    htmlContentArr.splice(
-                        indexArr[i].index + num + 1,
-                        0,
-                        '<div class="card">'
-                    )
+                    htmlContentArr.splice(indexArr[i].index + num + 1, 0, '<div class="card">')
                     num = num + 2
                 } else {
                     isStart = true
-                    htmlContentArr.splice(
-                        indexArr[i].index + num,
-                        0,
-                        '<div class="card">'
-                    )
+                    htmlContentArr.splice(indexArr[i].index + num, 0, '<div class="card">')
                     num++
                 }
             }
@@ -63,9 +55,7 @@ function mdLoader(source) {
             htmlContentArr.push('</div>')
         }
     }
-    return `<template><section>${htmlContentArr.join(
-        '\n'
-    )}</section></template>`
+    return `<template><section v-pre>${htmlContentArr.join('\n')}</section></template>`
 }
 
 module.exports = mdLoader
