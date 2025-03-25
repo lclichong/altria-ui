@@ -5,8 +5,8 @@
                 <i v-for="i in getLoadNum" :key="i" :class="setLoadClasses" :style="setLoadStyles"></i>
             </template>
             <template v-else>
-                <alt-loading-circle :class="setLoadClasses" :style="setLoadStyles"></alt-loading-circle>
-                <span :class="bem('text')" :style="{ color: this.color }">{{ this.loadText }}</span>
+                <alt-loading-circle :class="setLoadClasses" :size="size" :style="setLoadStyles"></alt-loading-circle>
+                <span :class="bem('text')" :style="setTextStyles">{{ this.loadText }}</span>
             </template>
         </div>
     </div>
@@ -31,19 +31,22 @@ export default {
             return setLoadClasses
         },
         setLoadStyles() {
-            if (!this.color) {
-                return
+            let styles = {}
+            if (this.size && !['mini', 'small', 'medium', 'large'].includes(this.size)) {
+                styles.width = this.size + 'px'
+                styles.height = this.size + 'px'
+                styles.fontSize = this.size + 'px'
             }
-            const { isArray } = Array
-            const beArrColor = isArray(this.color)
-            if (this.loadType === 'circle') {
-                return {
-                    color: beArrColor ? '' : this.color
+            if (this.color) {
+                const { isArray } = Array
+                const beArrColor = isArray(this.color)
+                if (this.loadType === 'circle') {
+                    styles.color = beArrColor ? '' : this.color
+                } else {
+                    styles.background = beArrColor ? `linear-gradient(${this.color.join()})` : this.color
                 }
             }
-            return {
-                background: beArrColor ? `linear-gradient(${this.color.join()})` : this.color
-            }
+            return styles
         },
         getLoadNum() {
             if (this.loadType === 'circle') {
@@ -51,6 +54,18 @@ export default {
             } else {
                 return 3
             }
+        },
+        setTextStyles() {
+            let styles = {}
+            if (this.color) {
+                styles.color = this.color
+            }
+            if (this.textSize && !this.textSize.includes('px')) {
+                styles.fontSize = this.textSize + 'px'
+                return styles
+            }
+            styles.fontSize = this.textSize
+            return styles
         }
     },
     props: {
@@ -67,14 +82,10 @@ export default {
         },
         loadText: {
             type: String
+        },
+        textSize: {
+            type: String
         }
-    },
-    data() {
-        return {}
     }
 }
 </script>
-
-<!-- <style lang="less">
-@import 'index.less';
-</style> -->

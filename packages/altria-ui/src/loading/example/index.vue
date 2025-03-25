@@ -10,6 +10,7 @@
             <alt-loading color="#1989fa" size="small"></alt-loading>
             <alt-loading color="#ff976a" size="medium"></alt-loading>
             <alt-loading color="#ee0a24" size="large"></alt-loading>
+            <alt-loading color="#000" size="10"></alt-loading>
         </div>
         <div class="demo">
             <p>加载类型</p>
