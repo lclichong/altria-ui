@@ -1,8 +1,6 @@
 <template>
     <div class="alt-container">
-        <alt-pull-refresh v-model="refreshing" @onRefresh="onRefresh">
-            <div class="refresh-content">刷新次数：{{ count }}</div>
-        </alt-pull-refresh>
+        <alt-pull-refresh v-model="refreshing" @onRefresh="onRefresh">刷新次数：{{ count }}</alt-pull-refresh>
     </div>
 </template>
 
@@ -28,5 +26,6 @@ export default {
 <style scoped>
 .alt-container {
     padding: 20px;
+    height: calc(100% - 96px);
 }
 </style>

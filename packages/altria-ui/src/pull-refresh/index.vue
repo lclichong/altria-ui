@@ -1,7 +1,15 @@
 <template>
     <div ref="container" :class="bem()">
         <div ref="refreshIndicator" :class="bem('indicator')">
-            <div>{{ msg }}</div>
+            <alt-loading
+                v-show="msg === '加载中...'"
+                color="#aaa"
+                load-type="circle"
+                size="24"
+                textSize="14"
+                :load-text="msg"
+            />
+            <div v-show="msg !== '加载中...'">{{ msg }}</div>
         </div>
         <div ref="contentWrapper" :class="bem('content')">
             <slot></slot>
@@ -12,9 +20,13 @@
 <script>
 import { createBem } from '../utils/create-bem'
 import { createName } from '../utils/create-name'
+import AltLoading from '../loading'
 
 export default {
     name: createName('pull-refresh'),
+    components: {
+        AltLoading
+    },
     created() {
         this.bem = createBem('alt-pull-refresh')
     },
@@ -24,7 +36,7 @@ export default {
         },
         maxDist: {
             type: Number,
-            default: 200
+            default: 150
         }
     },
     watch: {
@@ -49,18 +61,12 @@ export default {
         this.container.addEventListener('touchstart', this.touchStartHandler, options)
         this.container.addEventListener('touchmove', this.touchMoveHandler, options)
         this.container.addEventListener('touchend', this.touchEndHandler)
-        this.container.addEventListener('mousedown', this.touchStartHandler)
-        this.container.addEventListener('mousemove', this.touchMoveHandler)
-        this.container.addEventListener('mouseup', this.touchEndHandler)
     },
     beforeDestroy() {
         const options = { passive: false }
         this.container.removeEventListener('touchstart', this.touchStartHandler, options)
         this.container.removeEventListener('touchmove', this.touchMoveHandler, options)
         this.container.removeEventListener('touchend', this.touchEndHandler)
-        this.container.removeEventListener('mousedown', this.touchStartHandler)
-        this.container.removeEventListener('mousemove', this.touchMoveHandler)
-        this.container.removeEventListener('mouseup', this.touchEndHandler)
     },
     data() {
         return {
@@ -80,7 +86,6 @@ export default {
     methods: {
         _touchStartHandler(e) {
             if (this.loading) return
-            if (e.type === 'mousedown') e.preventDefault()
             this.startY = e.touches?.[0]?.clientY ?? e.clientY
             this.startX = e.touches?.[0]?.clientX ?? e.clientX
             this.lockDirection = ''
@@ -117,7 +122,7 @@ export default {
             const progress = Math.min(this.pullDist, this.maxDist * 2)
             this.content.style.transform = `translateY(${progress}px)`
             this.ri.style.opacity = Math.min(progress / this.maxDist, 1)
-            this.ri.style.transform = `translateY(${progress - 30}px)`
+            this.ri.style.transform = `translateY(${progress - 50}px)`
             this._updateIndicator(progress)
         },
         _updateIndicator(dist) {
@@ -139,7 +144,7 @@ export default {
             this.content.style.transition = 'transform 0.3s'
             this.ri.style.transition = 'transform 0.3s'
             this.content.style.transform = `translateY(${this.ri.offsetHeight}px)`
-            this.ri.style.transform = `translateY(${this.ri.offsetHeight / 2}px)`
+            this.ri.style.transform = `translateY(${this.ri.offsetHeight - 50}px)`
             this.$emit('onRefresh')
         },
         _resetLayout() {
