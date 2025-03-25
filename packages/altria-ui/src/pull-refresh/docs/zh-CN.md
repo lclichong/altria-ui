@@ -64,5 +64,5 @@ export default {
 | 名称                           | 默认值             | 描述 |
 | ------------------------------ | ------------------ | ---- |
 | --pull-refresh-head-height     | _var(--accents-4)_ | -    |
-| --pull-refresh-head-font-size  | _15_               | -    |
+| --pull-refresh-head-font-size  | _var(--font-size-md)_ | -    |
 | --pull-refresh-head-text-color | _var(--accents-4)_ | -    |
