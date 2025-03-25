@@ -30,6 +30,7 @@ Vue.use(Loading)
 <alt-loading color="#1989fa" size="small"></alt-loading>
 <alt-loading color="#ff976a" size="medium"></alt-loading>
 <alt-loading color="#ee0a24" size="large"></alt-loading>
+<alt-loading color="#000" size="10"></alt-loading>
 ```
 
 ### 加载类型
@@ -63,7 +64,7 @@ Vue.use(Loading)
 | 参数      | 说明                                                      | 类型              | 默认值    |
 | --------- | --------------------------------------------------------- | ----------------- | --------- |
 | color     | 颜色                                                      | _string \| array_ | -         |
-| size      | 加载图标尺寸，可选项有 `mini`、`small`、`medium`、`large` | _string_          | `medium`  |
+| size      | 加载图标尺寸，可选项有 `mini`、`small`、`medium`、`large`，或者直接填尺寸单位为 `px` | _string \| number_           | `medium`  |
 | load-type | 加载类型，可选项有 `default`、`circle`                    | _string_          | `default` |
 | load-text | 加载文案                                                  | _string_          | -         |
 
