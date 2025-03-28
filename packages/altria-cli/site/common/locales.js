@@ -29,7 +29,10 @@ export const locales = {
             },
             {
                 name: '展示组件',
-                children: [{ title: 'Swipe 轮播', route: { name: 'Swipe' } }],
+                children: [
+                    { title: 'Swipe 轮播', route: { name: 'Swipe' } },
+                    { title: 'List 列表', route: { name: 'List' } },
+                ],
             },
             {
                 name: '导航组件',

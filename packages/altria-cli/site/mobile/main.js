@@ -11,6 +11,7 @@ import {
     Icon,
     Image,
     Input,
+    List,
     Loading,
     Overlay,
     Popup,
@@ -34,6 +35,7 @@ Vue.use(Header)
 Vue.use(Icon)
 Vue.use(Image)
 Vue.use(Input)
+Vue.use(List)
 Vue.use(Loading)
 Vue.use(Overlay)
 Vue.use(Popup)

@@ -9,6 +9,7 @@ import Header from './header/index.js'
 import Icon from './icon/index.js'
 import Image from './image/index.js'
 import Input from './input/index.js'
+import List from './list/index.js'
 import Loading from './loading/index.js'
 import Overlay from './overlay/index.js'
 import Popup from './popup/index.js'
@@ -29,6 +30,7 @@ function install(Vue) {
         Icon,
         Image,
         Input,
+        List,
         Loading,
         Overlay,
         Popup,
@@ -65,6 +67,7 @@ export {
     Icon,
     Image,
     Input,
+    List,
     Loading,
     Overlay,
     Popup,

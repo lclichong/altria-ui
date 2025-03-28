@@ -1,0 +1,20 @@
+:root {
+    --list-loading-text-size: var(--font-size-md);
+    --list-loading-text-color: var(--accents-2);
+    --list-loading-text-height: 50px;
+}
+
+.alt-list {
+    height: 100%;
+    background-color: #f7f8fa;
+    overflow-y: auto;
+
+    &__loading {
+        font-size: var(--list-text-size);
+        color: var(--list-loading-text-color);
+        display: flex;
+        height: var(--list-loading-text-height);
+        align-items: center;
+        justify-content: center;
+    }
+}
