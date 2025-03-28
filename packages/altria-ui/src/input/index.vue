@@ -25,13 +25,7 @@
                 <slot name="button"></slot>
             </div>
             <div v-if="type === 'textarea'" class="alt-textarea__wrapper">
-                <textarea
-                    @input="input"
-                    :rows="rows"
-                    v-model="val"
-                    :placeholder="placeholder"
-                    class="alt-textarea"
-                ></textarea>
+                <textarea @input="input" :rows="rows" v-model="val" :placeholder="placeholder" class="alt-textarea"></textarea>
             </div>
             <div v-if="error" class="alt-input--error">{{ errorText }}</div>
         </template>
@@ -157,6 +151,3 @@ export default {
 }
 </script>
 
-<!-- <style lang="less">
-@import 'index.less';
-</style> -->
